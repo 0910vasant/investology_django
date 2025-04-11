@@ -169,6 +169,7 @@
                                             <div class="text-right flex-grow">
                                                 {% comment %} <a href="/relationship_manager_master">
                                                 </a> {% endcomment %}
+                                                <button type="button" id="existing_customer_button" class="btn btn-dark">Existing Customer</button>
                                                 <button type="button" onclick="history.back()" class="btn btn-dark">Back</button>
                                                
                                             </div>
@@ -178,7 +179,7 @@
                                             {% csrf_token %}
                                             <div class="box-body">
                                                 <div class="row">
-                                                    {%comment%}<div class="col-md-4 col-lg-4">
+                                                    <div class="col-md-4 col-lg-4" id="customer_details" hidden>
                                                         <div class="form-group">
                                                             <label>Customer<small class="text-danger"> *</small></label>
                                                             <select class="form-control select2" name="cust_dtl" id="cust_dtl"  required>
@@ -188,7 +189,7 @@
                                                                 {% endfor %}
                                                             </select>
                                                         </div>
-                                                    </div>{%endcomment%}
+                                                    </div>
                                                     <div class="col-md-4 col-lg-4">
                                                         <div class="form-group">
                                                             <label>User Type<small class="text-danger"> *</small></label>
@@ -514,6 +515,20 @@
                     c_amt = Math.round(parseInt(np)* parseFloat(c)/100)
                     $("#commission_amt").val(c_amt)
                 }
+            });
+
+            $("#existing_customer_button").on("click", function(){
+                $("#customer_details").prop('hidden', false);
+                $("#u_type").prop('disabled', true);
+                $("#user").removeAttr('required');
+                $("#user").prop('disabled', true);
+                $("#client_name").prop('disabled', true);
+                $("#date_of_birth").prop('disabled', true);
+                $("#mobile").prop('disabled', true);
+                $("#email").prop('disabled', true);
+                $("#pan").prop('disabled', true);
+                $("#nominee_name").prop('disabled', true);
+                
             });
 
             $("#number_of_insured").on("change", function(){
@@ -870,9 +885,9 @@
                 console.log($("#sub_mode").val());
                 $('#add_insurance_row').empty();
                 if($("#sub_mode").val() == 'Regular'){
-                    $("#ppt").prop('disabled', true);
+                    $("#ppt").prop('readonly', true);
                 }else{
-                    $("#ppt").prop('disabled', false);
+                    $("#ppt").prop('readonly', false);
                 }
                 
             });

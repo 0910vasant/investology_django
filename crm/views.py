@@ -2424,6 +2424,8 @@ def update_insurance(request):
 def add_insurance_and_customer(request):
     
     try:
+        cust_dtl                = request.POST.get("cust_dtl")
+        print(cust_dtl)
         pan_no                  = request.POST.get("pan")
         # aadhaar_no              = request.POST.get("aadhaar_no")
         cust_name               = request.POST.get("client_name")
@@ -2464,7 +2466,7 @@ def add_insurance_and_customer(request):
 
         user_type               = request.POST.get("u_type")
         user                    = request.POST.get("user")
-        ut                      = User.objects.get(id=user)
+        #ut                      = User.objects.get(id=user)
         # user_id                 = ut.USER_ID
 
         type_insurance          = request.POST.get("type_insurance")
@@ -2495,35 +2497,38 @@ def add_insurance_and_customer(request):
         number_of_years = []
         print(type(type_insurance))
         print(pan_no)
+        
         if Customer.objects.filter(PAN_NO = pan_no).exclude(IS_DELETED=True).exists():
                 return JsonResponse({"error":"This Pan Card details is already exists"},status=412)
         else:
-            add_customer = Customer.objects.create(
-                RM_EP           = ut,
-                PAN_NO          = pan_no,
-                # AADHAAR_NO      = aadhaar_no,
-                C_NAME          = cust_name ,
-                CUST_DOB        = cust_dob,
-                # M_NAME          = m_name ,
-                # F_NAME          = f_name ,
-                TYPE            = user_type,
-                # QUALIFICATION   = qualification ,
-                MOB_NO          = mob_no ,
-                # COMP_NAME       = comp_name ,
-                # INDUSTRY_TYPE   = industry_type ,
-                # ANNUAL_CTC      = annual_ctc ,
-                HEIGHT          = height ,
-                WEIGHT          = weight ,
-                EMAIL           = email ,
-                # OLD_COMP_NAME   = old_comp_name ,
-                # SUM_ASSURED     = sum_assured ,
-                # NOMINEE_NAME    = nominee_name ,
-                
-                # RELATIONSHIP    = relationship ,
-                # MARITAL_STATUS  = marital_status ,                
-                CUSTOMER_TYPES  = "Insurance",
-                CREATED_BY = User.objects.get(id=request.session['LOGIN_ID'])
-            )
+            if cust_dtl is None:
+                print('here')
+                add_customer = Customer.objects.create(
+                    RM_EP           = ut,
+                    PAN_NO          = pan_no,
+                    # AADHAAR_NO      = aadhaar_no,
+                    C_NAME          = cust_name ,
+                    CUST_DOB        = cust_dob,
+                    # M_NAME          = m_name ,
+                    # F_NAME          = f_name ,
+                    TYPE            = user_type,
+                    # QUALIFICATION   = qualification ,
+                    MOB_NO          = mob_no ,
+                    # COMP_NAME       = comp_name ,
+                    # INDUSTRY_TYPE   = industry_type ,
+                    # ANNUAL_CTC      = annual_ctc ,
+                    HEIGHT          = height ,
+                    WEIGHT          = weight ,
+                    EMAIL           = email ,
+                    # OLD_COMP_NAME   = old_comp_name ,
+                    # SUM_ASSURED     = sum_assured ,
+                    # NOMINEE_NAME    = nominee_name ,
+                    
+                    # RELATIONSHIP    = relationship ,
+                    # MARITAL_STATUS  = marital_status ,                
+                    CUSTOMER_TYPES  = "Insurance",
+                    CREATED_BY = User.objects.get(id=request.session['LOGIN_ID'])
+                )
 
         if number_of_insured is not None:
             number_of_insured       = int(request.POST.get("number_of_insured"))
@@ -2551,6 +2556,7 @@ def add_insurance_and_customer(request):
         # if type_insurance == "12":
         policy_first_inception_date = request.POST.get("policy_first_inception_date")
         print(ppt)
+        
         # if ppt is None:
         #     for i in range(2, int(pt)+1):
         #         print(i)
@@ -2592,7 +2598,7 @@ def add_insurance_and_customer(request):
             POLICY_NUMBER = policy_number,
             NET_AMT = net_premium,
             GROSS_AMT = commission,
-            CUSTOMER_id = add_customer.id
+            CUSTOMER_id = add_customer.id if cust_dtl is None else int(cust_dtl)
 
             )
             # add_customer.save

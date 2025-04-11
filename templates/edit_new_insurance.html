@@ -782,6 +782,11 @@
                         }
                     }
                     
+                    if($("#sub_mode").val() == 'Regular'){
+                        $("#ppt").prop('readonly', true);
+                    }else{
+                        $("#ppt").prop('readonly', false);
+                    }
                     
                 }, 1000);
                 
