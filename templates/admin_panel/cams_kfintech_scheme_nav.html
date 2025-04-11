@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<style type="text/css">
+  .box-title{
+      z-index: auto;
+      font-size: 18px;
+      font-weight: 500;
+      color: #181C32;
+  }
+
+  .theme-primary .btn-flat.btn-danger {
+      color: #ed1a24 !important;
+      background-color: #ffc6cb;
+      border-color: transparent;
+  }
+
+  .theme-primary .btn-flat.btn-success {
+      color: #2a8853 !important;
+      background-color: #C9F7F5;
+      border-color: transparent;
+  }
+
+  .btn.btn-flat {
+      border-radius: 8px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border-width: 1px;
+  }
+
+  .dropdown-item {
+      color: #475F7B;
+      font-weight: 500;
+      padding: 4px 12px;
+      width: auto;
+      margin: 4px;
+      -webkit-transition: 0.15s linear;
+      transition: 0.15s linear;
+  }
+
+  .theme-primary .show > .btn-primary.dropdown-toggle {
+      background-color: #103763 !important;
+      border-color: #103763 !important;
+      color: #ffffff;
+  }
+  
+
+  /*.theme-primary a:hover, .theme-primary a:focus {
+      color: #a6ce39;
+  }
+*/
+  .red:hover{
+      color: #f10e0e;
+  }
+  .blue:hover{
+      color: #f10e0e;
+  } 
+
+  color: #3F4254;
+</style>
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Cams & Kfintech NAV</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Cams & Kfintech NAV</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="card">
+      <div class="card-body">
+        
+          <div class="row mt-3">
+              <div class="add_btn text-end">
+                <button type="button" class="btn btn_new_color" data-bs-toggle="modal" data-bs-target="#add_nav">Add NAV</button>   
+              </div>
+              <div class="col-lg-12">
+                  <div class="table-responsive">
+                      <table id="nav_table" class="table table-bordered data_tbl">
+                        <thead>
+                          <tr>
+                            <th width="8%">Sr. No.</th>
+                            <th>NAV Date</th>
+                            <th>Company</th>
+                            <th>Product Code</th>
+                            <th>Scheme Name</th>
+                            <th>NAV Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  </main><!-- End #main -->
+  <!-- Modal -->
+  <div class="modal fade" id="add_nav" tabindex="-1" aria-labelledby="add_schemeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="add_schemeLabel">Add Cams kfintech NAV</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="add_nav_form">
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="row">
+              <div class="mb-3 col-md-12 col-lg-12">
+                <div class="form-group">
+                    <label>User <small class="text-danger"> *</small></label>
+                    <select name="company_name" id="company_name" class="form-control" required>
+                        <option value="" selected disabled>Select Company</option>
+                        <option value="cams">Cams</option>
+                        <option value="kfintech">Kfintech</option>
+                    </select>
+                </div>
+              </div>
+              <div class="mb-3 col-lg-12">
+                  <label for="" class="form-label">Upload Schmes Excel <small class="text-danger"> *</small></label>
+                  <input type="file" class="form-control" name="excel_file" id="" required>
+              </div>
+             
+            </div>
+          </div>
+          <div class="modal-footer">
+              {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+              <button type="submit" name="submit" class="btn btn-success">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+  <script src="/static/admin_panel/js/scheme/cams_and_kfintech_schmes_nav.js"></script>
+</body>
+
+</html>

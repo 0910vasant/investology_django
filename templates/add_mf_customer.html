@@ -1,0 +1,1208 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+        <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+        }
+        .theme-primary .btn-primary {
+            background-color: #007bff !important
+            border-color: #007bff !important;
+            color: #ffffff;
+        }
+        .theme-primary .btn-flat.btn-info {
+            color: #007eff !important;
+            background-color: #beddfd;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .theme-primary .bg-primary {
+            background-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .box {
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 0px;
+            -webkit-transition: .5s;
+            transition: .5s;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            box-shadow: none;
+            /*box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%);*/
+        }
+
+        .line{
+            border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+        }
+
+        .box-body .box-title {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+            color: #103763;
+            font-weight: 600;
+        }
+
+        .btn-inactive {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .hr_line {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .form-control {
+              margin: 0px;
+              padding: 5px 30px 5px 15px;
+        }
+
+        .card-btn {
+            background-color: #fff;
+        }
+
+        .submit_btn-form {
+           padding: 1.5rem 1.5rem;
+        }
+
+        .box_btn {
+        position: absolute;
+        margin-bottom: 10px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0px;
+        -webkit-transition: .5s;
+        transition: .5s;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        box-shadow: none;
+        /* box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%); */
+        }
+
+        .content-1 {
+            min-height: 80px;
+            padding: 10px 10px 0px 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .w-100{
+            width: 100% !important;
+        }
+         {% comment %} color: #3F4254; {% endcomment %}
+    </style>
+
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item" aria-current="page">
+                                                    <a href="project_management.php">
+                                                        Project Management
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Add Client Family
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                    
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                Add Customer
+                                            </h3>
+                                            <div class="text-right flex-grow">
+                                                <a href="/nav_view">
+                                                    <button type="button" class="btn btn-dark">Back</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        {% comment %} <form action="">
+                                        </form> {% endcomment %}
+                                        <div class="box-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="" value="" hidden>
+                                                    
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <label>Account Type <small class="text-danger">*</small></label>
+                                                            <select id="acc_type" name="acc_type" class="form-control holding_nature select2" required>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Upload Pan Card Image <small class="text-danger">*</small></label>
+                                                            <input type="file" class="" placeholder="Pancard Image" id="pan_img" name="pan_img" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Pan Card No <small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="pan_no" name="pan_no" placeholder="Pan Card No" value="" required >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4 text-right">
+                                                        <button type="button" id="first_proceed_btn" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Next</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                                {% comment %} <div class="col-md-4 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label>Date Of Birth<small class="text-danger">*</small></label>
+                                                        <input class="form-control" type="date" name="date">
+                                                    </div>
+                                                </div> {% endcomment %}
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="accordion accordion-section" id="accordionExample">
+                                                        <div class="card disable-select first_card">
+                                                            <div class="card-header" id="headingOne">
+                                                            <h2 class="mb-0 w-100">
+                                                                
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Personal Information <i class="fa-solid fa-lock"></i>
+                                                                    </button>
+                                                            </h2>
+                                                            </div>
+                                                        
+                                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                            <div class="card-body">
+                                                                <form id="registration1_form" action="">
+                                                                    {% csrf_token %}
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Name<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Email<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Mobile Number<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="10 digit number" id="mobile" name="mobile" value="" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %} <div class="col-md-1 col-lg-1">
+                                                                            <label>Verify <small class="text-danger">*</small></label>
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                                                Number
+                                                                            </button>
+                                                                        </div> {% endcomment %}
+
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Create Username<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <label>Create Password <small class="text-danger">*</small></label>
+                                                                            <div class="input-group form-group">
+                                                                                <input id="password" type="password" class="form-control input_color" name="password" placeholder="Enter your password" required>
+                                                                                <div class="input-group-append show_pass" style="cursor:pointer;">
+                                                                                    <span class="input-group-text">
+                                                                                        <i class="fa fa-eye"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <label>Confirm Password <small class="text-danger">*</small></label>
+                                                                            <div class="input-group form-group">
+                                                                                <input id="password1" type="password" class="form-control input_color" name="password1" placeholder="Enter your password" required>
+                                                                                <div class="input-group-append show_pass" style="cursor:pointer;">
+                                                                                    <span class="input-group-text">
+                                                                                        <i class="fa fa-eye"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                            <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingTwo">
+                                                                <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    Account <i class="fa-solid fa-lock"></i>
+                                                                </button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <form id="registration2_form" action="">
+                                                                        {% csrf_token %}
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Client Code<small class="text-danger">*</small></label>
+                                                                                    <input type="text" class="form-control" id="client_code" name="client_code" placeholder="Client Code" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Investor Category<small class="text-danger">*</small></label>
+                                                                                    <select id="investor_category" name="investor_category" class="form-control investor_category select2" required>
+                                                                                        {% comment %} <option value="right" selected>Select Investor Category</option> {% endcomment %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Tax Status<small class="text-danger">*</small></label>
+                                                                                    <select id="tax_status" name="tax_status" class="form-control tax_status select2" required>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Holding Nature<small class="text-danger">*</small></label>
+                                                                                    <select id="holding_nature" name="holding_nature" class="form-control holding_nature select2" required>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row primary_div">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Primary Holder Name<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="primary_holder_name" name="primary_holder_name" class="form-control" placeholder="Primary Holder NAme" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Primary Holder Date Of Birth<small class="text-danger">*</small></label>
+                                                                                    <input type="date" id="primary_holder_dob" name="primary_holder_dob" class="form-control" placeholder="Primary Holder Date Of Birth" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            {% comment %} <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Status<small class="text-danger">*</small></label>
+                                                                                    <select id="opens" class="form-control">
+                                                                                        <option value="right" disabled selected>Select Status</option>
+                                                                                        <option value="Individual">Active</option>
+                                                                                        <option value="Minor">Inactive</option>
+                                                                                        <option value="Minor">Pending Authentication</option>
+                                                                                        <option value="Minor">Pending Depository</option>
+                                                                                        <option value="Minor">Pending Upload</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div> {% endcomment %}
+                                                                            <div class="col-md-2 col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label>Gender<small class="text-danger">*</small></label>
+                                                                                    <select id="gender" name="gender" class="form-control" required>
+                                                                                        <option value="" disabled selected>Select Gender</option>
+                                                                                        <option value="Male">Male</option>
+                                                                                        <option value="Female">Female</option>
+                                                                                        <option value="Others">Others</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row aos_div" style="display:none">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Secondary Holder Name</label>
+                                                                                    <input type="text" id="secondary_holder_name" name="secondary_holder_name" class="form-control" placeholder="Secondary Holder NAme" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2 col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label>Secondary Holder DOB</label>
+                                                                                    <input type="date" id="secondary_holder_dob" name="secondary_holder_dob" class="form-control" placeholder="Secondary Holder Date Of Birth" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Secondary Holder Pan Image</label>
+                                                                                    <input type="file" id="second_pan_img" name="second_pan_img" class="form-control" placeholder="" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Secondary Holder Pan Number</label>
+                                                                                    <input type="text" id="secondary_pan_holder" name="secondary_pan_holder" class="form-control" placeholder="Secondary Holder Pan Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Third Holder Name</label>
+                                                                                    <input type="text" id="third_holder_name" name="third_holder_name" class="form-control" placeholder="Third Holder NAme" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2 col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label>Third Holder DOB</label>
+                                                                                    <input type="date" id="third_holder_dob" name="third_holder_dob" class="form-control" placeholder="Third Holder Date Of Birth" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Third Holder Pan Image</label>
+                                                                                    <input type="file" id="third_pan_img" name="third_pan_img" class="form-control" placeholder="" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Third Holder Pan Number</label>
+                                                                                    <input type="text" id="third_pan_holder" name="third_pan_holder" class="form-control" placeholder="Third Holder Pan Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Occupation Code<small class="text-danger">*</small></label>
+                                                                                    <select id="occupation_code" name="occupation_code" class="form-control occupation_code acc_occupation select2">
+                                                                                        <option value="right" disabled selected>Select Occupation Code</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            {% comment %} <div class="col-md-4 col-lg-4 other_occ_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Occupation<small class="text-danger">*</small></label>
+                                                                                    <input type="text" class="form-control" placeholder="Other Occupation" value="">
+                                                                                </div>
+                                                                            </div> {% endcomment %}
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingThree">
+                                                            <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Bank Details <i class="fa-solid fa-lock"></i></button>
+                                                            </h2>
+                                                            </div>
+                                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <form id="registration3_form" action="">
+                                                                        {% csrf_token %}
+                                                                        <h4>Bank Account - 1 </h4>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Signature<small class="text-danger">*</small></label>
+                                                                                    <input type="file" class="" id="signature[]" name="signature" placeholder="" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Type<small class="text-danger">*</small></label>
+                                                                                    <select id="acc_type[]" name="acc_type[]" class="bank_acc_type form-control select2" required>
+                                                                                        {% comment %} <option value="right" selected>Select Account Type</option> {% endcomment %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>NEFT/IFSC Code<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="neft_ifsc[]" name="neft_ifsc[]" class="form-control" placeholder="Neft/Ifsc Code" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Name<small class="text-danger">*</small></label>
+                                                                                    <select id="bank[]" name="bank[]" class="form-control bank_name select2" required>
+                                                                                        {% comment %} <option value="" selected>Select Bank Name</option> {% endcomment %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Number<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="acc_no[]" name="acc_no[]" class="form-control" placeholder="Account Number" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>MICR Number<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="micr_no[]" name="micr_no[]" class="form-control" placeholder="MICR Number" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Proof<small class="text-danger">*</small></label>
+                                                                                    <select id="" name="bank_proof[]" class="form-control bank_proof bank_proof1 select2" required>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 bank_proof_file_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label><small class="text-danger">*</small></label>
+                                                                                    <input type="file" class="" id="bank_proof_file[]" name="bank_proof_file[]" placeholder="" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <h4>Bank Account - 2 </h4>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Signature</label>
+                                                                                    <input type="file" class="" id="signature[]" name="signature[]" placeholder="" value="" >
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Type</label>
+                                                                                    <select id="acc_type[]" name="acc_type[]" class="bank_acc_type form-control select2" >
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>NEFT/IFSC Code</label>
+                                                                                    <input type="text" id="neft_ifsc[]" name="neft_ifsc[]" class="form-control" placeholder="Neft/Ifsc Code" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Name</label>
+                                                                                    <select id="bank[]" name="bank[]" class="form-control bank_name select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Number</label>
+                                                                                    <input type="text" id="acc_no[]" name="acc_no[]" class="form-control" placeholder="Account Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>MICR Number</label>
+                                                                                    <input type="text" id="micr_no[]" name="micr_no[]" class="form-control" placeholder="MICR Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Proof</label>
+                                                                                    <select id="" name="bank_proof[]" class="form-control bank_proof bank_proof1 select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 bank_proof_file_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label><small class="text-danger">*</small></label>
+                                                                                    <input type="file" class="" id="bank_proof_file[]" name="bank_proof_file[]" placeholder="" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <h4>Bank Account - 3 </h4>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Signature</label>
+                                                                                    <input type="file" class="" id="signature[]" name="signature[]" placeholder="" value="" >
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Type</label>
+                                                                                    <select id="acc_type[]" name="acc_type[]" class="bank_acc_type form-control select2" >
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>NEFT/IFSC Code</label>
+                                                                                    <input type="text" id="neft_ifsc[]" name="neft_ifsc[]" class="form-control" placeholder="Neft/Ifsc Code" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Name</label>
+                                                                                    <select id="bank[]" name="bank[]" class="form-control bank_name select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Number</label>
+                                                                                    <input type="text" id="acc_no[]" name="acc_no[]" class="form-control" placeholder="Account Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>MICR Number</label>
+                                                                                    <input type="text" id="micr_no[]" name="micr_no[]" class="form-control" placeholder="MICR Number" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Proof</label>
+                                                                                    <select id="" name="bank_proof[]" class="form-control bank_proof bank_proof1 select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 bank_proof_file_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label><small class="text-danger">*</small></label>
+                                                                                    <input type="file" class="" id="bank_proof_file[]" name="bank_proof_file[]" placeholder="" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Select Default Bank Account <small class="text-danger">*</small></label>
+                                                                                    <select id="default" name="default" class="form-control" required>
+                                                                                        <option value="" selected>Select Default Bank Account</option>
+                                                                                        <option value="1">Bank Account - 1</option>
+                                                                                        <option value="2">Bank Account - 2</option>
+                                                                                        <option value="3">Bank Account 3</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingFour">
+                                                                <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Depository Details <i class="fa-solid fa-lock"></i></button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <form id="registration3_1_form" action="">
+                                                                        {% csrf_token %}
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Depository Type<small class="text-danger">*</small></label>
+                                                                                    <select id="depository_type" name="depository_type" class="form-control" required>
+                                                                                        <option value="" disabled selected>Select Depository Type</option>
+                                                                                        <option value="CDSL">CDSL</option>
+                                                                                        <option value="NSDL">NSDL</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Type<small class="text-danger">*</small></label>
+                                                                                    <select id="acc_type" name="acc_type" class="bank_acc_type form-control select2" required>
+                                                                                        {% comment %} <option value="right" selected>Select Account Type</option> {% endcomment %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>NEFT/IFSC Code<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="neft_ifsc" name="neft_ifsc" class="form-control" placeholder="Neft/Ifsc Code" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Bank Name<small class="text-danger">*</small></label>
+                                                                                    <select id="bank_name" name="bank_name" class="form-control bank_name select2" required>
+                                                                                        {% comment %} <option value="" selected>Select Bank Name</option> {% endcomment %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Account Number<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="acc_no" name="acc_no" class="form-control" placeholder="Account Number" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>MICR Number<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="micr_no" name="micr_no" class="form-control" placeholder="MICR Number" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingSeven">
+                                                                <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Communication Details <i class="fa-solid fa-lock"></i></button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <form id="registration4_form" action="">
+                                                                        {% csrf_token %}
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Address 1 <small class="text-danger">*</small></label>
+                                                                                    <textarea class="form-control" name="address1" id="address1" rows="4"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Address 2 </label>
+                                                                                    <textarea class="form-control" name="address2" id="address2" rows="4"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Address 3 </label>
+                                                                                    <textarea class="form-control" name="address3" id="address3" rows="4"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Country<small class="text-danger">*</small></label>
+                                                                                    <select id="cust_country" name="country" class="form-control select2 country">
+                                                                                        <option value="" disabled selected>Select Country</option>
+  
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group blank_state">
+                                                                                    <label>State<small class="text-danger">*</small></label>
+                                                                                    <select id="cust_state" name="state" class="form-control select2 state">
+                                                                                        <option value="" disabled selected>Select State</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group blank_city">
+                                                                                    <label>City<small class="text-danger">*</small></label>
+                                                                                    <select id="cust_city" name="city" class="form-control select2 city">
+                                                                                        <option value="" disabled selected>Select City</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group blank_pincode">
+                                                                                    <label>Pincode<small class="text-danger">*</small></label>
+                                                                                    <select id="cust_pincode" name="pincode" class="form-control select2 pincode" required>
+                                                                                        <option value="" disabled selected>Select Pincode</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Residence Phone</label>
+                                                                                    <input type="text" id="residence_phone" name="residence_phone" class="form-control" placeholder="Residence Phone" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Residence Fax</label>
+                                                                                    <input type="text" id="residenace_fax" name="residenace_fax" class="form-control" placeholder="Residence Fax" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Office Phone</label>
+                                                                                    <input type="text" id="office_phone" name="office_phone" class="form-control" placeholder="Office Phone" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-3">
+                                                                                <div class="form-group">
+                                                                                    <label>Office Fax</label>
+                                                                                    <input type="text" id="office_fax" name="office_fax" class="form-control" placeholder="Office Fax" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Communication Mode<small class="text-danger">*</small></label>
+                                                                                    <select id="communication_mode" name="communication_mode" class="form-control">
+                                                                                        <option value="" disabled selected>Select Communication Mode</option>
+                                                                                        <option value="Phone">Phone</option>
+                                                                                        <option value="Email">Email</option>
+                                                                                        <option value="Physical">Physical</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Email <small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="primary_email" name="primary_email" class="form-control" placeholder="Email" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Phone <small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="primary_mobile" name="primary_mobile" class="form-control" placeholder="Phone" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% comment %} <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Email Declaration Flag <small class="text-danger">*</small></label>
+                                                                                    <select id="" class="form-control">
+                                                                                        <option value="" disabled selected>Select Email Declaration Flag</option>
+                                                                                        <option value="Phone">Phone</option>
+                                                                                        <option value="Email">Email</option>
+                                                                                        <option value="Physical">Physical</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Mobile Declaration Flag <small class="text-danger">*</small></label>
+                                                                                    <select id="" class="form-control">
+                                                                                        <option value="" disabled selected>Select Mobile Declaration Flag</option>
+                                                                                        <option value="Phone">Phone</option>
+                                                                                        <option value="Email">Email</option>
+                                                                                        <option value="Physical">Physical</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div> {% endcomment %}
+                                                                            
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingSix">
+                                                                <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">KYC Details <i class="fa-solid fa-lock"></i></button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <form id="registration5_form" action="">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Income Type<small class="text-danger">*</small></label>
+                                                                                    <select id="income_type" name="income" class="form-control">
+                                                                                        <option value="" disabled selected>Select Income Type</option>
+                                                                                        <option value="gross" data-id="gross">Gross Annual Income</option>
+                                                                                        <option value="networth" data-id="networth">Networth</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 income-type gross" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Gross Annual Income<small class="text-danger">*</small></label>
+                                                                                    <select id="gross_annual_income" name="gross_annual_income" class="form-control gross_annual_income select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 income-type networth" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Networth in RS.<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="networth_in_rupees" name="networth_in_rupees" class="form-control" placeholder="Networth in RS." value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 income-type networth" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Networth on date<small class="text-danger">*</small></label>
+                                                                                    <input type="date" id="networth_as_on_date" name="networth_as_on_date" class="form-control" placeholder="Networth on date" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Source Of Wealth<small class="text-danger">*</small></label>
+                                                                                    <select id="source_of_wealth" name="source_of_wealth" class="form-control source_of_wealth select2">
+                                                                                        
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 osow_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Source Of Wealth<small class="text-danger">*</small></label>
+                                                                                    <input type="text" id="source_of_wealth_others" name="source_of_wealth_others" class="form-control" placeholder="Other Source Of Wealth" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Types Of Address Given at KRA<small class="text-danger">*</small></label>
+                                                                                    <select id="kra_address_type" name="kra_address_type" class="form-control kra_address_type select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Occupation<small class="text-danger">*</small></label>
+                                                                                    <select id="occupation" name="occupation" class="form-control occupation_code kyc_occupation select2">
+                                                                                        
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 other_occ_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Occupation<small class="text-danger">*</small></label>
+                                                                                    <input id="occupation_others" name="occupation_others" type="text" class="form-control" placeholder="Other Occupation" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>PEP Status<small class="text-danger">*</small></label>
+                                                                                    <select id="pep_status" name="pep_status" class="form-control pep_status select2">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Any Other Information ?</label>
+                                                                                    <textarea class="form-control" name="any_other_information" id="any_other_information" rows="3"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card disable-select">
+                                                            <div class="card-header" id="headingEight">
+                                                                <h2 class="mb-0 w-100">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Nominee and Fatca Details <i class="fa-solid fa-lock"></i></button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                                                                <div class="card-body ">
+                                                                    <form id="registration6_form" action="">
+                                                                        {% csrf_token %}
+                                                                        <div class="row">
+                                                                            <div class="col-12 col-md-12 col-lg-12">
+                                                                                <div class="">
+                                                                                    <input type="radio" class="with-gap want_nominee" name="want_nominee" id="nominee" value="yes" required>
+                                                                                    <label for="nominee" style="padding-right: 30px;">I do Hereby wish to appoint under mentioned Nominee</label>
+                                                                                    <input type="radio" id="no_nominee" name="want_nominee" class="with-gap want_nominee" value="no" checked required>
+                                                                                    <label for="no_nominee">I do not wish to appoint Nominee</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div  class="clone_nominee_form" style="display:none">
+                                                                        </div>
+                                                                        <hr>
+                                                                        <div class="row"> 
+                                                                            <div class="col-12 col-md-12 col-lg-12">
+                                                                                <h4>FATCA Details</h4>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>City Of Birth</label>
+                                                                                    <input type="text" id="placeofbirth" name="placeofbirth" class="form-control" placeholder="City Of Birth" value="" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Country Of Birth <small class="text-danger">*</small></label>
+                                                                                    <select id="country_of_birth" name="country_of_birth" class="form-control country select2" required>
+                                                                                        
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 other_birth_c_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Country Of Birth <small class="text-danger">*</small></label>
+                                                                                    <input type="text" class="form-control " placeholder="Other Citizenship" value="" id="other_country" name="other_country">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Citizenship <small class="text-danger">*</small></label>
+                                                                                    <select id="citizenship" name="citizenship" class="form-control country select2" required>
+                                                                                    
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 other_citizenship_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Citizenship Country <small class="text-danger">*</small></label>
+                                                                                    <input type="text" class="form-control " placeholder="Other Citizenship" value="" id="other_citizenship" name="other_citizenship">
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Nationality <small class="text-danger">*</small></label>
+                                                                                    <select id="nationality" name="nationality" class="form-control country select2" required>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4 other_nationality_div" style="display:none;">
+                                                                                <div class="form-group">
+                                                                                    <label>Other Nationality <small class="text-danger">*</small></label>
+                                                                                    <input type="text" class="form-control " placeholder="Other Nationality" value="" id="other_nationality" name="other_nationality">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Are You Tax Resident of any country other than India<small class="text-danger">*</small></label>
+                                                                                    <select id="tax_resident_of_any_other_country" name="tax_resident_of_any_other_country" class="form-control" required>
+                                                                                        <option value="" selected disabled>Tax Resident of any country other than India</option>
+                                                                                        <option value="yes">Yes</option>
+                                                                                        <option value="no">No</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %} style="display:none" {% endcomment %}
+                                                                        <div  class="tax_details" style="display: none;">
+                                                                            
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 col-lg-12 text-right flex-grow">
+                                                                                <button type="submit" name="submit" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% comment %} <div class="card">
+                                                            <div class="card-header" id="headingNine">
+                                                                <h2 class="mb-0">
+                                                                <button class="btn btn-link btn-block accordion-btn text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">Depository Details</button>
+                                                                </h2>
+                                                            </div>
+                                                            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Depository Type<small class="text-danger">*</small></label>
+                                                                                <select id="" class="form-control">
+                                                                                    <option value="right" selected>Select Depository Type</option>
+                                                                                    <option value="Individual">CDSL</option>
+                                                                                    <option value="Minor">NSDL</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Account Type<small class="text-danger">*</small></label>
+                                                                                <select id="" class="form-control">
+                                                                                    <option value="right" selected>Select Account Type</option>
+                                                                                    <option value="Individual">SB</option>
+                                                                                    <option value="Minor">FCNR</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>NEFT/IFSC Code<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" placeholder="Neft/Ifsc Code" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Bank Name<small class="text-danger">*</small></label>
+                                                                                <select id="" class="form-control">
+                                                                                    <option value="" selected>Select Bank Name</option>
+                                                                                    <option value="">Reserve BAnk Of India</option>
+                                                                                    <option value="">SBI</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>Account Number<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" placeholder="Account Number" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-lg-4">
+                                                                            <div class="form-group">
+                                                                                <label>MICR Number<small class="text-danger">*</small></label>
+                                                                                <input type="text" class="form-control" placeholder="MICR Number" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="text-right flex-grow">
+                                                                            <div class="col-md-12 col-lg-12">
+                                                                                <div class="submit_btn-form">
+                                                                                    <a  href="#">
+                                                                                        <button type="button" class="proceed_btn btn_submit waves-effect waves-light btn btn-flat mb-5">Submit & Proceed</button>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% comment %} <div class="text-right flex-grow">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="submit_btn-form">
+                                                        <a  href="#">
+                                                            <button type="button" class="btn_submit waves-effect waves-light btn btn-flat mb-5">Submit</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div> {% endcomment %}
+                                        </div>
+                                        
+                                        <!-- /.box-body -->
+                                        <!-- /.box-footer -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                        </section>
+                        <!-- /.content -->
+
+
+                        {% comment %} <section class="content-1">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box">
+                                        <div class="text-right flex-grow">
+                                            <div class="submit_btn-form">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-success btn-md">Submit</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </section>         {% endcomment %}
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/mf_customer/add_mf_customer_other.js"></script>
+        <script src="/static/js/mf_customer/load_api_data.js"></script>
+        <script src="/static/js/mf_customer/add_mf_customer.js"></script>
+
+        <script src="/static/js/mf_customer/scan_pan.js"></script>
+        <script src="/static/js/mf_customer/registration_1.js"></script>
+        <script src="/static/js/mf_customer/registration_2.js"></script>
+        <script src="/static/js/mf_customer/registration_3.js"></script>
+        <script src="/static/js/mf_customer/registration_3_1.js"></script>
+        <script src="/static/js/mf_customer/registration_4.js"></script>
+        <script src="/static/js/mf_customer/registration_5.js"></script>
+        <script src="/static/js/mf_customer/registration_6.js"></script>
+
+
+        <script>
+            $("input.otp").on("keyup", function () {
+              if ($(this).val()) {
+                $(this).next().focus();
+              } else {
+                $(this).prev().focus();
+              }
+            });
+        </script>
+	
+    </body>
+</html>

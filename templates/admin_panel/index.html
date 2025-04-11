@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style>
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bx bx-book-open"></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">Live SIP</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bxs-objects-vertical-bottom'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">SIP Count</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bxs-book-reader'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">New SIP</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bx-folder-minus'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">Live SWP</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bx-folder-plus'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">Live STP</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bx-briefcase-alt'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">Latest Redeem</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between ">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class='bx bxs-objects-vertical-bottom'></i>
+                            </div>
+                            <div class="ps-3 text-end">
+                                <h6>145</h6>
+                                <p class="text-mute mb-0">AUM ( On 18-Oct-2024 )</p>
+                                <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                            </div>
+                        </div>
+                        <div class="mt-2 text-end">
+                            <a href="javascript:void(0)" class="view_detail_btn" onclick="window.open('monthsip.asp', 'detailrep', 'width=900, height=550, scrollbars=1', left=0, top=0)">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main><!-- End #main -->
+<!-- Modal -->
+    <div class="modal fade" id="view_detail" tabindex="-1" aria-labelledby="view_detailLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="view_detailLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+
+</body>
+</html>

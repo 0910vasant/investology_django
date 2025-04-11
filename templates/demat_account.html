@@ -1,0 +1,280 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+    <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .dropdown-item {
+            color: #475F7B;
+            font-weight: 500;
+            padding: 4px 12px;
+            width: auto;
+            margin: 4px;
+            -webkit-transition: 0.15s linear;
+            transition: 0.15s linear;
+        }
+
+        .theme-primary .show > .btn-primary.dropdown-toggle {
+            background-color: #103763 !important;
+            border-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active:hover, .theme-primary .nav-tabs .nav-link.active:focus {
+            border-bottom-color: #a6ce39 ;
+            background-color: #a6ce39 ;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active {
+            border-bottom-color: #a6ce39;
+            background-color: #a6ce39;
+            color: #ffffff;
+        }
+
+
+
+        color: #3F4254;
+    </style>
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+            
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                        Scheme Master
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="box box-default">
+                                    <div class="box-header with-border flexbox">
+                                      <h4 class="box-title">Demat Account</h4>
+                                        <div class="text-right flex-grow">
+                                            <button class="btn btn-danger" data-toggle="modal" data-target="#add_demat_account">Add Demat Account</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="table-responsive">
+                                            <table id="demate_table" class="data_tbl table table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Date</th>
+                                                        <th>RM/EP Name</th>
+                                                        <th>RM/EP Username</th>
+                                                        <th>Customer Name</th>
+                                                        <th>Customer Mobile No</th>
+                                                        <th>Depositary Type</th>
+                                                        <th>Account</th>
+                                                        <th>Client Id</th>
+                                                        <th>commission</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                  </div>
+                                  <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                        <!-- /.modal -->
+
+                        <div class="modal fade" id="add_demat_account" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="add_account_form" action="" method="POST" >
+                                        {% csrf_token %}
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">New Demat Account</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>Customer<small class="text-danger"> *</small></label>
+                                                        <select class="form-control select2 select_customer" name="customer" id="customer" required>
+                                                            <option value="" disabled selected>Please Select Customer</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 alcohol_user_div">
+                                                    <label>Depositary <small class="text-danger">*</small></label> <br>
+                                                    <input type="radio" id="nsdl" name="depositary_type" class="with-gap alcohol_user" value="nsdl" required="">
+                                                    <label for="nsdl" style="padding-right: 30px;">NSDL</label>
+                                                    <input type="radio" id="cdsl" name="depositary_type" class="with-gap alcohol_user" value="cdsl" checked="" required="">
+                                                    <label for="cdsl">CDSL</label>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Account No.</label>
+                                                        <input type="text" id="acc_no" name="acc_no" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Client Id</label>
+                                                        <input type="text" id="client_id" name="client_id" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Date</label>
+                                                        <input type="date" id="demat_date" name="demat_date" class="form-control d_date" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Commision</label>
+                                                        <input type="text" id="commission" name="commission" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer text-right" style="width: 100%;">
+                                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                        </div>
+                                    </form> 
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <!-- /.modal -->
+                        <div class="modal fade" id="edit_demat_account" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="edit_account_form" action="" method="POST" >
+                                        {% csrf_token %}
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">New Demat Account</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>Customer<small class="text-danger"> *</small></label>
+                                                        <select class="form-control select2 select_customer select_disable" name="customer" id="customer" required>
+                                                            <option value="" disabled selected>Please Select Customer</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 alcohol_user_div">
+                                                    <label>Depositary <small class="text-danger">*</small></label> <br>
+                                                    <input type="radio" id="edit_nsdl" name="depositary_type" class="with-gap alcohol_user" value="nsdl" required="">
+                                                    <label for="edit_nsdl" style="padding-right: 30px;">NSDL</label>
+                                                    <input type="radio" id="edit_cdsl" name="depositary_type" class="with-gap alcohol_user" value="cdsl" checked="" required="">
+                                                    <label for="edit_cdsl">CDSL</label>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Account No.</label>
+                                                        <input type="text" id="acc_no" name="acc_no" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Client Id</label>
+                                                        <input type="text" id="client_id" name="client_id" class="form-control">
+                                                    </div>
+                                                </div>
+                                                {% comment %} <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Date</label>
+                                                        <input type="date" id="demat_date" name="demat_date" class="form-control d_date" readonly>
+                                                    </div>
+                                                </div> {% endcomment %}
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Commision</label>
+                                                        <input type="text" id="commission" name="commission" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer text-right" style="width: 100%;">
+                                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                        </div>
+                                    </form> 
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/demat/add_demate.js"></script>
+        <script src="/static/js/demat/load_demate.js"></script>
+        <script>
+            $('.d_date').val(new Date().toJSON().slice(0,10));
+        </script>
+        
+        <!-- sweet alert  -->
+	
+    </body>
+</html>

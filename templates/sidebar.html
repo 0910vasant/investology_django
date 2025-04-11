@@ -1,0 +1,306 @@
+
+<style type="text/css">
+    .mb-0 {
+        margin-bottom: 0px !important;
+        color: #181C32;
+        font-weight: 500;
+    }
+</style>
+
+
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar">	
+        <div class="user-profile px-10 py-15">
+            <div class="d-flex align-items-center">			
+                <div class="image">
+                    <img src="/static/images/avatar/images.jpg" class="avatar avatar-lg" alt="User Image" >
+                </div>
+                <div class="info ml-10">
+                    <p class="mb-0">Welcome</p>
+                    <h5 class="mb-0 side-title">{{request.session.USER_USERNAME}} ({{request.session.USER_TYPE}})</h5>
+                </div>
+            </div>
+        </div>	
+
+        <!-- sidebar menu-->
+        <ul class="sidebar-menu" data-widget="tree">
+            {% if "dashboard" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                <a href="/dashboard">
+                    <i class="ti-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if "master" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="treeview">
+                <a href="#">
+                <i class="fa fa-tasks"></i>
+                    <span>Master</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                {% comment %} <li><a href="/scheme_master"><i class="ti-more"></i>Scheme master</a></li> {% endcomment %}
+                {% if request.session.USER_TYPE == "superadmin" %}
+                    <li><a href="/admin_list"><i class="ti-more"></i>Admin</a></li>
+                {% endif %}
+                <li><a href="/branch_location_master"><i class="ti-more"></i>Branch Location Master</a></li>
+                {% comment %} <li><a href="/client_family"><i class="ti-more"></i>Client family form</a></li> {% endcomment %}
+                <li><a href="/bo"><i class="ti-more"></i>Back Office</a></li>
+                <li><a href="/branch_manager_master"><i class="ti-more"></i>Branch Manager</a></li>
+                <li><a href="/relationship_manager_master"><i class="ti-more"></i>Relationship Manager</a></li>
+                {% comment %} <li><a href="/super_partner"><i class="ti-more"></i>Super Partner</a></li> {% endcomment %}
+                <li><a href="/easy_partner_master"><i class="ti-more"></i>Easy Partner</a></li>
+                {% comment %} <li><a href="/bm_brokerage"><i class="ti-more"></i>BM Brokerage</a></li>
+                <li><a href="/rm_brokerage"><i class="ti-more"></i>RM Brokerage</a></li>
+                <li><a href="/easy_partner_brokerage"><i class="ti-more"></i>EP Brokerage</a></li> {% endcomment %}
+                <li><a href="/policy_broker_master"><i class="ti-more"></i>Policy Broker</a></li>
+                <li><a href="/insurance_type_master"><i class="ti-more"></i>Type of Insurance master</a></li>
+                <li><a href="/insurance_master"><i class="ti-more"></i>Insurance master</a></li>
+                <li><a href="/mf_master"><i class="ti-more"></i>MF master</a></li>
+                {% comment %} <li><a href="/bse_sm_user"><i class="ti-more"></i>BSE SM User Details</a></li> {% endcomment %}
+                </ul>
+            </li>
+            {% endif %}
+            {% comment %} {% if request.path == '/' %}
+            <li class="active">
+                <a href="/dashboard">
+                    <i class="ti-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="">
+                <a href="/dashboard">
+                    <i class="ti-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            {% endif %} {% endcomment %}
+            {% comment %} {% if request.path == '/attendance' %} {% endcomment %}
+            {% if "attendance" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+                <li class="">
+                    <a href="/attendance">
+                        <i class="ti-dashboard"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% if "followup" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                <a href="/followup">
+                    <i class="ti-dashboard"></i>
+                    <span>Follow up</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if "meeting" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                <a href="/meeting">
+                    <i class="ti-dashboard"></i>
+                    <span>Meetings</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if "notification" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                {% comment %}  {% endcomment %}
+                <a href="/notification">
+                    <i class="ti-dashboard"></i>
+                    <span>Notification</span>
+                </a>
+            </li>
+            {% endif %}
+            {% comment %} {% else %}
+                <li class="">
+                    <a href="/attendance">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+            {% endif %} {% endcomment %}
+            <!-- mutual fund Customer -->
+            {% comment %} <li class="">
+                <a href="/add_mf_customer">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Add Customer</span>
+                </a>
+            </li> {% endcomment %}
+            {% if "customer" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                <a href="/customer">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Customer</span>
+                </a>
+            </li> 
+            {% endif %}
+            
+            {% if "leads" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="">
+                <a href="/leads">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Leads</span>
+                </a>
+            </li>
+            {% endif %}
+            {% comment %} {% if request.path == '/add_mf_customer' %}
+            <li class="active">
+                <a href="/add_mf_customer">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Add Customer</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="">
+                <a href="/add_mf_customer">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Add Customer</span>
+                </a>
+            </li>
+            {% endif %} {% endcomment %}
+            {% if "calculator" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-tasks"></i>
+                    <span>Calculators</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                  <li><a href="/sip_calculator"><i class="ti-more"></i>SIP Calculator</a></li>
+                  <li><a href="/sip_lumpsum_calculator"><i class="ti-more"></i>SIP Lumpsum Calculator</a></li>
+                  <li><a href="/swp_calculator"><i class="ti-more"></i>SWP Calculator</a></li>
+                  
+                </ul>
+            </li>
+            {% endif %}
+            {% comment %} {% if "insurance" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-tasks"></i>
+                    <span>Insurance</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                 
+                  
+                  <!-- <li><a href="/insurance_alert"><i class="ti-more"></i>Insurance Alert</a></li> -->
+                </ul>
+            </li>
+            {% endif %} {% endcomment %}
+            {% if "buy" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-tasks"></i>
+                    <span>Buy</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li><a href="/buy_insurance"><i class="ti-more"></i>Insurance</a></li>
+                    <li><a href="/buy_fd"><i class="ti-more"></i>FD/BOND/NCD/PMS/AIF</a></li>
+                    <li><a href="/buy_mf"><i class="ti-more"></i>MF</a></li>
+                    {% if request.session.USER_TYPE == "superadmin" or request.session.USER_TYPE == "bm" or request.session.USER_TYPE == "admin"%}{% endif %}
+                    <li><a href="/daily_buy_reports"><i class="ti-more"></i>Daily Buy Reports</a></li>
+                  {% comment %} <li><a href="/buy_pms"><i class="ti-more"></i>PMS / AIF</a></li> {% endcomment %}
+                </ul>
+            </li>
+            {% endif %}
+            {% comment %} <li>
+                <a href="/mf_manually">
+                    <i class="mdi mdi-webcam"></i>
+                    <span>MF Manually</span>
+                </a>
+            </li> {% endcomment %}
+            
+            {% comment %} <li>
+                <a href="/nav_view">
+                    <i class="mdi mdi-webcam"></i>
+                    <span>NAV View</span>
+                </a>
+            </li>  {% endcomment %}
+            {% comment %} <li>
+                <a href="/transaction_view">
+                    <i class="mdi mdi-webcam"></i>
+                    <span>Transaction View</span>
+                </a>
+            </li> {% endcomment %}
+            {% comment %} {% if "reports" in request.session.ALLOWED_MODULES %}
+            {% endif %} {% endcomment %}
+            {% comment %} <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-clock-o"></i>
+                    <span>Reports</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                  <li><a href="/mf_valuation_report"><i class="ti-more"></i>MF Valuation Report</a></li>
+                  <li><a href="/capital_gain_report"><i class="ti-more"></i>Capital Gain Report</a></li>
+                  <li><a href="/account_statement_report"><i class="ti-more"></i>Account Statement Report</a></li>
+                  <li><a href="/portfolio_composition"><i class="ti-more"></i>Portfolio Composition</a></li>
+                  <li><a href="/dividend_income_statement"><i class="ti-more"></i>Dividend Income Statement</a></li>
+                  <li><a href="/transaction_report"><i class="ti-more"></i>Transaction Report</a></li>
+                  <li><a href="/sip_report"><i class="ti-more"></i>SIP Report</a></li>
+                  <li><a href="/top_n_client"><i class="ti-more"></i>Top N Client</a></li>
+                </ul>
+            </li> {% endcomment %}
+            {% comment %} <li>
+                <a href="/scheme_comparison">
+                    <i class="bx bxs-bar-chart-alt-2"></i>
+                    <span>Scheme Comparison (Admin)</span>
+                </a>
+            </li>
+            <li>
+                <a href="/scheme_factsheet">
+                    <i class="bx bxs-bar-chart-alt-2"></i>
+                    <span>Scheme Factsheet (Admin)</span>
+                </a>
+            </li> {% endcomment %}
+            {% comment %} <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-clock-o"></i>
+                    <span>ARN Base Reports (Admin)</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                  <li><a href="/arn_brokerage_report"><i class="ti-more"></i>Brokerage Report</a></li>
+                  <li><a href="/arn_clientwise_brokerage_report"><i class="ti-more"></i>Client Wise Brokerage</a></li>
+                  <li><a href="/arn_aum_report"><i class="ti-more"></i>AUM Report</a></li>
+                </ul>
+            </li> {% endcomment %}
+            {% if "permission" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li>
+                <a href="/permission">
+                    <i class="bx bxs-bar-chart-alt-2"></i>
+                    <span>Permission Management</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if "payment" in request.session.ALLOWED_MODULES or request.session.USER_TYPE == "superadmin" %}
+            <li>
+                <a href="/payment">
+                    <i class="bx bxs-bar-chart-alt-2"></i>
+                    <span>Payment Management</span>
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a href="/demat_account">
+                    <i class="bx bxs-bar-chart-alt-2"></i>
+                    <span>Demat Account</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</aside>

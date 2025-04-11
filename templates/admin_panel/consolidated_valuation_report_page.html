@@ -1,0 +1,343 @@
+{% comment %} {% load humanize %} {% endcomment %}
+{% load indian_numbers %}
+
+
+<html>
+    <head>    
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta name="ProgId" content="FrontPage.Editor.Document">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+        <title>Consolidated Valuation Report</title>
+        <style fprolloverstyle="">A:hover {color: red; font-weight: bold}
+        </style>
+        <!-- <style type="text/css">.opacityit IMG {
+        FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=100); moz-opacity: 1
+        }
+        .opacityit:hover IMG {
+        FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=40); moz-opacity: 0.4
+        }
+        </style> -->
+        <style type="text/css">
+            #loading {
+            width: 200px;
+            height: 100px;
+            background-color: #ffffff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+            text-align: center;
+            font-size: 8pt;
+            font-family: verdana;
+            }
+            p{
+            margin: 0px;
+            padding: 0;
+            }
+            table .loop-data td{
+                text-align: center !important;
+                height: 29px !important;
+                border: 1px solid #333333 !important;
+                background-color: #FFFFFF !important;
+            }
+
+            .loop-data td a p{
+                color: #337ab7 !important;
+            }
+            a:-webkit-any-link{
+                text-decoration:none !important;
+            }
+            
+            
+            table .loop-data td p{
+                color: #333333;
+            }
+        </style>
+    </head>
+<body topmargin="0" leftmargin="0">
+
+
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+        <tbody>
+            
+        <tr>
+            <td width="33%" bgcolor="#015B65" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                <p align="center"></p>
+            </td>
+            <td width="33%" bgcolor="#015B65" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                <p align="center">Valuation Report - Consolidated View </p> 
+                {% comment %} <p align="center">AUM Report <br> As On :: 30-Sep-2022 </p> {% endcomment %}
+            </td>
+            <td width="33%" bgcolor="#015B65" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                <div align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="50%">
+                    <tbody>
+                        <tr>
+                            <td width="25%" align="center"></td>
+                            <td width="25%" align="center"><a href="javascript:window.print()" style="text-decoration: none"><img border="0" src="/static/images/print.png" alt="Print From Here"></a></td>
+                            <td width="25%" align="center"><a href="javascript:window.opener='x';window.close();"><img border="0" src="/static/images/cancel.png" alt="Close The Window"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+
+
+    <table border="0" cellpadding="2" cellspacing="0" width="100%" style="font-family: Arial; font-size: 10pt;" height="17">
+
+        <tbody>
+
+            <tr>
+                <td colspan="4">
+                    <p><strong>Investor Name &amp; Address</strong></p>
+                    <p style="color: red; margin: 0; font-weight: 600; margin-bottom: 5px;">{{user_info.CUST_NAME}} </p>
+                    {% comment %} <p style="font-weight: 500; margin-bottom: 5px;">202 AJMERA HEIGHTS 1 YOGIDHAM
+                        KALYAN 
+                    [W] KALYAN DC KALYAN THANE 
+                    NEAR PREM AOUTO 
+                    THANE 
+                    421301</p>
+                    <p><strong>Mobile No. :</strong> </p>
+                    <p><strong>Email Id :</strong> </p> {% endcomment %}
+                </td>
+                <td colspan="5">
+                    <p style="font-size: 18px; font-weight: 600; text-align: center;">Consolidated Valuation Report </p>
+                    <p style="font-size: 18px; font-weight: 600; text-align: center;">From :: {{ from_date|date:"d-M-Y" }} To :: {{ to_date|date:"d-M-Y" }}</p>
+                </td>
+                <td colspan="5" style="text-align: center;">
+                    <img src="/static/images/logo.jpg" alt="logo" width="200" height="100">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="15">
+                    <p><strong>Head Name:</strong> </p>
+                    
+
+                </td>
+            </tr>
+                
+            <tr>
+                <td align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Sr. No.</p>
+                </td>
+                <td width="29%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Scheme Name</p>
+                </td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Trans. Type</p>
+                </td>
+                <td align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Folio. No.</p>
+                </td>
+                <td align="center" width="10%" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Initial Pur. Date</p></td>
+                <td align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Outstanding Inv. Amount</p>
+                </td>
+                <td align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Div. Reinvest</p>
+                </td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Avg. Pur. Price</p></td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Units</p></td>
+                <td width="13%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    {% comment %} <p style="color: #fff;">Cur. NAV/NAV Date</p> {% endcomment %}
+                    <p style="color: #fff;">Latest NAV</p>
+                </td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Market Value</p>
+                </td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Dividend Paid</p>
+                </td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Gain/Loss (Rs.)</p></td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">XIRR (%)</p></td>
+                <td width="10%" align="center" height="29" bgcolor="#02A4B5" style="border: 1px solid #000; background: #02a4b5;">
+                    <p style="color: #fff;">Abs. Ret. (%)</p>
+                </td>
+            </tr>   
+            <tr>
+                <td width="100%" align="left" height="29" bgcolor="#FFFFFF" colspan="14">
+                <p><strong>Client Name</strong> :: {{user_info.CUST_NAME}} <strong style="padding-left: 15px;">Pan No.</strong> :: {{user_info.PAN_NO}} <strong style="padding-left: 15px;">DOB</strong> :: </p>
+                </td>
+            </tr> 
+            {% for i in data %}
+            <tr class="loop-data">
+                <td>
+                    <p>{{forloop.counter}}</p>
+                </td>
+                <td>
+                    <p> {{i.PROD_CODE__SCHEME_NAME}} {{i.PROD_CODE__COMPANY}} {{i.MFU_FUND_CODE}} {{i.MFU_SCHEME_CODE}}</p>
+                </td>
+                <td>
+                    {{i.TRANSACTION_TYPE}}
+                </td>
+                <td>
+                    {% comment %} <a href="/detailized_folio?folio_no="+encode_params({{i.id}})+"&client_pan={{user_info.PAN_NO}}"> {% endcomment %}
+                    <a href="/detailized_folio?folio_no={{i.id}}&client_pan={{user_info.PAN_NO}}" target="_blank">
+                        <p> {{i.FOLIO_NO}}</p>
+                    </a>
+                </td>
+                <td>
+                    <p>{{i.PURCHASE_DATE|date:"d-M-Y"}}</p>
+                </td>
+                <td>
+                    <p>{{i.TOTAL_AMOUNT|indian_number_format }}</p>
+                </td>
+                <td>
+                    <p>0.00</p>
+                </td> 
+                <td>
+                    <p>{{i.TOTAL_PURPRICE}}</p>
+                </td> 
+                <td>
+                    <p>{{i.TOTAL_UNITS}}</p>
+                </td> 
+                <td>
+                    {% comment %} <p>97.03 4-Sep-2024 {{i.CURRENT_NAV}} {{i.CURRENT_NAV_DATE}}</p> {% endcomment %}
+                    {% comment %} <p>{{i.CURRENT_NAV}} {{i.CURRENT_NAV_DATE|date:"d-M-Y"}}</p> {% endcomment %}
+                    <p>{{i.CURRENT_NAV}}</p>
+                </td>
+                <td>
+                    <p>{{i.MARKET_VALUE|indian_number_format}}</p>
+                </td>
+                <td>
+                    <p>{{i.TOTAL_DIVIDEND_PAID|indian_number_format}}</p>
+                </td>
+                <td>
+                    <p>{{i.GAIN_LOSS|indian_number_format}}</p>
+                </td>
+                <td>
+                    <p>{{i.XIRR}}</p>
+                </td>
+                <td>
+                    <p>{{i.ABS_RETURN}}</p>
+                </td>
+            </tr> 
+            {% endfor %}   
+            {% comment %} <tr>
+                <td>
+                    <p>2</p>
+                </td>
+                <td>
+                    <p> Axis ELSS Tax Saver Fund - Regular Plan Growth
+                </p>
+                </td>
+                <td>
+                    <p> 91056464404</p>
+                </td>
+                <td>
+                    <p>4-May-2020 </p>
+                </td>
+                <td>
+                    <p>89,408.56</p>
+                </td>
+                <td>
+                    <p>0.00</p>
+                </td> 
+                <td>
+                    <p>51.09</p>
+                </td> 
+                <td>
+                    <p>1,750.17</p>
+                </td> 
+                <td>
+                    <p>97.03 4-Sep-2024</p>
+                </td>
+                <td>
+                    <p>169,820.43</p>
+                </td>
+                <td>
+                    <p>0.00</p>
+                </td>
+                <td>
+                    <p>80,411.87 </p>
+                </td>
+                <td>
+                    <p>19.43</p>
+                </td>
+                <td>
+                    <p>89.94</p>
+                </td>
+            </tr>      {% endcomment %}
+            <tr class="loop-data">
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p><strong>Sub Total ::</strong></p>
+                </td>
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p><strong>{{total_amount_sum|indian_number_format}}</strong></p>
+                </td>
+                <td>
+                    <p>0.00</p>
+                </td> 
+                <td>
+                    <p> </p>
+                </td> 
+                <td>
+                    <p><strong>{{total_units_sum}}</strong></p>
+                </td> 
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p><strong>{{total_market_value_sum|indian_number_format}}</strong></p>
+                </td>
+                <td>
+                    <p><strong>{{total_dividend_paid|indian_number_format}}</strong></p>
+                </td>
+                <td>
+                    <p><strong>{{total_gain_loss_sum|indian_number_format}}</strong></p>
+                </td>
+                <td>
+                    <p> </p>
+                </td>
+                <td>
+                    <p> </p>
+                </td>
+            </tr>     
+            <tr class="loop-data">
+                <td colspan="15">
+                    <p><strong>Avg. Abs. Return Is :: {{total_abs_return}} (%) Avg. XIRR Is  23.35(%)</strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 10px;"><strong>Disclaimer:</strong></p>
+    <p>The above report output is generated by computer, using the mailback data received from the respective registrars. Please report to the administrator immediately, for any discrepancy found in the statement.</p>
+    <p>Mutual Fund investments are subject to market risks. Please read the Statement of Additional Information / Scheme Information Document carefully before investing.</p>
+    <p>Latest Sensex & Latest Nifty is showing last day closing.</p>
+    <script>
+        function encode_params(str) {
+            return encodeURIComponent(str);
+        }
+    </script>
+
+</body>
+</html>

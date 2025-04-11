@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" hrefiews="../images/jd-icon.png" />
+
+    <title>Investology</title>
+    {% include 'header.html' %}
+<link rel="stylesheet" type="text/css" href="/static/css/login.css" />
+
+
+
+    <!-- Vendors Style-->
+    <!-- <link rel="stylesheet" href="css/vendors_css.css"> -->
+
+    <!-- Style-->
+    <!-- <link rel="stylesheet" href="css/style.css">
+    	<link rel="stylesheet" href="css/skin_color.css">	
+    	<link rel="stylesheet" href="css/login.css"> -->
+      <style>
+        .left-panel {
+            box-shadow: 20px 0 50px rgba(0, 0, 0, 0.2);
+        }
+        .col.col-sm-12.col-md-7.p-0.right-panel{
+          /* position: relative */
+          /* background */
+          background: #fff;
+        }
+        .col.col-sm-12.col-md-7.p-0.right-panel:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            background: url(/static/images/roi.png) no-repeat;
+            background-size: cover;
+            background-position: center center;
+            width:100%;
+            height:100%;
+            opacity: 0.2;
+        }
+      </style>
+  </head>
+  <body class="bg-dark">
+    <div id="app" class="login-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col col-sm-12 col-md-7 p-0 right-panel">
+            <img src="/static/images/invest-Ology_icon.png" alt="User Image" width="80%">
+            {% comment %} <h3>Investology</h3> {% endcomment %}
+            <!-- <div class="slider">
+                    <div class="slide1"></div>
+                    <div class="slide2"></div>
+                    <div class="slide3"></div>
+                    </div> -->
+            <!-- <div class="right-info">
+                                    <img class="img-fluid" src="../images/white-logo.png" alt="" style="margin:0 120px; width:500px;">
+                                    <h2 class="text-center">Securizen</h2>                            
+                                    <h3 class="text-center"></h3>                            
+                                </div> -->
+          </div>
+          <div class="col col-sm-12 col-md-5 p-0 left-panel">
+            <main class="py-4 login-info">
+              <div class="">
+                <div class="row justify-content-center">
+                  <div class="col-md-10">
+                    <div class="card">
+                      <div class="card-header text-center">
+                        <img class="img-fluid" src="/static/images/invest-Ology_icon.png" alt="" style="margin: 0 auto; width: 230px" />
+                      </div>
+                      <div class="card-body wlec">
+                        <!-- <img src="/static/images/invest-Ology_icon.png" alt="User Image" width="50%"> -->
+                        <h4>Welcome to Easy Investology Crm</h4>
+                        <h5>Login an <span>Account</span></h5>
+                        <form id="login_from" action="" method="post" class="mt-5">
+                          {% csrf_token %}
+                          {% comment %} <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user_type" id="user_store" value="store" checked/>
+                            <label class="form-check-label" for="flexRadioDefault2">Store</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user_type" value="admin" id="user_admin" />
+                            <label class="form-check-label" for="user_store">Admin</label>
+                          </div> {% endcomment %}
+                          <div class="form-group row">
+                            <label for="username" class="col-sm-12 col-form-label text-md-left">Username</label>
+                            <div class="col-md-12">
+                              <input id="username" type="text" class="form-control" name="username" value="" placeholder="Enter your Username" required="" autofocus="" />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="password" class="col-md-12 col-form-label text-md-left">Password</label>
+                            <div class="col-md-12">
+                              <div class="input-group">
+                                <input id="password" type="password" class="form-control input_color" name="password" placeholder="Enter your password" style="border-right: 0px" />
+                                <div class="input-group-append show_pass" style="cursor: pointer">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-eye"></i>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="forgot-pass mt-3 text-right">
+                                <a href="" class="">
+                                  <h6>Forgot Password?</h6>
+                                </a>
+                              </div>
+                              {% comment %} <div>
+                                <p style="color:red;">
+                                    {% for msg in error %}
+                                        {{msg}}
+                                    {% endfor %}
+                                </p>
+                                <p style="color:red;">
+                                    {% for msg in messages %}
+                                        {{msg}}
+                                    {% endfor %}
+                                </p>
+                              </div> {% endcomment %}
+                            </div>
+                          </div>
+                          <div class="form-group row mb-0">
+                            <div class="col-md-6 login-bt">
+                              {% comment %} <a href="/"></a> {% endcomment %}
+                                <!-- <button type="button" class="btn btn-primary"><i class="ion-log-in"></i> Login</button> -->
+                              {% comment %} <button type="submit" class="btn btn-primary"><i class="ion-log-in"></i> Login</button> {% endcomment %}
+                              <button type="submit" class="waves-effect waves-light btn btn-flat mb-5"><i class="ion-log-in"></i> Login</button>
+                              
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'script.html' %}
+    <script src="/static/js/login/auth_login.js"></script>
+    {% comment %} <script>
+      $(".show_pass").on("click", function () {
+        $(this).find("i").toggleClass("fa-eye fa-eye-slash");
+        var show_pass = $(this).siblings("input").attr("type");
+
+        if (show_pass == "password") $(this).siblings("input").attr("type", "text");
+        else $(this).siblings("input").attr("type", "password");
+      });
+    </script> {% endcomment %}
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+<!-- Vendor JS Files -->
+<!-- <script src="assets/vendor/apexcharts/apexcharts.min.js"></script> -->
+
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> {% endcomment %}
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> {% endcomment %}
+<script src="/static/assets/vendor_components/moment/min/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.37.0/apexcharts.min.js" integrity="sha512-RLWwcf0Pb2NghIfkaQms354xRV36EYjXLWKSN8QHiHqNq3KGj0DjMc9D1zzO7UsREkGU/xCLAJi/hVcKSuZ5Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<!-- <script src="assets/vendor/chart.js/chart.umd.js"></script> -->
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> {% endcomment %}
+<!-- <script src="assets/vendor/echarts/echarts.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js" integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="assets/vendor/quill/quill.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js" integrity="sha512-P2W2rr8ikUPfa31PLBo5bcBQrsa+TNj8jiKadtaIrHQGMo6hQM6RdPjQYxlNguwHz8AwSQ28VkBK6kHBLgd/8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% comment %} <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> {% endcomment %}
+<!-- <script src="assets/vendor/tinymce/tinymce.min.js"></script> -->
+{% comment %} <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> {% endcomment %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+{% comment %} <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"> {% endcomment %}
+{% comment %} <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"> {% endcomment %}
+{% comment %} <script src="/static/assets/vendor_components/datatable/datatables.min.js"></script> {% endcomment %}
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.min.js"></script>
+
+<!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!-- Template Main JS File -->
+<script src="/static/admin_panel/js/main.js"></script>
+<script src="/static/js/pages/data-table.js"></script>
+
+<script>$.fn.dataTable.ext.errMode = 'none';</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
+
+
+
+<script>
+    $(".select2").select2();
+    $('.select2').select2({
+        width:"100%"
+    });
+
+var toastMixin = Swal.mixin({
+    toast: true,
+    icon: 'success',
+    //title: 'General Title',
+    animation: false,
+    position: 'top',
+    showConfirmButton: true,
+    timer: 10000,
+    //timerProgressBar: true,
+
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    });
+{% for message in messages %}
+    if("{{message.tags}}"=="success"){
+        toastMixin.fire({
+            animation: true,
+            title: "{{message}}"
+        });
+    }
+    if("{{message.tags}}"=="error"){
+        toastMixin.fire({
+            animation: true,
+            title: "{{message}}",
+            icon: 'error'
+        });
+    }
+{% endfor %}
+</script>

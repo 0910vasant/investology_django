@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<style type="text/css">
+  .box-title{
+      z-index: auto;
+      font-size: 18px;
+      font-weight: 500;
+      color: #181C32;
+  }
+
+  .theme-primary .btn-flat.btn-danger {
+      color: #ed1a24 !important;
+      background-color: #ffc6cb;
+      border-color: transparent;
+  }
+
+  .theme-primary .btn-flat.btn-success {
+      color: #2a8853 !important;
+      background-color: #C9F7F5;
+      border-color: transparent;
+  }
+
+  .btn.btn-flat {
+      border-radius: 8px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border-width: 1px;
+  }
+
+  .dropdown-item {
+      color: #475F7B;
+      font-weight: 500;
+      padding: 4px 12px;
+      width: auto;
+      margin: 4px;
+      -webkit-transition: 0.15s linear;
+      transition: 0.15s linear;
+  }
+
+  .theme-primary .show > .btn-primary.dropdown-toggle {
+      background-color: #103763 !important;
+      border-color: #103763 !important;
+      color: #ffffff;
+  }
+  
+
+  /*.theme-primary a:hover, .theme-primary a:focus {
+      color: #a6ce39;
+  }
+*/
+  .red:hover{
+      color: #f10e0e;
+  }
+  .blue:hover{
+      color: #f10e0e;
+  } 
+
+  color: #3F4254;
+</style>
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Valuation Reports</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Valuation Reports</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+          <div class="card-body">
+            <form id="valuation_report_form" action="/consolidated_valuation_report_page" method="GET" target="_blank">
+              <div class="box-body">
+                  <div class="row mt-3">
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <label>From Date<small class="text-danger">*</small></label>
+                            <input type="date" class="form-control" id="from_date" name="from_date" value="1990-01-01" required readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                      <div class="form-group">
+                          <label>To Date<small class="text-danger">*</small></label>
+                          <input type="date" class="form-control" id="to_date" name="to_date" required readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Client Name<small class="text-danger"> *</small></label>
+                            <select class="form-control select2" name="client_pan" id="client_pan" required>
+                              <option disabled selected>Please Select Client Name</option>
+                              {% for i in cust_data %}
+                                <option value="{{i.PAN_NO}}">{{i.CUST_NAME}} || {{i.PAN_NO}}</option>
+                              {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 mt-5" align="center">
+                      <div class="submit_btn-form">
+                        <button type="submit" name="submit" class="btn_report waves-effect waves-light btn btn-flat" >Report</button>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} <div class="row">
+                      <div class="col-md-2 col-lg-2">
+                          <div class="controls">
+                          <fieldset>
+                              <input type="checkbox" id="client_checkbox_1" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                              <label for="client_checkbox_1">SIP Information</label>
+                          </fieldset>
+                          </div>
+                      </div>
+                      <div class="col-md-2 col-lg-2">
+                          <fieldset>
+                              <input type="checkbox" id="client_checkbox_2" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                              <label for="client_checkbox_2">Show Sensex</label>
+                          </fieldset>
+                      </div>
+                      <div class="col-md-2 col-lg-2">
+                          <input type="checkbox" id="client_checkbox_3" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                          <label for="client_checkbox_3">Pie Chart [Valuation]</label>
+                      </div>
+                      <div class="col-md-2 col-lg-2">
+                          <input type="checkbox" id="client_checkbox_4" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                          <label for="client_checkbox_4">Show ARN No.</label>
+                      </div>
+                      <div class="col-md-3 col-lg-3">
+                          <input type="checkbox" id="client_checkbox_5" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                          <label for="client_checkbox_5">Nature Wise Summary</label>
+                      </div>
+                      <div class="col-md-1 col-lg-1">
+                          <input type="checkbox" id="client_checkbox_6" data-validation-maxchecked-maxchecked="2" data-validation-maxchecked-message="Don't be greedy!" required="" aria-invalid="false">
+                          <label for="client_checkbox_6">Returns</label>
+                      </div>
+                  </div>
+                  <hr> {% endcomment %}
+                  {% comment %} <div class="row">
+                      <div class="col-md-2 col-lg-2">
+                          <div class="controls">
+                              <input name="group5" type="radio" id="client_radio_1" class="with-gap radio-col-success">
+                              <label for="client_radio_1">CAGR</label>
+                          </div>
+                      </div>
+                      <div class="col-md-2 col-lg-2">
+                          <input name="group5" type="radio" id="client_radio_2" class="with-gap radio-col-success">
+                          <label for="client_radio_2">XIRR</label>
+                      </div>
+                      <div class="col-md-2 col-lg-2">
+                        <input name="group5" type="radio" id="client_radio_3" class="with-gap radio-col-success">
+                        <label for="client_radio_3">ISIN</label>
+                      </div>
+                  </div> {% endcomment %}
+       
+                      
+
+              </div>
+            </form>
+          </div>
+        </div>
+       
+        
+    </section>
+
+  </main><!-- End #main -->
+  <!-- Modal -->
+
+
+
+
+  {% include "admin_panel/script.html" %}
+  <script src="/static/admin_panel/js/reports/valuation_reports.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Buy List</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Buy List</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mt-3">
+                    <div class="add_btn text-end">
+                        {% comment %} <button type="button" class="btn btn_new_color" data-bs-toggle="modal" data-bs-target="#add_scheme">Add Scheme</button>    {% endcomment %}
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        {% comment %} <h5 class="card-title">Customer</h5> {% endcomment %}
+                        <div class="table-responsive">
+                            <table id="buy_list_table" class="table table-bordered data_tbl">
+                                <thead>
+                                  <tr>
+                                    <th width="8%">Sr. No.</th>
+                                    <th>Customer Name</th>
+                                    <th>Pan No</th>
+                                    <th>Can</th>
+                                    <th>GORN Number</th>
+                                    <th width="10%">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                      <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item py-1" href="/buy_detail">Details</a></li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+  <script src="/static/admin_panel/js/buy_list.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,582 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+    <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .dropdown-item {
+            color: #475F7B;
+            font-weight: 500;
+            padding: 4px 12px; 
+            width: auto; 
+            margin: 4px;
+            -webkit-transition: 0.15s linear;
+            transition: 0.15s linear;
+        }
+
+        .theme-primary .show > .btn-primary.dropdown-toggle {
+            background-color: #103763 !important;
+            border-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active:hover, .theme-primary .nav-tabs .nav-link.active:focus {
+            border-bottom-color: #a6ce39 ;
+            background-color: #a6ce39 ;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active {
+            border-bottom-color: #a6ce39;
+            background-color: #a6ce39;
+            color: #ffffff;
+        }
+
+
+
+        color: #3F4254;
+    </style>
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+            
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                        Scheme Master
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="box box-default">
+                                    <div class="box-header with-border flexbox">
+                                      <h4 class="box-title">Daily Report</h4>
+                                      {% comment %} <div class="text-right flex-grow">
+                                        <a href="/add_insurance_alert"><button class="btn btn-primary">Buy Insurance</button></a>
+                                        </div> {% endcomment %}
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="">
+                                            <form id="daily_reports_filter_form">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-lg-3">
+                                                        <div class="form-group">
+                                                            <label>From Date</label>
+                                                            <input type="date" id="from_date" name="from_date" class="form-control" placeholder="" required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3">
+                                                        <div class="form-group">
+                                                            <label>To Date</label>
+                                                            <input type="date" id="to_date" name="to_date" class="form-control" placeholder=""  required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 mt-auto">
+                                                        <div class="form-group">
+                                                            <button class="btn btn-secondary" type="submit" name="submit">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table id="daily_buy_report_table" class="data_tbl table table-bordered" style="width:100%">
+                                            {% comment %} <table class="data_tbl table table-bordered table-striped" style="width:100%"> {% endcomment %}
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Created Date</th>
+                                                        <th>Easy Investology/RM/EP Name</th>
+                                                        <th>Easy Investology/RM/EP Username</th>
+                                                        <th>Customer Name</th>
+                                                        <th>Pan No</th>
+                                                        <th>Mobile No</th>
+                                                        <th>Buy Type</th>
+                                                        <th>Amount</th>
+                                                        <th>Action</th>
+                                                        {% comment %} <th width="5%">Action</th> {% endcomment %}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>SHIVPRATAP MAURYA</td>
+                                                        <td>shivpratap@eay</td>
+                                                        <td>joey</td>
+                                                        <td>8525647892</td>
+                                                        <td>FD</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#fd_detail_modal"><i class="fa fa-eye"></i> Detail</a>
+                                                                    {% comment %} <hr class="drop-hr">
+                                                                    <a class="dropdown-item delete_modal" href="javascript:void(0);" data-url="/delete_insurance_alert/18"><i class="fa fa-trash"></i> Delete</a> {% endcomment %}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Gaurav</td>
+                                                        <td>shivpratap@eay</td>
+                                                        <td>joey</td>
+                                                        <td>8525647892</td>
+                                                        <td>MF</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#mf_detail_modal"><i class="fa fa-eye"></i> Detail</a>
+                                                                    {% comment %} <hr class="drop-hr">
+                                                                    <a class="dropdown-item delete_modal" href="javascript:void(0);" data-url="/delete_insurance_alert/18"><i class="fa fa-trash"></i> Delete</a> {% endcomment %}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Gaurav</td>
+                                                        <td>shivpratap@eay</td>
+                                                        <td>joey</td>
+                                                        <td>8525647892</td>
+                                                        <td>Insurance</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#insurance_detail_modal"><i class="fa fa-eye"></i> Detail</a>
+                                                                    {% comment %} <hr class="drop-hr">
+                                                                    <a class="dropdown-item delete_modal" href="javascript:void(0);" data-url="/delete_insurance_alert/18"><i class="fa fa-trash"></i> Delete</a> {% endcomment %}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                {% comment %} <tfoot>
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Account No</th>
+                                                        <th>IFSC</th>
+                                                        <th width="5%">Action</th>
+                                                    </tr>
+                                                </tfoot> {% endcomment %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                  </div>
+                                  <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                        <!-- /.modal -->
+
+                        <!-- /.modal -->
+                        <!-- /.modal -->
+
+                    
+                        <!-- /.modal -->
+
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+                 <div class="modal fade" id="fd_detail_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form id="fd_detail_modal_form" action="" method="POST">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">FD/Bond/Ncd/PMS/AIF</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>User Type</label>
+                                                <input type="text" class="form-control" id="details_user_type" value="User Type" placeholder="Company Name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <input type="text" class="form-control" id="details_user" value="User" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Buy Type</label>
+                                                <input type="text" class="form-control" id="details_buy_type" value="Buy Type" placeholder="Buy Type" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Customer</label>
+                                                <input type="text" class="form-control" id="details_customer"  value="Customer" placeholder="Customer" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Start date</label>
+                                                <input type="date" class="form-control" id="details_start_date" readonly/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>End date</label>
+                                                <input type="date" class="form-control" id="details_end_date" readonly/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" class="form-control" id="details_company_name" placeholder="Company Name" readonly/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Rate Of Interest</label>
+                                                <input type="number" class="form-control" id="details_roi" placeholder="Rate Of Interest" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Tenure</label>
+                                                <input type="number" class="form-control" id="details_tenure" placeholder="Tenure" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Amount</label>
+                                                <input type="number" class="form-control amt" id="details_amt" placeholder="Amount" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Brokerage in %</label>
+                                                <input type="number" class="form-control b_percentage" id="details_boi" placeholder="Brokerage in %" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Brokerage in amount</label>
+                                                <input type="number" class="form-control b_amt" id="details_boi_amt" placeholder="Brokerage in amount" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="modal-footer text-right" style="width: 100%">
+                                    <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                </div> {% endcomment %}
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                 <div class="modal fade" id="mf_detail_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form id="mf_detail_modal_form" action="" method="POST">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">MF</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>User Type</label>
+                                                <input type="text" class="form-control" id="details_user_type" value="User Type" placeholder="Company Name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <input type="text" class="form-control" id="details_user" value="User" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="date" class="form-control" id="details_date" readonly/>
+                                            </div>
+                                        </div>
+                                        {% comment %} <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" class="form-control" id="details_company_name" placeholder="Company Name" readonly/>
+                                            </div>
+                                        </div> {% endcomment %}
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Customer</label>
+                                                <input type="text" class="form-control" id="details_customer" value="Customer"  placeholder="Customer" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Customer Status</label>
+                                                <input type="text" class="form-control" id="details_customer_status" value="Customer Status" placeholder="Customer Status" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Scheme Name </label>
+                                                <input type="text" class="form-control" id="details_scheme_name" value="Scheme Name" placeholder="Scheme Name " readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Amount Invested</label>
+                                                <input type="text" class="form-control" id="details_amt_i" value="Amount Invested" placeholder="Amount Invested" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Mode</label>
+                                                <input type="text" class="form-control" id="details_mode" value="Mode" placeholder="Mode" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Buy Type</label>
+                                                <input type="text" class="form-control" id="details_buy_type" value="Buy Type" placeholder="Buy Type" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="modal-footer text-right" style="width: 100%">
+                                    <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                </div> {% endcomment %}
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                 <div class="modal fade" id="insurance_detail_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form id="insurance_detail_modal_form" action="" method="POST">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Insurance</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Customer</label>
+                                                <input type="text" id="details_customer" class="form-control" value="Customer" placeholder="Customer" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Type of Insurance </label>
+                                                <input type="text" class="form-control" id="details_type_i" value="Type of Insurance " readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Insurance name / plan</label>
+                                                <input type="text" class="form-control" id="details_i_name" value="Insurance name / plan" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Insurance Period (in months)</label>
+                                                <input type="text" class="form-control" id="details_i_p" value="Insurance Period (in months)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Date of starting</label>
+                                                <input type="date" class="form-control" id="details_date" value="Date of starting" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>PPT (Premium Payment Term)</label>
+                                                <input type="text" class="form-control" id="details_ppt" value="PPT (Premium Payment Term)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>PT (Policy Term)</label>
+                                                <input type="text" class="form-control" id="details_pt" value="PT (Policy Term)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>PB (Policy Broker)</label>
+                                                <input type="text" class="form-control" id="details_pb" value="PB (Policy Broker)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-12">
+                                            <h3 class="box-title">
+                                                PA (Premium Amount)
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Net Premium(Without Tax)</label>
+                                                <input type="text" class="form-control" id="details_net_p" value="Net Premium(Without Tax)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Gross Premium(With Tax)</label>
+                                                <input type="text" class="form-control" id="details_gross_p" value="Gross Premium(With Tax)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Commission (%)</label>
+                                                <input type="text" class="form-control" id="details_commission" value="Commission (%)" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Commission Amount</label>
+                                                <input type="text" class="form-control" id="details_commission_amt" value="Commission Amount" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="modal-footer text-right" style="width: 100%">
+                                    <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                </div> {% endcomment %}
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade" id="demat_acc_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="demat_acc_detail_form" action="" method="POST" >
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">New Demat Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label>Customer<small class="text-danger"> *</small></label>
+                                                <input type="text" id="details_customer"  class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <label>Depositary <small class="text-danger">*</small></label>
+                                            <input type="text" id="details_depositary_type"  class="form-control" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Account No.</label>
+                                                <input type="text" id="details_acc_no" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Client Id</label>
+                                                <input type="text" id="details_client_id" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="date" id="details_demat_date" class="form-control d_date" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Commision</label>
+                                                <input type="text" id="details_commission" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer text-right" style="width: 100%;">
+                                    <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                </div>
+                            </form> 
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/reports/daily_buy_reports.js"></script>
+	
+    </body>
+</html>

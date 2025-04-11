@@ -1,0 +1,514 @@
+{% load holder_belongings %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<style>
+    .cust_img{
+        width   :70px;
+        height  : 70px
+    }
+    label{
+        font-weight: 600;
+    }
+</style>
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Customer Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Customer Details</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body pt-3">
+                <ul class="nav nav-tabs nav-tabs-bordered">
+                    <li class="nav-item">
+                      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#personal-details">Personal Details</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#holder-details">Holder Details</button>
+                      </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bank-details">Bank Details</button>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#depository-details">Depository Details</button>
+                    </li> {% endcomment %}
+                    {% comment %} <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#communication-details">Communication Details</button>
+                    </li> {% endcomment %}
+
+                    {% if mfu.INVESTOR_CATEGORY.CODE != "M" %}
+                        <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nominee-details">Nominee Details</button>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="tab-content pt-2">
+                    <div class="tab-pane fade personal-details active show" id="personal-details">
+                        <div class="row mt-2">
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Name</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.NAME}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">CAN</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.CAN}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">PAN</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.PAN_NO}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Mobile No.</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.MOBILE}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Email</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.EMAIL}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">User Name</label>
+                                <input type="text" class="form-control form-control-sm" value="{{profile.MOBILE}}" readonly>
+                            </div>
+                            {% if profile.NOM_LINK_1 %}
+                                <div class="col-lg-12">
+                                    <label class="form-label form-label-sm">Nominee Verification Link 1</label>
+                                </div>
+                                <div class="col-lg-12 mb-3"> <a href="{{profile.NOM_LINK_1}}" target="_blank">{{profile.NOM_LINK_1}}</a></div>
+                            {% endif %}
+                            {% if profile.NOM_LINK_2 %}
+                                <div class="col-lg-12">
+                                    <label class="form-label form-label-sm">Nominee Verification Link 2</label>
+                                </div>
+                                <div class="col-lg-12 mb-3"> <a href="{{profile.NOM_LINK_2}}" target="_blank">{{profile.NOM_LINK_2}}</a></div>
+                            {% endif %}
+                            {% if profile.NOM_LINK_3 %}
+                                <div class="col-lg-12">
+                                    <label class="form-label form-label-sm">Nominee Verification Link 3</label>
+                                </div>
+                                <div class="col-lg-12 mb-3"> <a href="{{profile.NOM_LINK_3}}" target="_blank">{{profile.NOM_LINK_3}}</a></div>
+                            {% endif %}
+{% comment %} NOM_LINK_1
+NOM_LINK_2
+NOM_LINK_3 {% endcomment %}
+                        </div>                        
+                    </div>
+                    <div class="tab-pane fade pt-3 holder-details " id="holder-details">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-0 pb-1">Holder Type</h5>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Holder Nature</label>
+                                <input type="text" class="form-control form-control-sm" value="{{mfu.HOLDING_NATURE.HOLDING_TYPE}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Investor Category</label>
+                                <input type="text" class="form-control form-control-sm" value="{{mfu.INVESTOR_CATEGORY.NAME}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Tax Status</label>
+                                <input type="text" class="form-control form-control-sm" value="{{mfu.TAX_STATUS.TAX_STATUS}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Tax Description</label>
+                                <input type="text" class="form-control form-control-sm" value="{{mfu.TAX_STATUS.TAX_STATUS_DESCRIPTION}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Number Of Holders</label>
+                                <input type="text" class="form-control form-control-sm" value="{{mfu.HOLDING_COUNT}}" readonly>
+                            </div>
+                        </div>
+                        {% for i in holder_details %}
+                        <hr class="dropdown-divider">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="card-title pt-3 pb-1">
+                                    {% if i.HOLDER_TYPE == "PR" %}Primary Holder{% endif %}
+                                    {% if i.HOLDER_TYPE == "SE" %}Secondary Holder{% endif %}
+                                    {% if i.HOLDER_TYPE == "TH" %}Third Holder{% endif %}
+                                    {% if i.HOLDER_TYPE == "GU" %}Guardian Holder{% endif %}
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Name</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.HOLDER_NAME}}" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Date of Birth</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.HOLDER_DOB|date:'d/m/Y'}}" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">PAN</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.PAN_NO}}" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <div>
+                                    <label class="form-label form-label-sm">Pan Image</label>
+                                </div>
+                                <a href="/media/{{i.HOLDER_PAN_IMG}}" download>
+                                    <img class="cust_img" src="/media/{{i.HOLDER_PAN_IMG}}" alt="" >
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Residence Phone No</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.RESIDENCE_PHONE_NO %}{{i.RESIDENCE_ISD}}-{{i.RESIDENCE_STD}}-{{i.RESIDENCE_PHONE_NO}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Primary Mobile No</label>
+ 
+                                <input type="text" class="form-control form-control-sm" value="{% if i.PRI_MOB_NO %}{{i.MOB_ISD_CODE}}-{{i.PRI_MOB_NO}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Primary Mobile No Belongs To</label>
+                                {% comment %} <input type="text" class="form-control form-control-sm" value="{% if i.PRI_MOB_BELONGSTO %}{% if i.PRI_MOB_BELONGSTO == 'S'%}Self{% else %}Family{% endif %}{% endif %}" readonly> {% endcomment %}
+                                <input type="text" class="form-control form-control-sm" value="{{ i.PRI_MOB_BELONGSTO|full_name }}" readonly>
+                                
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Alternate Mobile No</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.ALT_MOB_NO %}{{i.ALT_MOB_NO}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Office Phone No</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.OFF_PHONE_NO %}{{i.OFF_ISD}}-{{i.OFF_STD}}-{{i.OFF_PHONE_NO}}{% endif %}" readonly>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Primary Email Id</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.PRI_EMAIL %}{{i.PRI_EMAIL}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Primary Email Id Belongs To</label>
+                                
+                                <input type="text" class="form-control form-control-sm" value="{{ i.PRI_EMAIL_BELONGSTO|full_name }}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Alternate Email Id</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.ALT_EMAIL %}{{i.ALT_EMAIL}}{% endif %}" readonly>
+                            </div>
+                        </div>
+                        {% if i.HOLDER_TYPE == "GU" %}
+                        <div class="row">                            
+                            <div class="col-lg-4 mb-3">
+                                <div>
+                                    <label class="form-label form-label-sm">Minor Birth Certificate</label>
+                                </div>
+                                <a href="/media/{{i.MINOR_BIRTH_CERTIFICATE}}" download>
+                                    <img class="cust_img" src="/media/{{i.MINOR_BIRTH_CERTIFICATE}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Relationship With Minor</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.RELATIONSHIP_WITH_MINOR}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Proof Of Relationship</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.PROOF_OF_RELATIONSHIP}}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <div>
+                                    <label class="form-label form-label-sm">Relationship Proof Document</label>
+                                </div>
+                                <a href="/media/{{i.RELATIONSHIP_PROOF_DOC}}" download>
+                                    <img class="cust_img" src="/media/{{i.RELATIONSHIP_PROOF_DOC}}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% comment %} Additional KYC Details {% endcomment %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-3 pb-1">Additional KYC Details</h5>
+                            </div>
+                            {% if i.INCOME_TYPE == "gross_annual_income" %}{% endif %}
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Income Type</label>
+                                <input type="text" class="form-control form-control-sm" value="Gross Annual Income" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Gross Annual Income</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.GROSS_ANNUAL_INCOME}}" readonly>
+                            </div>
+                            {% if i.networth == "gross_annual_income" %}
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Income Type</label>
+                                <input type="text" class="form-control form-control-sm" value="Networth" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Networth In Rupees</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NETWORTH_IN_RUPEES}}" readonly>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label form-label-sm">Networth As on Date</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NETWORTH_AS_ON_DATE|date:'d/m/Y'}}" readonly>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Source Of Wealth</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.SOURCE_OF_WEALTH is not None %}{{i.SOURCE_OF_WEALTH.NAME}}{% endif %}" readonly>
+                            </div>                            
+                            {% if i.SOURCE_OF_WEALTH_OTHERS %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Source Of Wealth Others</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.SOURCE_OF_WEALTH_OTHERS}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">KRA Address Type</Address></label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.KRA_ADDRESS_TYPE is not None %}{{i.KRA_ADDRESS_TYPE.NAME}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Occupation</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.OCCUPATION is not None %}{{i.OCCUPATION.NAME}}{% endif %}" readonly>
+                            </div>
+                            {% if i.OCCUPATION_OTHERS %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Occupation Others</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.OCCUPATION_OTHERS}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">PEP Status</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.PEP_STATUS is not None %}{{i.PEP_STATUS.NAME}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Any Other Information</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.ANY_OTHER_INFORMATION is not None %}{{i.ANY_OTHER_INFORMATION}}{% endif %}" readonly>
+                            </div>
+                        </div>
+                        {% comment %} Additional KYC Details {% endcomment %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-3 pb-1">FATCA Details</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Birth City</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.BIRTH_CITY is not None %}{{i.BIRTH_CITY}}{% endif %}" readonly>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Birth Country</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.BIRTH_COUNTRY is not None %}{{i.BIRTH_COUNTRY.NAME}}{% endif %}" readonly>
+                            </div>
+                            {% if i.BIRTH_COUNTRY_OTH %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Birth Country Others</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.BIRTH_COUNTRY_OTH}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Citizenship</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.CITIZENSHIP is not None %}{{i.CITIZENSHIP.NAME}}{% endif %}" readonly>
+                            </div>
+                            {% if i.CITIZENSHIP_OTH %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Citizenship Others</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.CITIZENSHIP_OTH}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Nationality</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.NATIONALITY is not None %}{{i.NATIONALITY.NAME}}{% endif %}" readonly>
+                            </div>
+                            {% if i.NATIONALITY_OTH %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Nationality Others</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NATIONALITY_OTH}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label form-label-sm">Nationality</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.NATIONALITY is not None %}{{i.NATIONALITY.NAME}}{% endif %}" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Are you Tax Resident of any country other than India</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.TAX_RES_FLAG}}" readonly>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            {% if i.TAX_RES_FLAG == "Y" %}
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label form-label-sm">Tax Country</label>
+                                    <input type="text" class="form-control form-control-sm" value="{% if i.TAX_COUNTRY is not None %}{{i.TAX_COUNTRY.NAME}}{% endif %}" readonly>
+                                </div>
+                                {% if i.TAX_COUNTRY_OTH %}
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label form-label-sm">Tax Country Others</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.NATIONALITY_OTH}}" readonly>
+                                </div>
+                                {% endif %}                
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label form-label-sm">Tax Reference No</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.TAX_REF_NO.NAME}}" readonly>
+                                </div>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label form-label-sm">Identification Type</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.IDENTI_TYPE.NAME}}" readonly>
+                                </div>
+                                {% if i.IDENTI_TYPE_OTH %}
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label form-label-sm">Identification Type Others</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.IDENTI_TYPE_OTH}}" readonly>
+                                </div>
+                                {% endif %}                
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+    
+                    <div class="tab-pane fade bank-details pt-3 " id="bank-details">
+                        {% for i in bank_details %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-0 pb-1">Bank Account - {{forloop.counter}} {% if i.DEFAULT_BANK == True %}(Default Bank){% endif %}</h5>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Account Number</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.ACC_NO}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Account Type</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.ACC_TYPE.BANK_ACCOUNT_TYPE}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Bank Name</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.BANK_NAME.NAME}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">MICR Number</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.MICR_NO}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">NEFT/IFSC Code</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.IFSC_CODE}}" readonly>
+                            </div>                           
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-0 pb-1">Bank Proof</h5>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div>
+                                    <label class="form-label form-label-sm">{{i.BANK_PROOF.NAME}}</label>
+                                </div>
+                                <a href="/media/{{i.BANK_PROOF_FILE}}" download>
+                                    <img src="/media/{{i.BANK_PROOF_FILE}}" alt="" width="100px">
+                                </a>
+                            </div>
+                        </div>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                    </div>
+                    <div class="tab-pane fade pt-3" id="nominee-details">
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Nominee Option</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if nominee.nominee.NOMINEE_OPTION == 'N' %}No - I/We declare to Opt out{% elif nominee.nominee.NOMINEE_OPTION == 'Y' %}Yes - I/We wish to nominate{% elif nominee.nominee.NOMINEE_OPTION == 'X' %}I/We do not wish to Nominate under CAN{% endif %}" readonly>
+                            </div>
+                            {% if nominee.nominee.NOMINEE_OPTION != 'X' %}
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Nominee Verification Type</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if nominee.nominee.NOMINEE_VERIFICATION_TYPE == 'P' %}Physical Form{% elif nominee.nominee.NOMINEE_VERIFICATION_TYPE == 'E' %}Nominee 2FA{% endif %}" readonly>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% for i in nominee.nominee_detail %} 
+                        <hr class="dropdown-divider">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title pt-0 pb-1">Nominee - {{forloop.counter}}</h5>
+                            </div>
+                             <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Name</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NOMINEE_NAME}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Relation With Client</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.RELATIONSHIP_WITH_CLIENT}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">DOB</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NOMINEE_DOB|date:'d/m/Y'}}" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Nominee Percentage</label>
+                                <input type="text" class="form-control form-control-sm" value="{{i.NOMINEE_PERCENTAGE}}%" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label form-label-sm">Nominee is a Minor</label>
+                                <input type="text" class="form-control form-control-sm" value="{% if i.NOMINEE_IS_MINOR == True %}Yes{% else %}No{% endif %}" readonly>
+                            </div>
+                            {% if i.NOMINEE_IS_MINOR == True %}
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label form-label-sm">Guardian's Name</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.GUARDIAN_NAME}}" readonly>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label form-label-sm">Guardian's Relation</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.GUARDIAN_RELATION}}" readonly>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label form-label-sm">Guardian's DOB</label>
+                                    <input type="text" class="form-control form-control-sm" value="{{i.GUARDIAN_DOB|date:'d/m/Y'}}" readonly>
+                                </div>
+                            {% endif %}
+                            
+                        </div>
+                        {% endfor %}
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+
+</body>
+
+</html>

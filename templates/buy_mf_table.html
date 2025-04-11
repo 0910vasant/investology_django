@@ -1,0 +1,407 @@
+<html>
+	{% include 'header.html' %}
+	<body class="hold-transition light-skin sidebar-mini theme-primary">
+		<style type="text/css">
+			.box-title {
+				z-index: auto;
+				font-size: 18px;
+				font-weight: 500;
+				color: #181c32;
+			}
+			.dropdown-item {
+				color: #475f7b;
+				font-weight: 500;
+				padding: 4px 12px;
+				width: auto;
+				margin: 4px;
+				-webkit-transition: 0.15s linear;
+				transition: 0.15s linear;
+			}
+
+			.theme-primary .show > .btn-primary.dropdown-toggle {
+				background-color: #103763 !important;
+				border-color: #103763 !important;
+				color: #ffffff;
+			}
+
+			.theme-primary .nav-tabs .nav-link.active:hover,
+			.theme-primary .nav-tabs .nav-link.active:focus {
+				border-bottom-color: #a6ce39;
+				background-color: #a6ce39;
+				color: #ffffff;
+			}
+
+			.theme-primary .nav-tabs .nav-link.active {
+				border-bottom-color: #a6ce39;
+				background-color: #a6ce39;
+				color: #ffffff;
+			}
+
+			color: #3f4254;
+		</style>
+		<div class="wrapper">
+			{% include 'navbar.html' %} {% include 'sidebar.html' %}
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<div class="container-full">
+					<!-- Content Header (Page header) -->
+					{% comment %}
+					<div class="content-header">
+						<div class="d-flex align-items-center">
+							<div class="mr-auto">
+								<div class="d-inline-block align-items-center">
+									<nav>
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item">
+												<a href="index.php">
+													<i class="mdi mdi-home-outline"></i>
+												</a>
+											</li>
+											<li class="breadcrumb-item active" aria-current="page">
+												<a href="javascript:void(0);"> Scheme Master </a>
+											</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endcomment %}
+
+					<!-- Main content -->
+					<section class="content">
+						{% include 'live_index.html' %}
+						<div class="row">
+							<div class="col-12">
+								<div class="box box-default">
+									<div class="box-header with-border flexbox">
+										<h4 class="box-title">Buy MF</h4>
+										<div class="text-right flex-grow">
+											<button class="btn btn-danger" data-toggle="modal" data-target="#add_buy_mf_modal">Buy</button>
+										</div>
+									</div>
+									<!-- /.box-header -->
+									<div class="box-body">
+										<div class="table-responsive">
+											<table id="buy_mf_table" class="data_tbl table table-bordered" style="width: 100%">
+												<thead>
+													<tr>
+														<th>Sr. No.</th>
+														{% comment %}
+														<th>Customer Type</th>
+														{% endcomment %}
+														<th>Date</th>
+														<th>Easy Investology/RM/EP Name</th>
+														<th>Easy Investology/RM/EP Username</th>
+														<th>Customer</th>
+														<th>Customer Status</th>
+														<th>Scheme Name</th>
+														<th>Amount</th>
+														<th>Mode</th>
+														<th>Buy Type</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
+										</div>
+									</div>
+									<!-- /.box-body -->
+								</div>
+								<!-- /.box -->
+							</div>
+
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</section>
+					<!-- /.content -->
+					<!-- /.modal -->
+
+					<div class="modal fade" id="add_buy_mf_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<form id="add_buy_mf_form" action="" method="POST">
+									{% csrf_token %}
+									<div class="modal-header">
+										<h4 class="modal-title" id="myModalLabel">Buy MF</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>User Type<small class="text-danger"> *</small></label>
+													<select name="u_type" id="u_type" class="form-control select2 u_type" required>
+														<option value="" selected disabled>Select User Type</option>
+														<option value="rm">Relationship Manager</option>
+														<option value="ep">Easy Partner</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>User<small class="text-danger"> *</small></label>
+													<select name="user" id="user" class="form-control select2 user">
+														<option value="" selected disabled>Select User</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Date<small class="text-danger">*</small></label>
+													<input type="date" class="form-control" id="date" name="date" required />
+												</div>
+											</div>
+										</div>
+										<div class="row">
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Customer <small class="text-danger"> *</small></label>
+													<select class="form-control select2 customer" name="customer" id="customer" required>
+														<option value="" disabled selected>Please Select Customer</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Customer Status<small class="text-danger"> *</small></label>
+													<select class="form-control select2 customer_status" name="customer_status" id="customer_status" required>
+														<option value="" disabled selected>Please Select Customer Status</option>
+														<option value="Existing">Existing</option>
+														<option value="New">New</option>
+													</select> 
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Scheme Name<small class="text-danger"> *</small></label>
+													<select class="form-control select2 scheme_name" name="scheme_name" id="scheme_name" required>
+														<option value="" disabled selected>Please Select Scheme</option>
+														{% comment %} <option value="" disabled selected>Please Select Customer Status</option>
+														<option value="Existing">Existing</option>
+														<option value="New">New</option> {% endcomment %}
+													</select>
+													{% comment %} <input type="text" class="form-control" placeholder="Scheme Name" id="scheme_name" name="scheme_name" required /> {% endcomment %}
+													{% comment %} <select class="form-control select2 customer_status" name="scheme_name" id="scheme_name" required>
+														<option value="" disabled selected>Please Select Scheme</option>
+													</select>  {% endcomment %}
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Amount Invested<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" placeholder="Amount Invested" id="amount_invested" name="amount_invested" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" required />
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Mode<small class="text-danger"> *</small></label>
+													<select class="form-control select2" name="mode" id="mode" required>
+														<option value="" disabled selected>Please Select Mode</option>
+														<option value="Online">Online</option>
+														<option value="Offline">Offline</option>
+													</select> 
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Buy Type<small class="text-danger"> *</small></label>
+													<select class="form-control select2" name="buy_type" id="buy_type" required>
+														<option value="" disabled selected>Please Select Buy Type</option>
+														<option value="Lumpsum">Lumpsum</option>
+														<option value="Sip">Sip</option>
+													</select> 
+												</div>
+											</div>
+											{% comment %} <div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Commision Percentage</label>
+													<input type="number" class="form-control amt" placeholder="Amount" id="commission_per" name="commission_per" required />
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Commision Amount</label>
+													<input type="number" class="form-control b_amt" placeholder="Commision Amount" id="commission_amt" name="commission_amt" readonly required />
+												</div>
+											</div> {% endcomment %}
+										</div>
+									</div>
+									<div class="modal-footer text-right" style="width: 100%">
+										<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+										<button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+									</div>
+								</form>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+
+					<div class="modal fade" id="edit_buy_mf_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<form id="edit_buy_mf_form" action="" method="POST">
+									{% csrf_token %}
+									<div class="modal-header">
+										<h4 class="modal-title" id="myModalLabel">Edit Buy MF</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									</div>
+									<div class="modal-body">
+										{% comment %} <div class="row">
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>User Type<small class="text-danger"> *</small></label>
+													<select name="u_type" id="u_type" class="form-control select2 u_type" data-search="True">
+														<option value="" selected disabled>Select User Type</option>
+														<option value="rm">Relationship Manager</option>
+														<option value="ep">Easy Partner</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>User<small class="text-danger"> *</small></label>
+													<select name="user" id="user" class="form-control select2 user">
+														<option value="" selected disabled>Select User</option>
+													</select>
+												</div>
+											</div>
+										</div> {% endcomment %}
+										<div class="row">
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Date<small class="text-danger">*</small></label>
+													<input type="date" class="form-control" id="date" name="date" required />
+												</div>
+											</div>
+										</div>
+										<div class="row">
+
+											{% comment %} <div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Customer <small class="text-danger"> *</small></label>
+													<select class="form-control select2 customer" name="customer" id="customer" required>
+														<option value="" disabled selected>Please Select Customer</option>
+													</select>
+												</div>
+											</div> {% endcomment %}
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Customer Status<small class="text-danger"> *</small></label>
+													<select class="form-control select2 customer_status" name="customer_status" id="customer_status" required>
+														<option value="" disabled selected>Please Select Customer Status</option>
+														<option value="Existing">Existing</option>
+														<option value="New">New</option>
+													</select> 
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Scheme Name<small class="text-danger"> *</small></label>
+													<select class="form-control select2 scheme_name" name="scheme_name" id="scheme_name" required>
+														{% comment %} <option value="" disabled selected>Please Select Customer Status</option> {% endcomment %}
+														{% comment %} <option value="" disabled selected>Please Select Customer Status</option>
+														<option value="Existing">Existing</option>
+														<option value="New">New</option> {% endcomment %}
+													</select>
+													{% comment %} <input type="text" class="form-control" placeholder="Scheme Name" id="scheme_name" name="scheme_name" required /> {% endcomment %}
+													{% comment %} <select class="form-control select2 customer_status" name="scheme_name" id="scheme_name" required>
+														<option value="" disabled selected>Please Select Scheme</option>
+													</select>  {% endcomment %}
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Amount Invested</label>
+													<input type="text" class="form-control" placeholder="Amount Invested" id="amount_invested" name="amount_invested" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" required />
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Mode<small class="text-danger"> *</small></label>
+													<select class="form-control select2" name="mode" id="mode" required>
+														<option value="" disabled selected>Please Select Mode</option>
+														<option value="Online">Online</option>
+														<option value="Offline">Offline</option>
+													</select> 
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Buy Type<small class="text-danger"> *</small></label>
+													<select class="form-control select2" name="buy_type" id="buy_type" required>
+														<option value="" disabled selected>Please Select Buy Type</option>
+														<option value="Lumpsum">Lumpsum</option>
+														<option value="Sip">Sip</option>
+													</select> 
+												</div>
+											</div>
+											{% comment %} <div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Commision Percentage</label>
+													<input type="number" class="form-control amt" placeholder="Amount" id="commission_per" name="commission_per" required />
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Commision Amount</label>
+													<input type="number" class="form-control b_amt" placeholder="Commision Amount" id="commission_amt" name="commission_amt" readonly required />
+												</div>
+											</div> {% endcomment %}
+										</div>
+									</div>
+									<div class="modal-footer text-right" style="width: 100%">
+										<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+										<button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+									</div>
+								</form>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+					<!-- /.modal -->
+
+					<!-- /.modal -->
+				</div>
+			</div>
+			<!-- /.content-wrapper -->
+			{% include 'footer.html' %}
+
+			<!-- Control Sidebar -->
+			{% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+			<!-- /.control-sidebar -->
+
+			<!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+			<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- ./wrapper -->
+
+		<!-- Vendor JS -->
+		{% include 'script.html' %}
+		<script src="/static/js/buy/buy_mf.js"></script>
+		<!-- sweet alert  -->
+		<script>
+			$(".cancel-btn").on("click", function () {
+				swal({
+					title: "Are you sure ?",
+					text: "Do you want to cancel your order ?",
+					icon: "info",
+					buttons: true,
+					dangerMode: true,
+				}).then((willDelete) => {
+					if (willDelete) {
+						$("#addModal").modal("show");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

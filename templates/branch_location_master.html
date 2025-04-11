@@ -1,0 +1,226 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+    <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .dropdown-item {
+            color: #475F7B;
+            font-weight: 500;
+            padding: 4px 12px;
+            width: auto;
+            margin: 4px;
+            -webkit-transition: 0.15s linear;
+            transition: 0.15s linear;
+        }
+
+        .theme-primary .show > .btn-primary.dropdown-toggle {
+            background-color: #103763 !important;
+            border-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active:hover, .theme-primary .nav-tabs .nav-link.active:focus {
+            border-bottom-color: #a6ce39 ;
+            background-color: #a6ce39 ;
+            color: #ffffff;
+        }
+
+        .theme-primary .nav-tabs .nav-link.active {
+            border-bottom-color: #a6ce39;
+            background-color: #a6ce39;
+            color: #ffffff;
+        }
+
+
+
+        color: #3F4254;
+    </style>
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+            
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                        Scheme Master
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="box box-default">
+                                    <div class="box-header with-border flexbox">
+                                      <h4 class="box-title">Branch Location Master</h4>
+                                        <div class="text-right flex-grow">
+                                            <button class="btn btn-danger" data-toggle="modal" data-target="#add_branch_master">Add Branch Location</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                            <div class="table-responsive">
+                                                <table id="branch_location_table" class="data_tbl table table-bordered" style="width:100%">
+                                                {% comment %} <table class="data_tbl table table-bordered table-striped" style="width:100%"> {% endcomment %}
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sr. No.</th>
+                                                            <th>Branch Location Name</th>
+                                                            <th>Action</th>
+                                                            {% comment %} <th width="5%">Action</th> {% endcomment %}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                    {% comment %} <tfoot>
+                                                        <tr>
+                                                           <th>Sr. No.</th>
+                                                            <th>Account No</th>
+                                                            <th>IFSC</th>
+                                                            <th width="5%">Action</th>
+                                                        </tr>
+                                                    </tfoot> {% endcomment %}
+                                                </table>
+                                            </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                  </div>
+                                  <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                        <!-- /.modal -->
+                        
+
+                        <div class="modal fade" id="add_branch_master" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="add_branch_master_form" action="" method="POST" >
+                                        {% csrf_token %}
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Add Branch Location Name</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>Branch Location Name<small class="text-danger">*</small></label>
+                                                        <input type="text" class="form-control" placeholder="Branch Location Name" value="" name="location_name" id="location_name" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer text-right" style="width: 100%;">
+                                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <div class="modal fade" id="edit_branch_master" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="edit_branch_master_form" action="" method="POST" >
+                                        {% csrf_token %}
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Edit Branch Location Name</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>Branch Location Name<small class="text-danger">*</small></label>
+                                                        <input type="text" class="form-control" placeholder="Branch Location Name" value="" name="location_name" id="location_name" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer text-right" style="width: 100%;">
+                                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/master/bm_location.js"></script>
+        <!-- sweet alert  -->
+        <script>
+            $('.cancel-btn').on('click',function(){
+                 swal({
+            title: "Are you sure ?",
+            text: "Do you want to cancel your order ?", 
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            $('#addModal').modal('show')
+          }
+        })
+            })
+           
+        </script>
+	
+    </body>
+</html>

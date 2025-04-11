@@ -1,0 +1,251 @@
+{% load indian_numbers %}
+<html>
+    <head>    
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta name="ProgId" content="FrontPage.Editor.Document">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+        <title>Detailized Ffolio</title>
+        <style fprolloverstyle="">A:hover {color: red; font-weight: bold}
+        </style>
+        <!-- <style type="text/css">.opacityit IMG {
+        FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=100); moz-opacity: 1
+        }
+        
+        .opacityit:hover IMG {
+        FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=40); moz-opacity: 0.4
+        }
+        </style> -->
+        <style type="text/css">
+        #loading {
+        width: 200px;
+        height: 100px;
+        background-color: #ffffff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -50px;
+        margin-left: -100px;
+        text-align: center;
+        font-size: 8pt;
+        font-family: verdana;
+        }
+        p{
+        margin: 0px;
+        padding: 0;
+        }
+        table tbody tr.tr-border:nth-child(even) td{
+            background: #E1E1E1 ;
+            color: #4C1B2C;
+
+        }
+        </style>
+    </head>
+    <body topmargin="0" leftmargin="0">
+        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" height="38">
+            <tbody>
+                <tr>
+                    <td width="33%" bgcolor="#CC3300" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                        <p align="center"></p>
+                    </td>
+                    <td width="33%" bgcolor="#CC3300" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                        <p align="center">Detailized Folio View</p>
+                    </td>
+        
+        
+                    <td width="33%" bgcolor="#CC3300" style="font-family: Arial; font-size: 10pt; color: #E1E1E1; font-weight: bold" height="30">
+                        <div align="right">
+                            <table border="0" cellpadding="0" cellspacing="0" width="50%">
+                                <tbody>
+                                    <tr>
+                                        <td width="25%" align="center"></td>
+                                        <td width="25%" align="center"></td>
+                                        <td width="25%" align="center"><a href="javascript:window.print()" style="text-decoration: none"><img border="0" src="/static/images/print.png" alt="Print From Here"></a></td>
+                                        <td width="25%" align="center"><a href="javascript:window.opener='x';window.close();"><img border="0" src="/static/images/cancel.png" alt="Close The Window"></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" height="9" colspan="3">
+                        &nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" height="19" colspan="3">
+                        <p align="center"><img src="/static/images/logo.jpg" width="200" height="100"></p>
+                    </td>
+                </tr>
+            </tbody>
+            {% comment %} folio_data
+PROD_CODE__PRODCODE
+PROD_CODE__SCHEME_NAME {% endcomment %}
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial; font-size: 8pt" height="21">
+            <tbody>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="left" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <b>{{folio_data.PROD_CODE.SCHEME_NAME}}</b>  [Folio No :: {{folio_data.FOLIO_NO}}]   (Scheme Type ::Equity)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left"><b>Latest NAV ::</b> {{current_nav}}  ( {{current_nav_date|date:"d-M-Y"}} )</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left"></p>
+                    </td>
+                    </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        {% comment %} <p align="left">
+                            <b>BANK NAME ::</b>&nbsp;&nbsp;Yes Bank Ltd&nbsp;&nbsp;&nbsp;&nbsp;<b>BANK BRANCH ::</b>&nbsp;&nbsp;MUMBAI&nbsp;&nbsp;&nbsp;&nbsp;  <b>A/C Type ::</b>&nbsp;&nbsp;SB&nbsp;&nbsp;&nbsp;&nbsp;<b>A/C No ::</b>&nbsp;&nbsp;042191900082089
+                        </p> {% endcomment %}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left">
+                            <b>NOMINEE NAME ::</b>&nbsp;&nbsp;SUVIDHA PATIL [ RELATION :: SPOUSE ]&nbsp;&nbsp;&nbsp;&nbsp;<b>HOLDING MODE ::</b>&nbsp;&nbsp;SINGLE&nbsp;&nbsp;&nbsp;&nbsp;<b>SECOND HOLDER / APPLICANT ::</b>&nbsp;&nbsp; [ PAN ::  ]&nbsp;&nbsp;&nbsp;&nbsp;<b>THIRD HOLDER / APPLICANT ::</b>&nbsp;&nbsp; [ PAN ::  ]
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="10%" bgcolor="#3366CC" height="31" align="center" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Date</font>
+                    </td>
+                    <td width="10%" bgcolor="#3366CC" height="31" align="center" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Transaction Nature</font>
+                    </td>
+                    <td width="10%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Outstanding Investment Amount</font>
+                    </td>
+                    <td width="10%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Div. Reinvest</font>
+                    </td>
+                    <td width="6%" bgcolor="#3366CC" height="31" align="center" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Pur. NAV</font>
+                    </td>
+                    <td width="9%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Units</font>
+                    </td>
+                    <td width="5%" bgcolor="#3366CC" height="31" align="center" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Trans. Days</font>
+                    </td>
+                    <td width="10%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Market Value</font>
+                    </td>
+                    <td width="9%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Dividend Paid</font>
+                    </td>
+                    <td width="9%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Total</font>
+                    </td>
+                    <td width="6%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">XIRR (%)</font>
+                    </td>
+                    <td width="6%" bgcolor="#3366CC" height="31" align="right" style="border-right: 2px solid #FFFFFF">
+                        <font color="#FFFFFF">Absolue Return (%)</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" align="left" height="9" colspan="14">
+                        <hr>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="100%" bgcolor="#FFFFFF" height="8" align="center" style="border-right: 2px solid #FFFFFF" colspan="14">
+                        <p align="left"></p>
+                    </td>
+                </tr>
+                {% for i in data %}
+                <tr class="tr-border">
+                    <td width="10%" align="Center" height="24" > {{i.TRADDATE|date:"d-M-Y"}}</td>
+                    <td width="10%" align="center" height="24" >{{i.TRXN_NATURE}} <br> <b>NEW:- {{i.NEW_TRXN_NATURE}}</b></td>
+                    <td width="10%" align="right" height="24" >
+                        {% if i.COMPANY == "cams" and i.TRXN_NATURE == "Dividend Paid" %}
+                            0
+                        {% else %}
+                            {{i.AMOUNT|indian_number_format}}
+                        {% endif %}
+                    </td>
+                    <td width="10%" align="right" height="24" >0</td>
+                    <td width="6%" align="center" height="24" >{{i.PURPRICE}}</td>
+                    <td width="9%" height="24" align="right">{{i.UNITS}}</td>
+                    <td width="5%" height="24" align="center">{{i.TRANS_DAYS}}</td>
+                    <td width="10%" height="24" align="right">{{i.MARKET_VALUE|indian_number_format}}</td>
+                    <td width="9%" height="24" align="right">
+                        {% if i.COMPANY == "cams" and i.TRXN_NATURE == "Dividend Paid" %}
+                            {{i.AMOUNT|indian_number_format}}
+                        {% else %}
+                            0
+                        {% endif %}
+                    </td>
+                    <td width="9%" height="24" align="right">
+                        {{i.TOTAL|indian_number_format}}&nbsp;&nbsp;</td>
+                    <td width="6%" height="24" align="right">{{i.XIRR}}</td>
+                    <td width="6%" height="24" align="right">{{i.ABS_RETURN}}&nbsp;</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td width="100%" align="left" height="9" colspan="14">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="10%" align="left" height="20"></td>
+                    <td width="10%" align="center" height="20"><b><font color="#333333">Total ::</font></b></td>
+                    <td width="10%" align="right" height="20" style="color: #333333">{{total_investing_amt_sum|indian_number_format}}</td>
+                    <td width="10%" align="right" height="20" style="color: #333333">0</td>
+                    <td width="6%" align="left" height="20" style="color: #333333"></td>
+                    <td width="9%" height="20" align="right" style="color: #333333">{{total_units_sum}}</td>
+                    <td width="5%" height="20" align="right" style="color: #333333"></td>
+                    <td width="10%" height="20" align="right" style="color: #333333">{{total_market_value_sum|indian_number_format}}</td>
+                    <td width="9%" height="20" align="right" style="color: #333333">{{total_dividend_paid_sum|indian_number_format}}</td>                   
+                    <td width="9%" height="20" align="right" style="color: #333333">{{total_sum|indian_number_format}}&nbsp;&nbsp;</td>
+                    <td width="6%" height="20" align="right" style="color: #333333"></td>
+                    <td width="6%" height="20" align="right" style="color: #333333">&nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="100%" align="left" height="9" colspan="14">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" align="left" height="20" colspan="14">
+                        <p align="center"><b><font color="#333333">Avg. Absolute Return Is :: </font></b>&nbsp;&nbsp;<font color="#4C1B2C"> {{avg_abs_return}}&nbsp;(%)</font>&nbsp;&nbsp;<b>Avg. XIRR Is ::</b> <font color="#4C1B2C">9.99&nbsp;(%)</font>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" align="left" height="20" colspan="14">
+                        <hr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

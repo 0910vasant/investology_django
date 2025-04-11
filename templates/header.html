@@ -1,0 +1,264 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<link rel="icon" href="/static/images/jd-icon.png" />
+
+		<title>easy invest-O-logy</title>
+
+		<!-- Vendors Style-->
+		<link rel="stylesheet" href="/static/css/vendors_css.css" />
+
+		<!-- Style-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="/static/css/style.css"/>
+		<link rel="stylesheet" href="/static/css/skin_color.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		{% comment %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		{% endcomment %} {% comment %}
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		{% endcomment %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<style>
+			.main-header .logo .logo-lg {
+				line-height: 60px;
+				display: inline-block;
+				padding-left: 0px;
+				padding-right: 21px;
+				color: #ed1a24;
+			}
+
+			.theme-primary.light-skin .sidebar-menu > li.active a {
+				color: #ed1a24;
+				background-color: transparent;
+			}
+
+			.theme-primary.light-skin .sidebar-menu > li.active a > i {
+				color: #ffffff;
+				background-color: #ed1a24;
+			}
+
+			.theme-primary .btn-primary {
+				background-color: #ed1a24;
+				border-color: #ed1a24;
+				color: #ffffff;
+			}
+
+			.theme-primary .btn-primary:hover,
+			.theme-primary .btn-primary:active,
+			.theme-primary .btn-primary:focus,
+			.theme-primary .btn-primary.active {
+				background-color: #ed1a24 !important;
+				border-color: #ed1a24 !important;
+				color: #ffffff !important;
+			}
+
+			.theme-primary .paging_simple_numbers .pagination .paginate_button.active a {
+				background-color: #ed1a24;
+			}
+
+			.theme-primary .paging_simple_numbers .pagination .paginate_button:hover a {
+				background-color: #ed1a24;
+			}
+
+			.theme-primary .pagination li a:hover {
+				border: 1px solid #3c2bc1;
+				background-color: #ed1a24 !important;
+			}
+
+			.theme-primary.light-skin .sidebar-menu > li:hover a {
+				color: #ed1a24;
+			}
+
+			.theme-primary a:hover,
+			.theme-primary a:focus {
+				color: #ed1a24;
+			}
+
+			.select2-container--default .select2-results__option[aria-selected="true"] {
+				background-color: #d9d9d9;
+				color: #fff;
+			}
+
+			.select2-container--default .select2-results__option[aria-selected="true"]:hover {
+				color: #fff;
+			}
+
+			.font_dashboard_span {
+				font-size: 14px !important;
+			}
+
+			.head_dash_span {
+				margin-left: 26px !important;
+				font-size: 19px;
+			}
+
+			.counter_dash_head {
+				margin-left: 59px !important;
+			}
+
+			.nav-bar-padding {
+				padding-top: 7px;
+			}
+
+			/* .side-title{
+								font-size: 500;
+								color: #181C32;
+						}*/
+		</style>
+	</head>
+	<body>
+		<div class="modal fade" id="change_password_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form id="change_password_form" class="" action="" method="POST">
+						{% csrf_token %}
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Change Password</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12 col-lg-12">
+									<label>Old Password <small class="text-danger">*</small></label>
+									<div class="input-group form-group">
+										<input id="old_pass" type="password" class="form-control input_color" name="old_pass" placeholder="Enter Old password" required />
+										<div class="input-group-append show_pass" style="cursor: pointer">
+											<span class="input-group-text">
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-12">
+									<label>New Password <small class="text-danger">*</small></label>
+									<div class="input-group form-group">
+										<input id="new_pass" type="password" class="form-control input_color" name="new_pass" placeholder="Enter New password" required />
+										<div class="input-group-append show_pass" style="cursor: pointer">
+											<span class="input-group-text">
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-12">
+									<label>Confirm Password <small class="text-danger">*</small></label>
+									<div class="input-group form-group">
+										<input id="conf_pass" type="password" class="form-control input_color" name="conf_pass" placeholder="Enter your password" required />
+										<div class="input-group-append show_pass" style="cursor: pointer">
+											<span class="input-group-text">
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer text-right" style="width: 100%">
+							<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+							<button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+						</div>
+					</form>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<div class="modal fade" id="forgot_password_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form id="forgot_password_form" class="" action="" method="POST">
+						{% csrf_token %}
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Forgot Password</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<input type="text" class="form-control" placeholder="" value="" name="user_type" id="f_user_type" readonly hidden />
+								<input type="text" class="form-control" placeholder="" value="" name="user_id" id="f_user_id" readonly hidden />
+								<div class="col-md-12 col-lg-12">
+									<label>New Password <small class="text-danger">*</small></label>
+									<div class="input-group form-group">
+										<input id="new_pass" type="password" class="form-control input_color" name="new_pass" placeholder="Enter New password" required />
+										<div class="input-group-append show_pass" style="cursor: pointer">
+											<span class="input-group-text">
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-12">
+									<label>Confirm Password <small class="text-danger">*</small></label>
+									<div class="input-group form-group">
+										<input id="conf_pass" type="password" class="form-control input_color" name="conf_pass" placeholder="Enter your password" required />
+										<div class="input-group-append show_pass" style="cursor: pointer">
+											<span class="input-group-text">
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer text-right" style="width: 100%">
+							<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+							<button type="submit" name="submit" class="btn btn-success text-left">Submit</button>
+						</div>
+					</form>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<div class="modal" id="exampleModal" tabindex="-1">
+			<div class="modal-dialog" style="margin-top: 75px; width: 350px">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h5 class="modal-title text-center mb-2 bold">OTP Verification</h5>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body text-center">
+						<img src="/static/images/invest-Ology_icon.png" height="45" class="mb-4 home-logo" />
+
+						<form id="otp" action="" method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="text-center">
+										<p class="message"></p>
+										<input type="text" class="form-control otp" id="digit-1" name="digit-1" maxlength="1" minlength="1" pattern="[0-9]{1}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="1 digit number" required />
+										<input type="text" class="form-control otp" id="digit-2" name="digit-2" maxlength="1" minlength="1" pattern="[0-9]{1}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="1 digit number" required />
+										<input type="text" class="form-control otp" id="digit-3" name="digit-3" maxlength="1" minlength="1" pattern="[0-9]{1}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="1 digit number" required />
+										<input type="text" class="form-control otp" id="digit-4" name="digit-4" maxlength="1" minlength="1" pattern="[0-9]{1}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="1 digit number" required />
+										<br />
+										<button class="btn btn-primary save" type="submit" id="otp_submit_form" style="margin-top: 20px">Submit</button>
+										{% comment %} <button class="btn btn-primary cancel w-100" type="button" id="otp_submit">Submit</button> {% endcomment %}
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="preloader">
+			{% comment %} <img src="/static/img/ashish_loader.gif" alt="" /> {% endcomment %}
+			<img src="/static/images/new_loader.gif" alt="" style="width: 25%" />
+		</div>
+		
+	</body>
+</html>

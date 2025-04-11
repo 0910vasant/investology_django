@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Scheme Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Scheme Details</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-overview mt-3">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Scheme Code:</div>
+                                <div class="col-lg-12">{{data.SCHEME_CODE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Fund Code:</div>
+                                <div class="col-lg-12">{{data.FUND_CODE.FUND_CODE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Fund Name:</div>
+                                <div class="col-lg-12">{{data.FUND_CODE.FUND_NAME}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Plan Name:</div>
+                                <div class="col-lg-12">{{data.PLAN_NAME}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Scheme Type:</div>
+                                <div class="col-lg-12">{{data.SCHEME_TYPE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Plan Type:</div>
+                                <div class="col-lg-12">{{data.PLAN_TYPE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Plan Opt:</div>
+                                <div class="col-lg-12">{{data.PLAN_OPT}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Div Opt:</div>
+                                <div class="col-lg-12">{{data.DIV_OPT}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">AMFI Id:</div>
+                                <div class="col-lg-12">{{data.AMFI_ID}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">PRI ISIN:</div>
+                                <div class="col-lg-12">{{data.PRI_ISIN}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Sec ISIN:</div>
+                                <div class="col-lg-12">{{data.SEC_ISIN}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">NFO Start:</div>
+                                <div class="col-lg-12">{{data.NFO_START|date:"d-m-Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">NFO End:</div>
+                                <div class="col-lg-12">{{data.NFO_END|date:"d-m-Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Allot Date:</div>
+                                <div class="col-lg-12">{{data.ALLOT_DATE|date:"d-m-Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Reopen Date:</div>
+                                <div class="col-lg-12">{{data.REOPEN_DATE|date:"d-m-Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Maturity Date:</div>
+                                <div class="col-lg-12">{{data.MATURITY_DATE|date:"d-m-Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Entry Load:</div>
+                                <div class="col-lg-12">{{data.ENTRY_LOAD}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Exit Load:</div>
+                                <div class="col-lg-12">{{data.EXIT_LOAD}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">PUR Allowed:</div>
+                                <div class="col-lg-12">{{data.PUR_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">NFO Allowed:</div>
+                                <div class="col-lg-12">{{data.NFO_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Redeem Allowed:</div>
+                                <div class="col-lg-12">{{data.REDEEM_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Sip Allowed:</div>
+                                <div class="col-lg-12">{{data.SIP_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Switch Out Allowed:</div>
+                                <div class="col-lg-12">{{data.SWITCH_OUT_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Switch In Allowed:</div>
+                                <div class="col-lg-12">{{data.SWITCH_OUT_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Stp Out Allowed:</div>
+                                <div class="col-lg-12">{{data.STP_OUT_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Stp In Allowed:</div>
+                                <div class="col-lg-12">{{data.STP_IN_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Swp Allowed:</div>
+                                <div class="col-lg-12">{{data.SWP_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Demat Allowed:</div>
+                                <div class="col-lg-12">{{data.DEMAT_ALLOWED}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            {% comment %} CATEGORY
+                            SUB_CATEGORY {% endcomment %}
+                            <div class="row">
+                                <div class="col-lg-12 label">Catg ID:</div>
+                                <div class="col-lg-12">{{data.CATEGORY.CATEGORY.CATEGORY}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Sub-Catg ID:</div>
+                                <div class="col-lg-12">{{data.CATEGORY.SUB_CATEGORY}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Scheme Flag:</div>
+                                <div class="col-lg-12">AC</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+
+</body>
+
+</html>

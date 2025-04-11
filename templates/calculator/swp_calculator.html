@@ -1,0 +1,314 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+        <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+        }
+        .theme-primary .btn-primary {
+            background-color: #007bff !important
+            border-color: #007bff !important;
+            color: #ffffff;
+        }
+        .theme-primary .btn-flat.btn-info {
+            color: #007eff !important;
+            background-color: #beddfd;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .theme-primary .bg-primary {
+            background-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .box {
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 0px;
+            -webkit-transition: .5s;
+            transition: .5s;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            box-shadow: none;
+            /*box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%);*/
+        }
+
+        .line{
+            border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+        }
+
+        .box-body .box-title {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+            color: #103763;
+            font-weight: 600;
+        }
+
+        .btn-inactive {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .hr_line {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .form-control {
+              margin: 0px;
+              padding: 5px 30px 5px 15px;
+        }
+
+        .card-btn {
+            background-color: #fff;
+        }
+
+        .submit_btn-form {
+           padding: 1.5rem 1.5rem;
+        }
+
+        .box_btn {
+        position: absolute;
+        margin-bottom: 10px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0px;
+        -webkit-transition: .5s;
+        transition: .5s;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        box-shadow: none;
+        /* box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%); */
+        }
+
+        .content-1 {
+            min-height: 80px;
+            padding: 10px 10px 0px 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+         color: #3F4254;
+    </style>
+
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item" aria-current="page">
+                                                    <a href="project_management.php">
+                                                        Project Management
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Add Client Family
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                    
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                SWP (Systematic Withdrawal Plan) Calculator
+                                            </h3>
+                                            <div class="text-right flex-grow">
+                                                {% comment %} <a href="/branch_manager_master">
+                                                </a> {% endcomment %}
+                                                <button type="button" onclick="history.back()" class="btn btn-dark">Back</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <form action="" id="swp_calculator" method="get">
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Total Investment Amount<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Total Investment Amount" value="50000" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3">
+                                                        <div class="form-group">
+                                                            <label>Withdrawal Per Month<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="withdrawal_per_month" name="withdrawal_per_month" placeholder="Withdrawal Per Month" value="1000" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3">
+                                                        <div class="form-group">
+                                                            <label>Expected Return Rate(P.A.)<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="yearly_rate" name="yearly_rate" placeholder="Expected Return Rate" value="10" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2">
+                                                        <div class="form-group">
+                                                            <label>Time Period (years)<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="years" name="years" placeholder="Time Period" value="5" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right flex-grow">
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <div class="submit_btn-form">
+                                                                    <button type="submit" class="btn_submit waves-effect waves-light btn btn-flat mb-5">Calculate</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </form>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-3 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Total Invested amount</label>
+                                                        <input type="text" class="form-control" id="invested_amt" name="invested_amt" placeholder="" value="" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Total Withdrawal amount</label>
+                                                        <input type="text" class="form-control" id="withdraw_amt" name="withdraw_amt" placeholder="" value="" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Total Interest Earned</label>
+                                                        <input type="text" class="form-control" id="interest_amt" name="interest_amt" placeholder="" value="" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>The expected amount you will get</label>
+                                                        <input type="text" class="form-control" id="expected_amt" name="expected_amt" placeholder="" value="" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                            </div>
+                                            <div class="row">
+                                               
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <!-- /.box-footer -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                        </section>
+                        <!-- /.content -->
+
+
+                        {% comment %} <section class="content-1">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box">
+                                        <div class="text-right flex-grow">
+                                            <div class="submit_btn-form">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-success btn-md">Submit</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </section>         {% endcomment %}
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/calculator/swp_calculator.js"></script>
+        {% comment %} <script>
+            var dateToday = new Date();
+                $('.date').datepicker({
+                //'startDate': dateToday,
+                multidate: false,
+                format: 'dd-mm-yyyy'
+            })
+        </script>
+        <script>
+            $(function() {
+                $(".date").datepicker();
+                $(".date").on("change",function(){
+                    var selected = $(this).val();
+                    console.log("date",selected)
+                   // alert(selected);
+                });
+            });
+        </script> {% endcomment %}
+        </script>
+	
+    </body>
+</html>

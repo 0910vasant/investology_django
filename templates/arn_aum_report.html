@@ -1,0 +1,504 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+    <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+
+        .theme-primary .btn-flat.btn-danger {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .theme-primary .btn-flat.btn-success {
+            color: #2a8853 !important;
+            background-color: #C9F7F5;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .dropdown-item {
+            color: #475F7B;
+            font-weight: 500;
+            padding: 4px 12px;
+            width: auto;
+            margin: 4px;
+            -webkit-transition: 0.15s linear;
+            transition: 0.15s linear;
+        }
+
+        .theme-primary .show > .btn-primary.dropdown-toggle {
+            background-color: #103763 !important;
+            border-color: #103763 !important;
+            color: #ffffff;
+        }
+        
+
+        /*.theme-primary a:hover, .theme-primary a:focus {
+            color: #a6ce39;
+        }
+*/
+        .red:hover{
+            color: #f10e0e;
+        }
+        .blue:hover{
+            color: #f10e0e;
+        } 
+
+        color: #3F4254;
+    </style>
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Project Management
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                AUM Report
+                                            </h3>
+                                            {% comment %} <div class="text-right flex-grow">
+                                                <a href="/add_mf_manually"><button class="btn btn-primary">Add MF Manually</button></a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs customtab2" role="tablist">
+                                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#amc_wise" role="tab" aria-selected="false"><span class="hidden-sm-up"><i class="ion-home"></i></span> <span class="hidden-xs-down">AMC Wise</span></a> </li>
+                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#type_wise" role="tab" aria-selected="false"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">Type Wise</span></a> </li>
+                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#scheme_wise" role="tab" aria-selected="false"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">Scheme Wise</span></a> </li>
+                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#client_wise" role="tab" aria-selected="false"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">Client Wise</span></a> </li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="amc_wise" role="tabpanel">
+                                                    <form action="">
+                                                        <div class="box-body">
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label>Date<small class="text-danger">*</small></label>
+                                                                        <input class="form-control" type="date" name="date">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-10 col-lg-10">
+                                                                    <div class="form-group">
+                                                                        <label>Scheme Name<small class="text-danger"> *</small></label>
+                                                                        <select class="form-control" name="" id="">
+                                                                            <option disable selected>Please Select Scheme Name</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                        </select><br>
+                                                                        <label style="color: #007eff;"><small>Please select scheme and click on add button to add scheme in below dropdwon to compare schemes</small></label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-right flex-grow">
+                                                                    <div class="col-md-2 col-lg-2">
+                                                                        <div class="submit_btn-form">
+                                                                            <a href="#">
+                                                                                <button type="button" class="add_btn waves-effect waves-light btn btn-flat mb-5">Add</button>
+                                                                            </a>
+                                                                            {% comment %} <a  href="#">
+                                                                                <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                            </a> {% endcomment %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-10 col-lg-10">
+                                                                    <div class="form-group">
+                                                                        <label>Selected Scheme<small class="text-danger"> *</small></label>
+                                                                        <select class="form-control" name="" id="">
+                                                                            <option disable selected>Please Select Scheme Name</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                        </select><br>
+                                                                        <label style="color: #ed1a24;"><small>Please select scheme and click on remove button to remove scheme in dropdwon</small></label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-right flex-grow">
+                                                                    <div class="col-md-2 col-lg-2">
+                                                                        <div class="submit_btn-form">
+                                                                            <a href="#">
+                                                                                <button type="button" class="btn_remove waves-effect waves-light btn btn-flat mb-5" style="width: 88px;font-size: 15px;height: 41px;">Remove</button>
+                                                                            </a>
+                                                                            {% comment %} <a  href="#">
+                                                                                <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                            </a>{% endcomment %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><br>
+                                                            <div class="row" style="justify-content: center;">
+                                                                <div class="col-md-2 col-lg-2">
+                                                                    <h4><label>Report Format:-</label></h4>
+                                                                </div>
+                                                                <div class="col-md-2 col-lg-2">
+                                                                    <input name="group5" type="radio" id="arn_amc_wise_radio_1" class="with-gap radio-col-success">
+                                                                    <label for="arn_amc_wise_radio_1">AMC Wise</label>
+                                                                </div>
+                                                                <div class="col-md-2 col-lg-2">
+                                                                    <input name="group5" type="radio" id="arn_amc_wise_radio_2" class="with-gap radio-col-success">
+                                                                    <label for="arn_amc_wise_radio_2">Scheme Wise</label>
+                                                                </div>
+                                                            </div>
+                                                            <br><br><br><br>
+                                                            <div class="text-right flex-grow">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="submit_btn-form" align="center">
+                                                                        <a  href="#">
+                                                                            <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {% comment %} <br><br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-0.8 col-lg-0.8">
+                                                            <img src="/static/images/info-icon.png" alt="" style="height: 18px;">
+                                                        </div>
+                                                        <div class="col-md-11 col-lg-11 ml-4">
+                                                            <h5>Note:</h5>
+                                                            <div style="font-size: 11px;">
+                                                                <p>1. Select As On Date.</p>
+                                                                <p>2. Then Select Head Name, of which you want to generate report</p>
+                                                                <p>3. You will find all members name in client name list of selected head name</p>
+                                                                <p>4. Select --ALL--to generate family report otherwise you can generate individual member's report also.</p>
+                                                                <p>5. Select Only client name if you wish to generate particular client wise report.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                </div>
+                                                <div class="tab-pane" id="type_wise" role="tabpanel">
+                                                    <div class="box-header with-border flexbox">
+                                                        <h3 class="box-title">
+                                                            Type Wise AUM
+                                                        </h3>
+                                                    </div>
+                                                    <form action="">
+                                                        <div class="box-body">
+                                                            <div class="text-middle flex-grow">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="row" style="justify-content: center;">
+                                                                        <div class="col-md-3 col-lg-3">
+                                                                            <label><strong>Select Scheme Nature</strong></label>
+                                                                        </div>
+                                                                        <div class="col-md-1 col-lg-1">
+                                                                            <input name="group5" type="radio" id="arn_equity_radio_1" class="with-gap radio-col-success">
+                                                                            <label for="arn_equity_radio_1">Equity</label>
+                                                                        </div>
+                                                                        <div class="col-md-1 col-lg-1">
+                                                                            <input name="group5" type="radio" id="arn_debt_radio_2" class="with-gap radio-col-success">
+                                                                            <label for="arn_debt_radio_2">Debt</label>
+                                                                        </div>
+                                                                        <div class="col-md-1 col-lg-1">
+                                                                            <input name="group5" type="radio" id="arn_liquid_radio_2" class="with-gap radio-col-success">
+                                                                            <label for="arn_liquid_radio_2">Liquid</label>
+                                                                        </div>
+                                                                        <div class="col-md-1 col-lg-1">
+                                                                            <input name="group5" type="radio" id="arn_balance_radio_2" class="with-gap radio-col-success">
+                                                                            <label for="arn_balance_radio_2">Balance</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br><br><br><br>
+                                                            <div class="text-right flex-grow">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="submit_btn-form" align="center">
+                                                                        <a  href="/arn_aum_typewise_report_page" target="_blank">
+                                                                            <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <br><br><br>
+                                                    {% comment %} <div class="row">
+                                                        <div class="col-md-0.8 col-lg-0.8">
+                                                            <img src="/static/images/info-icon.png" alt="" style="height: 18px;">
+                                                        </div>
+                                                        <div class="col-md-11 col-lg-11 ml-4">
+                                                            <h5>Note:</h5>
+                                                            <div style="font-size: 11px;">
+                                                                <p>1. Select As On Date.</p>
+                                                                <p>2. Then Select Head Name, of which you want to generate report</p>
+                                                                <p>3. You will find all members name in client name list of selected head name</p>
+                                                                <p>4. Select --ALL--to generate family report otherwise you can generate individual member's report also.</p>
+                                                                <p>5. Select Only client name if you wish to generate particular client wise report.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                </div>
+                                                <div class="tab-pane" id="scheme_wise" role="tabpanel">
+                                                    <div class="box-header with-border flexbox">
+                                                        <h3 class="box-title">
+                                                            Scheme Wise AUM
+                                                        </h3>
+                                                    </div>
+                                                    <form action="">
+                                                        <div class="box-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="form-group">
+                                                                        <label>ARN No<small class="text-danger"> *</small></label>
+                                                                        <select class="form-control" name="" id="">
+                                                                            <option disable selected>Please Select ARN No</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                            <option value="">Both</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br><br><br><br>
+                                                            <div class="text-right flex-grow">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="submit_btn-form" align="center">
+                                                                        <a  href="arn_aum_schemewise_report_page" target="_blank">
+                                                                            <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {% comment %} <br><br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-0.8 col-lg-0.8">
+                                                            <img src="/static/images/info-icon.png" alt="" style="height: 18px;">
+                                                        </div>
+                                                        <div class="col-md-11 col-lg-11 ml-4">
+                                                            <h5>Note:</h5>
+                                                            <div style="font-size: 11px;">
+                                                                <p>1. Select As On Date.</p>
+                                                                <p>2. Then Select Head Name, of which you want to generate report</p>
+                                                                <p>3. You will find all members name in client name list of selected head name</p>
+                                                                <p>4. Select --ALL--to generate family report otherwise you can generate individual member's report also.</p>
+                                                                <p>5. Select Only client name if you wish to generate particular client wise report.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                </div>
+                                                <div class="tab-pane" id="client_wise" role="tabpanel">
+                                                    <div class="box-header with-border flexbox">
+                                                        <h3 class="box-title">
+                                                            Client Wise AUM
+                                                        </h3>
+                                                    </div>
+                                                    <form action="">
+                                                        <div class="box-body">
+                                                            <br><br><br><br>
+                                                            <div class="text-right flex-grow">
+                                                                <div class="col-md-12 col-lg-12">
+                                                                    <div class="submit_btn-form" align="center">
+                                                                        <a  href="arm_aum_clientwise_report_page" target="_blank">
+                                                                            <button type="button" class="btn_report waves-effect waves-light btn btn-flat mb-5" >Report</button>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {% comment %} <br><br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-0.8 col-lg-0.8">
+                                                            <img src="/static/images/info-icon.png" alt="" style="height: 18px;">
+                                                        </div>
+                                                        <div class="col-md-11 col-lg-11 ml-4">
+                                                            <h5>Note:</h5>
+                                                            <div style="font-size: 11px;">
+                                                                <p>1. Select As On Date.</p>
+                                                                <p>2. Then Select Head Name, of which you want to generate report</p>
+                                                                <p>3. You will find all members name in client name list of selected head name</p>
+                                                                <p>4. Select --ALL--to generate family report otherwise you can generate individual member's report also.</p>
+                                                                <p>5. Select Only client name if you wish to generate particular client wise report.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                        <!-- /.modal -->
+
+                        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-xl">
+                                <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Add Client Family</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>BSE SM Member ID</th>
+                                                        <th>BSE SM User ID</th>
+                                                        <th>BSE SM Password</th>
+                                                        <th>ARN Code</th>
+                                                        <th>EUIN No</th>
+                                                        <th width="5%">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Salvatore Wuckert</td>
+                                                        <td>Aakash Dattatrey Dalvi</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>
+                                                            <a class="dropdown-item"  data-toggle="modal" href="javascript:void(0);" data-target=""><button type="button" class="delete_btn waves-effect waves-light btn btn-flat mb-5"><i class="fa fa-trash-o"></i>Delete</button></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Salvatore Wuckert</td>
+                                                        <td>DATTATRAY BALKRISHNA DALVI</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>
+                                                            <a class="dropdown-item"  data-toggle="modal" href="javascript:void(0);" data-target=""><button type="button" class="delete_btn waves-effect waves-light btn btn-flat mb-5"><i class="fa fa-trash-o"></i>Delete</button></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Salvatore Wuckert</td>
+                                                        <td>SUVIDHA GANESH PATIL</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>GHDFD256987</td>
+                                                        <td>
+                                                            <a class="dropdown-item"  data-toggle="modal" href="javascript:void(0);" data-target=""><button type="button" class="delete_btn waves-effect waves-light btn btn-flat mb-5"><i class="fa fa-trash-o"></i>Delete</button></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer text-right" style="width: 100%;">
+                                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+                                            {% comment %} <button type="submit" name="submit" class="btn btn-success text-left">Submit</button> {% endcomment %}
+                                        </div>
+
+                                   
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
+            	    </div>
+                </div>
+                <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+
+        <!-- sweet alert  -->
+        <script>
+            $('.cancel-btn').on('click',function(){
+                 swal({
+            title: "Are you sure ?",
+            text: "Do you really want to delete ?", 
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+         .then((willDelete) => {
+          if (willDelete) {
+            swal("Deleted Successfully!", {
+              icon: "success",
+            });
+          }
+        });
+        // .then((willDelete) => {
+        //   if (willDelete) {
+        //     $('#addModal').modal('show')
+        //   }
+        // })
+            })
+           
+        </script>
+	
+    </body>
+</html>

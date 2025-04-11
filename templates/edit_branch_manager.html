@@ -1,0 +1,375 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+        <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+        }
+        .theme-primary .btn-primary {
+            background-color: #007bff !important
+            border-color: #007bff !important;
+            color: #ffffff;
+        }
+        .theme-primary .btn-flat.btn-info {
+            color: #007eff !important;
+            background-color: #beddfd;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .theme-primary .bg-primary {
+            background-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .box {
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 0px;
+            -webkit-transition: .5s;
+            transition: .5s;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            box-shadow: none;
+            /*box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%);*/
+        }
+
+        .line{
+            border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+        }
+
+        .box-body .box-title {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+            color: #103763;
+            font-weight: 600;
+        }
+
+        .btn-inactive {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .hr_line {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .form-control {
+              margin: 0px;
+              padding: 5px 30px 5px 15px;
+        }
+
+        .card-btn {
+            background-color: #fff;
+        }
+
+        .submit_btn-form {
+           padding: 1.5rem 1.5rem;
+        }
+
+        .box_btn {
+        position: absolute;
+        margin-bottom: 10px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0px;
+        -webkit-transition: .5s;
+        transition: .5s;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        box-shadow: none;
+        /* box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%); */
+        }
+
+        .content-1 {
+            min-height: 80px;
+            padding: 10px 10px 0px 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+         color: #3F4254;
+    </style>
+
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item" aria-current="page">
+                                                    <a href="project_management.php">
+                                                        Project Management
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Add Client Family
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                    
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                Edit Branch Manager
+                                            </h3>
+                                            <div class="text-right flex-grow">
+                                                {% comment %} <a href="/branch_manager_master">
+                                                </a> {% endcomment %}
+                                                <button type="button" onclick="history.back()" class="btn btn-dark">Back</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <form id="edit_branch_manager_form" action="" method="POST">
+                                            {% csrf_token %}
+                                            {% comment %} <input type="text" class="form-control" id="previous_url" name="previous_url" value="{{request.META.HTTP_REFERER}}" hidden> {% endcomment %}
+                                            <input type="text" class="form-control" id="edit_id" name="edit_id" value="{{bm.id}}" hidden>
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    {% comment %} <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>BM Code<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="bm_code" name="bm_code" placeholder="BM Code" value="{{bm.CODE}}" required>
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>BM Name<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="bm_name" name="bm_name" placeholder="BM Name" value="{{bm.NAME}}" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Address 1<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="bm_address_1" name="bm_address_1" placeholder="Address 1" value="{{bm.ADD1}}" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Address 2<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="bm_address_2" name="bm_address_2" placeholder="Address 2" value="{{bm.ADD2}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Date Of Birth<small class="text-danger">*</small></label>
+                                                            <input type="date" class="form-control" id="bm_dob" name="bm_dob" value="{{bm.DOB|date:"Y-m-d"}}" required>
+                                                        </div>
+                                                        {% comment %} <label>Select Dates<small class="text-danger">*</small></label>
+                                                        <div class="from-group input-group">
+                                                            <input type="text" id="" class="form-control date" placeholder="DD-MM-YYYY" value="">
+                                                            <div class="input-group-append show_pass" style="cursor:pointer;">
+                                                                <span class="input-group-text">
+                                                                    <i id="" class="fa fa-calendar date"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div> {% endcomment %}
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Phone No</label>
+                                                            <input type="text" class="form-control" id="bm_phone_no" name="bm_phone_no" value="{{bm.PHONE}}" placeholder="Phone No" value="" maxlength="10" pattern="[0-9]{10}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="10 digit number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Mobile<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="bm_mob_no" name="bm_mob_no" placeholder="Mobile" value="{{bm.MOB_NO}}" maxlength="10" pattern="[0-9]{10}" onkeypress="return /[0-9]/.test(event.key)" onpaste="return /[0-9]/.test(event.target.value)" title="10 digit number" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Bank Name</label>
+                                                            <input type="text" class="form-control" placeholder="Bank Name" id="bank_name" name="bank_name" value="{{bm.BANK_NAME}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Account Number</label>
+                                                            <input type="text" class="form-control" placeholder="Account Number" id="acc_no" name="acc_no" value="{{bm.ACC_NO}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>IFSC Code</label>
+                                                            <input type="text" class="form-control" placeholder="IFSC Code" id="ifsc_code" name="ifsc_code" value="{{bm.IFSC_CODE}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input type="text" class="form-control" id="bm_email" name="bm_email" placeholder="Email" value="{{bm.EMAIL}}" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Branch Location Name<small class="text-danger"> *</small></label>
+                                                            <select class="form-control select2" name="branch_loc" id="branch_loc" required>
+                                                                <option value="" disabled >Select Branch Location</option>
+                                                                {% for i in bml %}
+                                                                    {% if bm.BRANCH_LOC.id == i.id %}
+                                                                        <option value="{{i.id}}" selected>{{i.NAME}}</option>
+                                                                    {% else %}
+                                                                        <option value="{{i.id}}">{{i.NAME}}</option>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Pan No<small class="text-danger"> *</small></label>
+                                                            <input type="text" class="form-control" placeholder="Pan No" id="pan_no" name="pan_no" value="{{bm.PAN_NO}}" maxlength="10" pattern="[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}" onkeyup="this.value = this.value.toUpperCase();" title="Enter Valid Pan Number Format ABCDE1234F" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Aadhaar Card<small class="text-danger"> *</small></label>
+                                                            <input type="text" class="form-control" placeholder="Aadhaar No" id="aadhaar_no" name="aadhaar_no" value="{{bm.AADHAAR_NO}}" maxlength="12" pattern="[0-9]{12}" title="Enter Valid Aadhaar Number" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="text-right flex-grow">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="submit_btn-form">
+                                                        {% comment %} <a href="#">
+                                                            <button type="button" class="btn_remove waves-effect waves-light btn btn-flat mb-5">Remove</button>
+                                                        </a>&nbsp;&nbsp; {% endcomment %}
+                                                        
+                                                            <button type="submit" class="btn_submit waves-effect waves-light btn btn-flat mb-5">Submit</button>
+                                                            {% comment %} <a href="#">
+                                                            </a> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- /.box-body -->
+                                        <!-- /.box-footer -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                        </section>
+                        <!-- /.content -->
+
+
+                        {% comment %} <section class="content-1">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box">
+                                        <div class="text-right flex-grow">
+                                            <div class="submit_btn-form">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-success btn-md">Submit</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </section>         {% endcomment %}
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/master/bm.js"></script>
+        {% comment %} <script>
+            var dateToday = new Date();
+                $('.date').datepicker({
+                //'startDate': dateToday,
+                multidate: false,
+                format: 'dd-mm-yyyy'
+            })
+        </script>
+        <script>
+            $(function() {
+                $(".date").datepicker();
+                $(".date").on("change",function(){
+                    var selected = $(this).val();
+                    console.log("date",selected)
+                   // alert(selected);
+                });
+            });
+        </script> {% endcomment %}
+        </script>
+	
+    </body>
+</html>

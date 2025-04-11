@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Buy Scheme</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Buy Scheme</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mt-3">
+                    <div class="add_btn text-end">
+                        <button type="button" class="btn btn_new_color" data-bs-toggle="modal" data-bs-target="#add_scheme">Add Scheme</button>   
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        {% comment %} <h5 class="card-title">Customer</h5> {% endcomment %}
+                        <div class="table-responsive">
+                            <table id="scheme_table" class="table table-bordered data_tbl">
+                                <thead>
+                                  <tr>
+                                    <th width="8%">Sr. No.</th>
+                                    <th>MFU<br>Fund Code <br>Scheme Code</th>
+                                    {% comment %} <th>Scheme Code</th>
+                                    <th>Company</th> {% endcomment %}
+                                    <th>Name<br>Company Fund Code <br>Product Code</th>
+                                    {% comment %} <th>Product Code</th> {% endcomment %}
+                                    <th>Scheme Name</th>
+                                    <th>LUMPSUM</th>
+                                    <th>SIP</th>
+                                    <th>SWP</th>
+                                    {% comment %} <th>Plant Type</th>
+                                    <th>Pri ISIN No</th>
+                                    <th>Sec ISIN No</th> {% endcomment %}
+                                    <th width="10%">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% comment %} <tr>
+                                    <th scope="row">1</th>
+                                    <td>AXD1D</td>
+                                    <td>IDBI FMP - Series III - 24 Months(July 2013) - F Direct Plan - Dividend</td>
+                                    <td>DIR</td>
+                                    <td>
+                                        <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item py-1" href="scheme_details">Details</a></li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>AXD1D</td>
+                                    <td>IDBI FMP - Series III - 24 Months(July 2013) - F Regular Plan - Dividend</td>
+                                    <td>REG</td>
+                                    <td>
+                                        <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item py-1" href="scheme_details">Details</a></li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                  </tr> {% endcomment %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+  <!-- Modal -->
+<div class="modal fade" id="add_scheme" tabindex="-1" aria-labelledby="add_schemeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add_schemeLabel">Add Scheme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="add_scheme_form">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="" class="form-label">Upload Excel</label>
+                <input type="file" class="form-control" name="excel_file" id="" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+  <script src="/static/admin_panel/js/scheme/scheme.js"></script>
+</body>
+
+</html>

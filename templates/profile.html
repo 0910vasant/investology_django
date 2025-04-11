@@ -1,0 +1,285 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+    <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+
+        .theme-primary .btn-flat.btn-danger {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .theme-primary .btn-flat.btn-success {
+            color: #2a8853 !important;
+            background-color: #C9F7F5;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .dropdown-item {
+            color: #475F7B;
+            font-weight: 500;
+            padding: 4px 12px;
+            width: auto;
+            margin: 4px;
+            -webkit-transition: 0.15s linear;
+            transition: 0.15s linear;
+        }
+
+        .theme-primary .show > .btn-primary.dropdown-toggle {
+            background-color: #103763 !important;
+            border-color: #103763 !important;
+            color: #ffffff;
+        }
+        
+
+        /*.theme-primary a:hover, .theme-primary a:focus {
+            color: #a6ce39;
+        }
+*/
+        .red:hover{
+            color: #f10e0e;
+        }
+        .blue:hover{
+            color: #f10e0e;
+        } 
+
+        color: #3F4254;
+    </style>
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Project Management
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                User Profile
+                                            </h3>
+                                            {% comment %} <a href="javascript:void(0);" id="edit_profile" user-type="{{request.session.USER_TYPE}}" user-id="{{request.session.USER_TYPE_ID}}"><i class="fa fa-edit" style="font-size: 21px;"></i></a> {% endcomment %}
+                                            {% comment %} <div class="text-right flex-grow">
+                                                <a href="javascript:void(0);" id="punch_in"><button class="btn btn-primary">Puch In</button></a>
+                                                <a href="javascript:void(0);" id="punch_out"><button class="btn btn-primary"><i class="ti-minus"></i>&nbsp; Puch Out</button></a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                        <!-- /.box-header -->
+
+
+
+
+
+                                        <div class="box-body">
+                                            {% if request.session.USER_TYPE == "bm" or request.session.USER_TYPE == "rm" or request.session.USER_TYPE == "ep" or request.session.USER_TYPE == "bo" %}
+                                                <div class="row mt-5">
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Code:</label>
+                                                            <h6><strong>{{data.CODE}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Name:</label>
+                                                            <h6><strong>{{data.NAME}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="prod-sec">
+                                                            <label>Address 1 :</label>
+                                                            <h6><strong>{{data.ADD1}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="prod-sec">
+                                                            <label>Address 2 :</label>
+                                                            <h6><strong>{{data.ADD2}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Phone Number:</label>
+                                                            <h6><strong>{{data.PHONE}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Mobile Number:</label>
+                                                            <h6><strong>{{data.MOB_NO}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Email:</label>
+                                                            <h6><strong>{{data.EMAIL}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Date of Birth:</label>
+                                                            <h6><strong>{{data.DOB}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    {% if request.session.USER_TYPE == "bm" %}
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <div class="prod-sec">
+                                                                <label>Branch Location:</label>
+                                                                <h6><strong>{{data.BRANCH_LOC.NAME}}</strong></h6>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if request.session.USER_TYPE != "bm" %}
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <div class="prod-sec">
+                                                                <label>Pan No:</label>
+                                                                <h6><strong>{{data.PAN_NO}}</strong></h6>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="row mt-5">
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Bank Name:</label>
+                                                            <h6><strong>{{data.BANK_NAME}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Account No:</label>
+                                                            <h6><strong>{{data.ACC_NO}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>IFSC Code:</label>
+                                                            <h6><strong>{{data.IFSC_CODE}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="row mt-5">
+                                                    <div class="col-lg-4 col-md-4">
+                                                        <div class="prod-sec">
+                                                            <label>Name:</label>
+                                                            <h6><strong>{{data.NAME}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="prod-sec">
+                                                            <label>Username :</label>
+                                                            <h6><strong>{{data.USERNAME}}</strong></h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                        <!-- /.modal -->
+
+
+            	    </div>
+                </div>
+                <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/profile.js"></script>
+        {% comment %} <script>
+            j
+            edit_profile
+        </script> {% endcomment %}
+        <!-- sweet alert  -->
+        <script>
+            $('.cancel-btn').on('click',function(){
+                 swal({
+            title: "Are you sure ?",
+            text: "Do you really want to delete ?", 
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+         .then((willDelete) => {
+          if (willDelete) {
+            swal("Deleted Successfully!", {
+              icon: "success",
+            });
+          }
+        });
+        // .then((willDelete) => {
+        //   if (willDelete) {
+        //     $('#addModal').modal('show')
+        //   }
+        // })
+            })
+           
+        </script>
+	
+    </body>
+</html>

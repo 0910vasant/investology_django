@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Scheme Category</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Scheme Category </li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mt-3">
+                    <div class="add_btn text-end">
+                        <button type="button" class="btn btn_new_color" data-bs-toggle="modal" data-bs-target="#add_scheme_category">Add Category</button>   
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        {% comment %} <h5 class="card-title">Customer</h5> {% endcomment %}
+                        <div class="table-responsive">
+                            <table id="scheme_category_table" class="table table-bordered data_tbl">
+                                <thead>
+                                  <tr>
+                                    <th width="8%">Sr. No.</th>
+                                    <th class="text-center">Scheme Category Name</th>
+                                    <th class="text-center">Scheme Category Id</th>
+                                    <th width="10%">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% comment %} <tr>
+                                    <td>1</td>
+                                    <td>ICICI</td>
+                                    <td>
+                                      <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item py-1" href="#" data-bs-toggle="modal" data-bs-target="#edit_scheme_category">Edit</a></li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                  </tr> {% endcomment %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+  <!-- Modal -->
+<div class="modal fade" id="add_scheme_category" tabindex="-1" aria-labelledby="add_scheme_cCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add_scheme_categoryLabel">Add Scheme Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="add_scheme_category_form">
+      {% csrf_token %}
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="" class="form-label">Scheme Category Name <small class="text-danger"> *</small></label>
+                <input type="text" class="form-control" id="category" name="category" placeholder="Scheme Category Name" required>
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Scheme Category Id <small class="text-danger"> *</small></label>
+              <input type="text" class="form-control" id="category_id" name="category_id" placeholder="Scheme Category Id" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="submit" name="submit" class="btn btn-success">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+  <!-- edit_scheme_category Modal -->
+  <div class="modal fade" id="edit_scheme_category" tabindex="-1" aria-labelledby="edit_scheme_sub_categoryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit_scheme_sub_categoryLabel">Edit Scheme Sub Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="edit_scheme_category_form" >
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="mb-3">
+                <label for="" class="form-label">Scheme Category Name <small class="text-danger"> *</small></label>
+                <input type="text" class="form-control" id="category" name="category" placeholder="Scheme Category Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Scheme Category Id <small class="text-danger"> *</small></label>
+                <input type="text" class="form-control" id="category_id" name="category_id" placeholder="Scheme Category Id" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+              {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+              <button type="submit" name="submit" class="btn btn-success">Edit</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+  <script src="/static/admin_panel/js/scheme/scheme_category.js"></script>
+</body>
+
+</html>

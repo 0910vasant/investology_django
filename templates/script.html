@@ -1,0 +1,196 @@
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> {% endcomment %}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="/static/js/vendors.min.js"></script>
+    <script src="/static/assets/icons/feather-icons/feather.min.js"></script>	
+
+
+	
+
+	<!--<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>-->
+	<!--<script src="../assets/vendor_components/progressbar.js-master/dist/progressbar.js"></script>   -->
+    <!--<script src="../assets/vendor_components/sweetalert/sweetalert.min.js"></script>-->
+    <!--<script src="../assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>	-->
+    	
+    <script src="/static/assets/vendor_components/dropzone/dropzone.js"></script>	
+    <script src="/static/assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+	<script src="/static/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+	<script src="/static/assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+	<script src="/static/assets/vendor_components/select2/dist/js/select2.full.js"></script>
+	<script src="/static/assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
+	<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+	<script src="/static/assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+	<script src="/static/assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
+	<script src="/static/assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="/static/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="/static/assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="/static/assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script src="/static/assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="/static/assets/vendor_plugins/iCheck/icheck.min.js"></script>
+	<!-- Florence Admin App -->
+	<script src="/static/js/template.js"></script>
+	<!-- <script src="js/pages/dashboard.js"></script> -->
+	<script src="/static/js/demo.js"></script>
+	<script src="/static/js/pages/data-table.js"></script>
+	<script src="/static/js/pages/advanced-form-element.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/dist/boxicons.js" 
+	integrity="sha512-Dm5UxqUSgNd93XG7eseoOrScyM1BVs65GrwmavP0D0DujOA8mjiBfyj71wmI2VQZKnnZQsSWWsxDKNiQIqk8sQ==" 
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	{% comment %} <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> {% endcomment %}
+	<script>
+		user_type = "{{request.session.USER_TYPE}}"
+		login_id = "{{request.session.LOGIN_ID}}"
+	</script>
+	<script src="/static/js/master/add_client_family.js"></script>
+	<script src="/static/js/login/change_password.js"></script>
+	<script src="/static/js/login/forgot_password.js"></script>
+	<script src="/static/js/load_user.js"></script>
+	<script src="/static/js/customer/load_select_customer.js"></script>
+	
+	
+	
+	{% comment %} <script src="/static/js/bank.js"></script> {% endcomment %}
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+	<script>$.fn.dataTable.ext.errMode = 'none';</script>
+
+	<script>
+	    $(document).ready(function () {
+	        
+	        $('.select2').select2({
+				width:"100%"
+			});
+
+	        $('.delRow').on('click', function () {
+
+	        	swal({
+		            title: "Are you sure ?",
+		            text: "Do you really want to delete ?", 
+		            icon: "warning",
+		            buttons: true,
+		            dangerMode: true,
+		        })
+		        .then((willDelete) => {
+		          if (willDelete) {
+		            swal("Poof! Your imaginary file has been deleted!", {
+		              icon: "success",
+		            });
+		          } else {
+		            swal("Your imaginary file is safe!");
+		          }
+		        });
+
+	        });
+
+	    });
+	</script>
+
+	<script>
+		$('.show_pass').on('click', function(){
+		   $(this).find('i').toggleClass("fa-eye fa-eye-slash");
+		   var show_pass = $(this).siblings('input').attr("type");
+
+		   if(show_pass=="password")
+			   $(this).siblings('input').attr("type", 'text');
+		   else
+			   $(this).siblings('input').attr("type", 'password');
+	   });
+   </script>
+<script>
+	var toastMixin = Swal.mixin({
+		toast: true,
+		icon: 'success',
+		//title: 'General Title',
+		animation: false,
+		position: 'top',
+		showConfirmButton: true,
+		timer: 10000,
+		//timerProgressBar: true,
+
+		didOpen: (toast) => {
+		  toast.addEventListener('mouseenter', Swal.stopTimer)
+		  toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	  });
+	{% for message in messages %}
+		if("{{message.tags}}"=="success"){
+			toastMixin.fire({
+				animation: true,
+				title: "{{message}}"
+			});
+		}
+		if("{{message.tags}}"=="error"){
+			toastMixin.fire({
+				animation: true,
+				title: "{{message}}",
+				icon: 'error'
+			});
+		}
+	{% endfor %}
+	
+	
+	
+	
+	{% comment %} document.querySelector(".second").addEventListener('click', function(){
+	  toastMixin.fire({
+		animation: true,
+		title: 'Signed in Successfully'
+	  });
+	});
+	
+	document.querySelector(".third").addEventListener('click', function(){
+	  toastMixin.fire({
+		animation: true,
+		title: 'Wrong Password',
+		icon: 'error'
+	  });
+	}); {% endcomment %}
+</script>
+
+   {% comment %} <script>
+	+function ($) {
+		'use strict'
+		  
+	  // Dynamic active menu
+		 	var path = window.location.pathname.split("/").pop();
+			var live_url = decodeURI(window.location.pathname+location.search.split("&page")[0])
+			console.log("path",path)
+			console.log("live_url",live_url)
+			var target = $('.sidebar-menu li a[href="/'+path+'"]');
+			console.log("target",target)
+			console.log("target1",`a[href=/'${path }']`)
+
+		  	target.parent().addClass('noactive');
+		  	$('.sidebar-menu li.active').parents('li').addClass('active');
+	  		target.parent().parent().css("display","block");
+	  }(jQuery)
+   </script> {% endcomment %}
+{% comment %} 
+<script>
+	{% for message in messages %}
+		if("{{message.tags}}"=="success"){
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: "{{message}}",
+				showConfirmButton: false,
+				// confirmButtonText: 'OK',
+				timer: 2000
+			})
+		}
+		if("{{message.tags}}"=="error"){
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: '{{message}}',
+				showConfirmButton: true,
+				confirmButtonText: 'OK',
+				// timer: 1500
+			})
+		}
+	{% endfor %}
+</script> {% endcomment %}
+

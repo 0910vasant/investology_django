@@ -1,0 +1,963 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+        <style type="text/css">
+        .box-title{
+            z-index: auto;
+            font-size: 18px;
+            font-weight: 500;
+            color: #181C32;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+        }
+        .theme-primary .btn-primary {
+            background-color: #007bff !important
+            border-color: #007bff !important;
+            color: #ffffff;
+        }
+        .theme-primary .btn-flat.btn-info {
+            color: #007eff !important;
+            background-color: #beddfd;
+            border-color: transparent;
+        }
+
+        .btn.btn-flat {
+            border-radius: 8px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+
+        .theme-primary .bg-primary {
+            background-color: #103763 !important;
+            color: #ffffff;
+        }
+
+        .box {
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 0px;
+            -webkit-transition: .5s;
+            transition: .5s;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            box-shadow: none;
+            /*box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%);*/
+        }
+
+        .line{
+            border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+        }
+
+        .box-body .box-title {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+            color: #103763;
+            font-weight: 600;
+        }
+
+        .btn-inactive {
+            color: #ed1a24 !important;
+            background-color: #ffc6cb;
+            border-color: transparent;
+        }
+
+        .hr_line {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .form-control {
+              margin: 0px;
+              padding: 5px 30px 5px 15px;
+        }
+
+        .card-btn {
+            background-color: #fff;
+        }
+
+        .submit_btn-form {
+           padding: 1.5rem 1.5rem;
+        }
+
+        .box_btn {
+        position: absolute;
+        margin-bottom: 10px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0px;
+        -webkit-transition: .5s;
+        transition: .5s;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        box-shadow: none;
+        /* box-shadow: 0px 2px 5px 0px rgb(19 23 38 / 5%); */
+        }
+
+        .content-1 {
+            min-height: 80px;
+            padding: 10px 10px 0px 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        
+    </style>
+
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+            	    <div class="container-full">
+                        <!-- Content Header (Page header) -->
+                        {% comment %} <div class="content-header">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-auto">
+                                    <div class="d-inline-block align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.php">
+                                                        <i class="mdi mdi-home-outline"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item" aria-current="page">
+                                                    <a href="project_management.php">
+                                                        Project Management
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    <a href="javascript:void(0);">
+                                                         Add Client Family
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> {% endcomment %}
+
+                    
+                        <!-- Main content -->
+                        <section class="content">
+                            {% include 'live_index.html' %}
+                            <div class="row">
+
+                                <div class="col-12">
+
+                                    <div class="box">
+                                        <div class="box-header with-border flexbox">
+                                            <h3 class="box-title">
+                                                Buy Insurance
+                                            </h3>
+                                            <div class="text-right flex-grow">
+                                                {% comment %} <a href="/relationship_manager_master">
+                                                </a> {% endcomment %}
+                                                <button type="button" onclick="history.back()" class="btn btn-dark">Back</button>
+                                               
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <form action="/add_insurance_and_customer" method="POST">
+                                            {% csrf_token %}
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    {%comment%}<div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Customer<small class="text-danger"> *</small></label>
+                                                            <select class="form-control select2" name="cust_dtl" id="cust_dtl"  required>
+                                                                <option value="" disabled  selected>Please Select Customer</option>
+                                                                {% for i in data %}
+                                                                    <option value="{{i.id}}">{{i.C_NAME}} || {{i.MOB_NO}} || {{i.PAN_NO}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>{%endcomment%}
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>User Type<small class="text-danger"> *</small></label>
+                                                            <select name="u_type" id="u_type" class="form-control select2 u_type" required>
+                                                                <option value="" selected disabled>Select User Type</option>
+                                                                {% if request.session.USER_TYPE != "rm" or request.session.USER_TYPE != "bm" %}
+                                                                    <option value="bm">Easy Investology</option>
+                                                                {% endif %}
+                                                                <option value="rm">Relationship Manager</option>
+                                                                <option value="ep">Easy Partner</option>
+                                                                {% comment %} <option value="bo">Back Office</option> {% endcomment %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>User<small class="text-danger"> *</small></label>
+                                                            <select name="user" id="user" class="form-control select2 user" required>
+                                                                <option value="" selected disabled>Select User</option>
+                                                                {% for i in user %}
+                                                                <option value="{{i.id}}">{{i.C_NAME}} || {{i.MOB_NO}} || {{i.PAN_NO}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Proposer Name<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Client Name" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Date of Birth<small class="text-danger">*</small></label>
+                                                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Mobile No.<small class="text-danger">*</small></label>
+                                                            <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile No." value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Email<small class="text-danger"></small></label>
+                                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>PAN<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="pan" name="pan" placeholder="PAN" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Nominee<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="nominee_name" name="nominee_name" placeholder="Nominee name" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Type of Insurance<small class="text-danger" id="ins"> *</small></label>
+                                                            <select class="form-control select2" name="type_insurance" id="type_insurance" required>
+                                                                <option value="" disabled selected>Type of Insurance</option>
+                                                                {% for i in type_insurance %}
+                                                                    <option value="{{i.id}}" >{{i.NAME}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Insurance Company name<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="insurance_name" name="insurance_name" placeholder="Insurance name" value="" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Plan name<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="plan_name" name="plan_name" placeholder="Plan name" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Policy Broker<small class="text-danger">*</small></label>
+                                                            <select class="form-control select2" name="pb" id="pb" required>
+                                                                <option value="" disabled selected>Select Policy Broker</option>
+                                                                {% for i in pb %}
+                                                                    <option value="{{i.id}}">{{i.NAME}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Product<small class="text-danger" id="product"></small></label>
+                                                            <select class="form-control select2" name="insurance_product" id="insurance_product" required>
+                                                                <option value="" disabled selected>Type of product</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>No. of Insured<small class="text-danger" id="insured_label"></small></label>
+                                                            <input type="number" class="form-control" id="number_of_insured" name="number_of_insured" placeholder="No. of Insured" value="" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="add_box">
+                                                
+                                                
+                                                </div>
+                                                <div class="row">    
+                                                    
+                                                    
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Mode<small class="text-danger"></small></label>
+                                                            <select class="form-control select2" name="mode" id="mode" >
+                                                                <option value="1" selected>Monthly</option>
+                                                                <option value="3" >Quarterly</option>
+                                                                <option value="6" >Half Annually</option>
+                                                                <option value="12" >Annually</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Sub Mode<small class="text-danger"></small></label>
+                                                            <select class="form-control select2" name="sub_mode" id="sub_mode" >
+                                                                <option value="" selected disabled></option>
+                                                                <option value="Regular" >Regular</option>
+                                                                <option value="Limited" >Limited</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {%comment%}<div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Issuance Period (in Years)<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="period" name="period" placeholder="Insurance Period (in months)" value="" >
+                                                        </div>
+                                                    </div>{%endcomment%}
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>PT (Policy Term)<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="pt" name="pt" placeholder="PT (Policy Term)" value="" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>PPT (Premium Payment Term)<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="ppt" name="ppt" placeholder="PPT (Premium Payment)" value="" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Product Issuance Date<small class="text-danger"></small></label>
+                                                            <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Date of starting" value="" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" id="first_inception_row">
+                                                      
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Maturity Date<small class="text-danger"></small></label>
+                                                            <input type="date" class="form-control" id="maturity_date" name="maturity_date" placeholder="Date of maturity" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Renewal Date<small class="text-danger"></small></label>
+                                                            <input type="date" class="form-control" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Sum Assured<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="sum_assured" name="sum_assured" placeholder="Sum Assured" value="" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Policy No.<small class="text-danger"></small></label>
+                                                            <input type="text" class="form-control" id="policy_number" name="policy_number" placeholder="Policy No." value="" required>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Policy</label>
+                                                            <input type="file" class="" placeholder="Policy" id="policy_pdf" name="policy_pdf" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>RC Copy</label>
+                                                            <input type="file" class="" placeholder="RC Copy" id="rc_copy_pdf" name="rc_copy_pdf" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Old Insurance Policy</label>
+                                                            <input type="file" class="" placeholder="Old Insurance Policy" id="old_insurance_policy_pdf" name="old_insurance_policy_pdf" value="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <h3 class="box-title">
+                                                            PA (Premium Amount)
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Net Premium(Without Tax)<small class="text-danger">*</small></label>
+                                                            <input type="number" class="form-control" id="net_premium" name="net_premium" placeholder="Net Premium(Without Tax)" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Gross Premium(With Tax)<small class="text-danger">*</small></label>
+                                                            <input type="number" class="form-control" id="gross_premium" name="gross_premium" placeholder="Gross Premium(With Tax)" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Commission (%) FYC<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="commission" name="commission" placeholder="Commission (%)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Commission Amount<small class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" id="commission_amt" name="commission_amt" placeholder="Commission Amount" value="" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12" id="add_insurance_row">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="text-right flex-grow">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="submit_btn-form">
+                                                        {% comment %} <a href="#">
+                                                            <button type="button" class="btn_remove waves-effect waves-light btn btn-flat mb-5">Remove</button>
+                                                        </a>&nbsp;&nbsp; {% endcomment %}
+                                                        
+                                                            <button type="submit" class="btn_submit waves-effect waves-light btn btn-flat mb-5">Submit</button>
+                                                            {% comment %} <a href="#">
+                                                            </a> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- /.box-body -->
+                                        <!-- /.box-footer -->
+                                    </div>
+                                    
+                                    <!-- /.box -->
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                        </section>
+                        <!-- /.content -->
+
+
+                        {% comment %} <section class="content-1">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box">
+                                        <div class="text-right flex-grow">
+                                            <div class="submit_btn-form">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-success btn-md">Submit</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </section>         {% endcomment %}
+            	    </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script>
+            $("#net_premium,#commission").keyup(function (){
+                np = $("#net_premium").val()
+                c = $("#commission").val()
+                if(np != "" && c != ""){
+                    console.log("enter")
+                    c_amt = Math.round(parseInt(np)* parseFloat(c)/100)
+                    $("#commission_amt").val(c_amt)
+                }
+            });
+
+            $("#number_of_insured").on("change", function(){
+                $('#add_box').empty()
+                if($("#number_of_insured").val()>4){
+                    toastr.error("Number of Insured can be more than 4");
+                    $("#number_of_insured").val("");
+                }else{
+                    for(let i =1; i<=parseInt($("#number_of_insured").val()); i++){
+                    
+                    console.log(i);
+                    const div1 = $('<div>', {class: "col-md-4 col-lg-4", id: "future_div"+i});
+                    $('#add_box').append(div1);
+                    const div2 = $('<div>', {class: "form-group", id: "second_future_div"+i});
+                    $('#future_div'+i).append(div2);
+                    const label = $('<label>', {text: "Life to be Insured "+i, id: "label"+i});
+                    $('#second_future_div'+i).append(label);
+                    const input = $('<input>', {type:"text", class:"form-control", id:"life_to_be_insured"+i, name:"life_to_be_insured"+i, text:i});
+                    $('#label'+i).append(input);
+
+                    const insured_date_column = $('<div>', {class: "col-md-4 col-lg-4", id: "insured_date_column"+i});
+                    $('#add_box').append(insured_date_column);
+                    const insured_date = $('<div>', {class: "form-group", id: "insured_date"+i});
+                    $("#insured_date_column"+i).append(insured_date);
+                    const insured_date_label = $('<label>', {text: "Date of Birth ", id: "insured_date_label"+i});
+                    $("#insured_date"+i).append(insured_date_label);
+                    const insured_date_input = $('<input>', {type:"date", class:"form-control", id:"insured_date_input"+i, name:"insured_date_input"+i,});
+                    $("#insured_date_label"+i).append(insured_date_input);
+                    
+                    }
+                }
+                
+            });
+
+            $("#type_insurance").on("change", function(){
+
+                list_life = ['ULIP', 'Traditional', 'Term', 'Term + ULIP'];
+                health_list = ['Fresh', 'Port', 'Preffered Port'];
+                vehicle_list = ['Comprehsive', 'Third Party'];
+                sme_list = ['Fire', 'Shop', 'GMC', 'FTI', 'Marine', 'Society'];
+                console.log(document.getElementById('type_insurance').value);
+                
+                get_insurance_type = document.getElementById('type_insurance').value
+                get_list = [];
+                
+                if(get_insurance_type < 11){
+                    
+                    $('#insurance_product').empty();
+                    $('#insurance_product').attr('required');
+                    $("#product").text("*");
+                    $('#add_insurance_row').empty();
+
+                }
+                if(get_insurance_type == 11){
+                    get_list = list_life;
+                    $('#insurance_product').empty();
+                    $('#add_insurance_row').empty();
+                    $('#insurance_product').removeAttr('required');
+                    $("#product").text("*");
+                    $("#insured_label").text("*");
+                    $("#maturity_date").prop('disabled', false);
+                    // $('#add_box').attr('style', 'width:300px');
+                    $("#insurance_product").prop('disabled', false);
+                    $("#number_of_insured").prop('disabled', false);
+                    $("#add_box").empty();
+                    $('#first_inception_row').empty();
+                    $("#sub_mode").prop('disabled', false);
+                    $("#pt").prop('disabled', false);
+                    $("#ppt").prop('disabled', false);
+                    $("#sum_assured").prop('disabled', false);
+                }
+                if(get_insurance_type == 12){
+                    get_list = health_list;
+                    $('#insurance_product').empty();
+                    $('#insurance_product').attr('required');
+                    $("#product").text("*");
+                    $("#insured_label").text("*");
+                    $("#maturity_date").prop('disabled', false);
+                    
+                    $("#insurance_product").prop('disabled', false);
+                    $("#sub_mode").prop('disabled', true);
+                    $("#pt").prop('disabled', false);
+                    $("#ppt").prop('disabled', false);
+                    $("#sum_assured").prop('disabled', false);
+                    $('#first_inception_row').empty();
+                    $("#number_of_insured").prop('disabled', false);
+                    const div2 = $('<div>', {class: "form-group", id: "inception_date"});
+                    $('#first_inception_row').append(div2);
+                    const label = $('<label>', {text: "Policy first inception date ", id: "insure_label"});
+                    $('#inception_date').append(label);
+                    const input = $('<input>', {type:"date", class:"form-control", id:"policy_first_inception_date", name:"policy_first_inception_date"});
+                    $('#insure_label').append(input);
+                }
+                if(get_insurance_type == 13){
+                    get_list = vehicle_list;
+                    $('#insurance_product').empty();
+                    $('#add_insurance_row').empty();
+                    $('#insurance_product').attr('required');
+                    $("#product").text("*");
+                    $('#number_of_insured').removeAttr('required');
+                    $('#number_of_insured').val("");
+                    $("#insured_label").text("");
+                    $("#insurance_product").prop('disabled', false);
+                    $("#number_of_insured").prop('disabled', true);
+                    $("#maturity_date").prop('disabled', true);
+                    $("#sub_mode").prop('disabled', true);
+                    $("#pt").prop('disabled', true);
+                    $("#ppt").prop('disabled', true);
+                    $("#sum_assured").prop('disabled', true);
+                    $("#add_box").empty();
+                    $('#first_inception_row').empty();
+                     
+                    vehical_list = ["Vehical registration No.", "Vehical type", "CHASIS No.", "IDV value", "Model"]
+                    $('#first_inception_row').attr('style', 'width:auto');
+                    for(let i=0; i<vehical_list.length; i++){
+                       
+                        const vehical_column = $('<div>', {class: "col-md-4 col-lg-4", id: "vehical_column"+i});
+                        $("#first_inception_row").append(vehical_column);
+                        const vehical = $('<div>', {class: "form-group", id: "vehical"+i});
+                        $("#vehical_column"+i).append(vehical);
+                        if(vehical_list[i] == "Vehical type"){
+                            const vehical_label = $('<label>', {text: vehical_list[i], id: "vehical_label"+i});
+                            $("#vehical"+i).append(vehical_label);
+                            const vehical_input = $('<select>', {class:"form-control select2", id:"vehical_input"+i, name:"vehical_input"+i});
+                            $("#vehical_label"+i).append(vehical_input);
+                            const car_registration_option = $('<option>', {text: "Two Wheeler", id:"option1"});
+                            $("#vehical_input"+i).append(car_registration_option);
+                            const car_registration_option2 = $('<option>', {text: "Four Wheeler", id:"option2"});
+                            $("#vehical_input"+i).append(car_registration_option2);
+
+                        }else{
+                        const vehical_label = $('<label>', {text: vehical_list[i], id: "vehical_label"+i});
+                        $("#vehical"+i).append(vehical_label);
+                        const vehical_input = $('<input>', {type:"text", class:"form-control", id:"vehical_input"+i, name:"vehical_input"+i});
+                        $("#vehical_label"+i).append(vehical_input);}
+                    }
+
+                    // const vehical_column = $('<div>', {class: "col-md-4 col-lg-4", id: "vehical_column_div"});
+                    // $('#first_inception_row').append(vehical_column);
+                    // const vehical = $('<div>', {class: "form-group", id: "vehical_div"});
+                    // $('#vehical_column_div').append(vehical);
+                    // const car_registration_label = $('<label>', {text: "Vehical registration No. ", id: "vehical_label"});
+                    // $('#vehical_div').append(car_registration_label);
+                    // const car_registration_input = $('<input>', {type:"text", class:"form-control", id:"car_registration_number", name:"car_registration_number"});
+                    // $('#vehical_label').append(car_registration_input);
+                    
+
+                    // const vehical_column_four = $('<div>', {class: "col-md-4 col-lg-4", id: "vehical_column_four"});
+                    // $('#first_inception_row').append(vehical_column_four);
+                    // const vehical_four = $('<div>', {class: "form-group", id: "vehical_four"});
+                    // $('#vehical_column_four').append(vehical_four);
+                    // const vehical_type_label = $('<label>', {text: "Vehical type No. ", id: "vehical_type_label"});
+                    // $('#vehical_four').append(vehical_type_label);
+                    // const vehical_type_input = $('<select>', { class:"form-control select2", id:"vehical_type_input", name:"vehical_type_input"});
+                    // $('#vehical_type_label').append(vehical_type_input);
+                    // const car_registration_option = $('<option>', {text: "Tow Wheeler", id:"option1"});
+                    // $('#vehical_type_input').append(car_registration_option);
+                    // const car_registration_option2 = $('<option>', {text: "Four Wheeler", id:"option2"});
+                    // $('#vehical_type_input').append(car_registration_option2);
+
+                    // const vehical_column_second = $('<div>', {class: "col-md-4 col-lg-4", id: "vehical_second_column_div"});
+                    // $('#first_inception_row').append(vehical_column_second);
+                    // const vehical_second = $('<div>', {class: "form-group", id: "vehical_second_div"});
+                    // $('#vehical_second_column_div').append(vehical_second);
+                    // const chasis_number_label = $('<label>', {text: "CHASIS No.", id: "chasis_number_label"});
+                    // $('#vehical_second_div').append(chasis_number_label);
+                    // const chasis_number_input = $('<input>', {type:"text", class:"form-control", id:"chasis_number_input", name:"chasis_number_input"});
+                    // $('#chasis_number_label').append(chasis_number_input);
+
+                    // const vehical_column_third = $('<div>', {class: "col-md-4 col-lg-4", id: "vehical_third_column_div"});
+                    // $('#first_inception_row').append(vehical_column_third);
+                    // const vehical_third = $('<div>', {class: "form-group", id: "vehical_third_div"});
+                    // $('#vehical_third_column_div').append(vehical_third);
+                    // const IDV_label = $('<label>', {text: "IDV value", id: "idv_label"});
+                    // $('#vehical_third_div').append(IDV_label);
+                    // const IDV_input = $('<input>', {type:"text", class:"form-control", id:"idv_input", name:"idv_input"});
+                    // $('#idv_label').append(IDV_input);
+                }
+                if(get_insurance_type == 14){
+                    get_list = sme_list;
+                    $('#insurance_product').empty();
+                    $('#add_insurance_row').empty();
+                    $("#insurance_product").prop('disabled', false);
+                    $('#insurance_product').attr('required');
+                    $("#insured_label").text("");
+                    $("#number_of_insured").prop('disabled', true);
+                    $('#first_inception_row').empty();
+                    $("#sub_mode").prop('disabled', true);
+                    $("#pt").prop('disabled', true);
+                    $("#ppt").prop('disabled', true);
+                    $("#sum_assured").prop('disabled', false);
+                    $("#add_box").empty();
+                }
+                if(get_insurance_type == 15){
+                    // get_list = sme_list;
+                    $('#insurance_product').empty();
+                    $('#add_insurance_row').empty();
+                    $("#add_box").empty();
+                    $("#product").text("");
+                    $("#number_of_insured").prop('disabled', true);
+                    $("#sub_mode").prop('disabled', true);
+                    $("#pt").prop('disabled', true);
+                    $("#ppt").prop('disabled', true);
+                    $("#sum_assured").prop('disabled', false);
+                    $("#maturity_date").prop('disabled', true);
+                    $('#insurance_product').prop('disabled', true);
+                    $('#insurance_product').removeAttr('required');
+                    $("#insured_label").text("");
+                    $("#number_of_insured").prop('disabled', true);
+                    $('#first_inception_row').empty();
+                    $('#first_inception_row').attr('style', 'width:500px');
+                    const div1 = $('<div>', {class: "col-md-4 col-lg-4", id: "travel_column_div"});
+                    $('#first_inception_row').append(div1);
+                    const div2 = $('<div>', {class: "form-group", id: "travel_div"});
+                    $('#travel_column_div').append(div2);
+                    const label = $('<label>', {text: "Travel date ", id: "travel_label"});
+                    $('#travel_div').append(label);
+                    const input = $('<input>', {type:"date", class:"form-control", id:"travel_date", name:"travel_date"});
+                    $('#travel_label').append(input);
+
+                    const travel_date_column = $('<div>', {class: "col-md-4 col-lg-4", id: "travel_date_column_div"});
+                    $('#first_inception_row').append(travel_date_column);
+                    const travel_location = $('<div>', {class: "form-group", id: "second_travel_div"});
+                    $('#travel_date_column_div').append(travel_location);
+                    const travel_location_label = $('<label>', {text: "Travel Location/Country ", id: "travel_location"});
+                    $('#second_travel_div').append(travel_location_label);
+                    const travel_location_input = $('<input>', {type:"text", class:"form-control", id:"travel_location", name:"travel_location"});
+                    $('#travel_location').append(travel_location_input);
+                    //console.log(("#product").val());
+                    const travel_product_column = $('<div>', {class: "col-md-4 col-lg-4", id: "travel_product_column"});
+                    $('#first_inception_row').append(travel_product_column);
+                    const travel_product = $('<div>', {class: "form-group", id: "travel_product"});
+                    $('#travel_product_column').append(travel_product);
+                    const travel_product_label = $('<label>', {text: "Travel Product ", id: "travel_product_label"});
+                    $('#travel_product').append(travel_product_label);
+                    const travel_product_input = $('<input>', {type:"text", class:"form-control", id:"travel_product_input", name:"travel_product_input"});
+                    $('#travel_product_label').append(travel_product_input);
+                }
+                if(get_list){
+                //    console.log(list_life)
+                    
+                    for(let i =0; i<get_list.length; i++){
+                        
+                        console.log(list_life[i]);
+                        const product = $('<option>', {value: get_list[i], text: get_list[i]});
+                        $('#insurance_product').append(product);
+                    }
+                    
+                }
+
+            });
+
+            $("#start_date").on("change",function(){
+               
+                start_date = $("#start_date").val();
+                console.log(start_date);
+                mode = $("#mode").val();
+                console.log(mode);
+                period_in_year = $("#period").val();
+                //console.log(period_in_year);
+                policy_term = $("#pt").val();
+                const specificStartDate = new Date(start_date);
+                console.log(specificStartDate.getMonth());
+                console.log(specificStartDate.getFullYear());
+                const endSpecificDate = new Date(specificStartDate);
+                const renewalSpecificDate = new Date(specificStartDate);
+                // if(specificStartDate.getMonth() > 11 && mode == 1){
+                //     renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                //     renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                // }else 
+                if(specificStartDate.getMonth() > 0 && mode == 12){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear() + 1);
+                }
+                // }else if(specificStartDate.getMonth() < 0 && mode == 12){
+
+                //     renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                //     console.log(renewalSpecificDate.getMonth());
+                //     renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                //     console.log(renewalSpecificDate.getFullYear);
+                // }
+                else if(specificStartDate.getMonth() >= 4 && mode == 6){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear() + 1);
+                }else if(specificStartDate.getMonth() < 4 && mode == 6){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());   
+                }else if(specificStartDate.getMonth() >= 9 && mode == 3){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear()+1);
+                }else if(specificStartDate.getMonth() < 9 && mode == 3){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                }else if(specificStartDate.getMonth() == 11 && mode == 1){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear()+1);
+                }else if(specificStartDate.getMonth() < 11 && mode == 1){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                }
+
+                endSpecificDate.setFullYear(specificStartDate.getFullYear() + parseInt(policy_term));
+                //renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                $("#maturity_date").val(""+endSpecificDate.getFullYear()+"-"+String(endSpecificDate.getMonth() + 1).padStart(2, '0')+"-"+String(endSpecificDate.getDate() + 1).padStart(2, '0'));
+                $("#renewal_date").val(""+renewalSpecificDate.getFullYear()+"-"+String(renewalSpecificDate.getMonth() + 1).padStart(2, '0')+"-"+String(specificStartDate.getDate() + 1).padStart(2, '0'));
+                //console.log(""+endSpecificDate.getFullYear()+"-"+String(endSpecificDate.getMonth() + 1).padStart(2, '0')+"-"+String(endSpecificDate.getDate() + 1).padStart(2, '0'));
+            });
+
+            $("#mode").on("change", function(){
+                start_date = $("#start_date").val();
+                mode = $("#mode").val();
+                const specificStartDate = new Date(start_date);
+                const renewalSpecificDate = new Date(specificStartDate);
+                console.log("change");
+                console.log(mode);
+                console.log(specificStartDate.getMonth());
+                console.log(specificStartDate.getFullYear());
+                
+                if(specificStartDate.getMonth() > 0 && mode == 12){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear() + 1);
+                }
+                // else if(specificStartDate.getMonth() > 0 && mode == 12){
+
+                //     renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                //     console.log(renewalSpecificDate.getMonth());
+                //     renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                //     console.log(renewalSpecificDate.getFullYear);
+                // }
+                else if(specificStartDate.getMonth() >= 4 && mode == 6){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear() + 1);
+                }else if(specificStartDate.getMonth() < 4 && mode == 6){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());   
+                }else if(specificStartDate.getMonth() >= 9 && mode == 3){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear()+1);
+                }else if(specificStartDate.getMonth() < 9 && mode == 3){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                }else if(specificStartDate.getMonth() == 11 && mode == 1){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear()+1);
+                }else if(specificStartDate.getMonth() < 11 && mode == 1){
+                    renewalSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(mode));
+                    renewalSpecificDate.setFullYear(specificStartDate.getFullYear());
+                }
+
+                $("#renewal_date").val(""+renewalSpecificDate.getFullYear()+"-"+String(renewalSpecificDate.getMonth() + 1).padStart(2, '0')+"-"+String(specificStartDate.getDate() + 1).padStart(2, '0'));
+            });
+
+            $("#sub_mode").on("change", function(){
+                console.log($("#sub_mode").val());
+                $('#add_insurance_row').empty();
+                if($("#sub_mode").val() == 'Regular'){
+                    $("#ppt").prop('disabled', true);
+                }else{
+                    $("#ppt").prop('disabled', false);
+                }
+                
+            });
+
+            $("#pt").on("change", function(){
+                if($("#sub_mode").val() == 'Regular'){
+                    $("#ppt").val($("#pt").val());
+                    $('#add_insurance_row').empty();
+                    for(let i =2; i<=parseInt($("#ppt").val()); i++){
+                        
+                        console.log(i);
+                        const div1 = $('<div>', {class: "col-md-4 col-lg-4", id: "future_ppt"+i});
+                        $('#add_insurance_row').append(div1);
+                        const div2 = $('<div>', {class: "form-group", id: "second_future_ppt"+i});
+                        $('#future_ppt'+i).append(div2);
+                        const label = $('<label>', {text: "Year "+i, id: "label_ppt"+i});
+                        $('#second_future_ppt'+i).append(label);
+                        const input = $('<input>', {type:"number", class:"form-control", id:"future_commission"+i, name:"future_commission"+i, text:i});
+                        
+                        $('#label_ppt'+i).append(input);
+                        
+                    }
+                }
+                // else{
+                //     $("#ppt").prop('disabled', false);
+                // }
+            });
+
+            
+
+            $("#ppt").on("change", function(){
+                console.log($("#ppt").val())
+                
+                //$('#add_insurance_row').empty();
+                for(let i =2; i<=parseInt($("#ppt").val()); i++){
+                    
+                    console.log(i);
+                    const div1 = $('<div>', {class: "col-md-4 col-lg-4", id: "future_ppt"+i});
+                    $('#add_insurance_row').append(div1);
+                    const div2 = $('<div>', {class: "form-group", id: "second_future_ppt"+i});
+                    $('#future_ppt'+i).append(div2);
+                    const label = $('<label>', {text: "Year "+i, id: "label_ppt"+i});
+                        $('#second_future_ppt'+i).append(label);
+                    const input = $('<input>', {type:"number", class:"form-control", id:"future_commission"+i, name:"future_commission"+i, text:i});
+                    $('#label_ppt'+i).append(input);
+
+                   
+                    
+                }
+                
+                
+            });
+            
+
+    //         const selectElement = document.getElementById('type_insurance');
+      
+    // // Add an event listener for the 'change' event
+    //         console.log('done')
+    //         selectElement.addEventListener('change', function() {
+    //         console.log('done')
+    //         const selectedValue = selectElement.value; // Get the selected value
+    //         console.log('Selected Option:', selectedValue); // Log the selected value to the console
+    //         });
+
+        </script>
+        {% comment %} <script>
+            var dateToday = new Date();
+                $('.date').datepicker({
+                //'startDate': dateToday,
+                multidate: false,
+                format: 'dd-mm-yyyy'
+            })
+        </script>
+        <script>
+            $(function() {
+                $(".date").datepicker();
+                $(".date").on("change",function(){
+                    var selected = $(this).val();
+                    console.log("date",selected)
+                   // alert(selected);
+                });
+            });
+        </script> {% endcomment %}
+        
+        <script src="/static/js/master/insurance_product.js"></script>
+	
+    </body>
+</html>

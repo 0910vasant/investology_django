@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Scheme Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Scheme Details</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-overview mt-3">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Fund Code:</div>
+                          <div class="col-lg-12">{{data.FUND_CODE.FUND_CODE}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Fund Name:</div>
+                          <div class="col-lg-12">{{data.FUND_CODE.FUND_NAME}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Scheme Code:</div>
+                          <div class="col-lg-12">{{data.SCHEME_CODE}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Txn Type:</div>
+                          <div class="col-lg-12">{{data.TXN_TYPE}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">SYS Freq:</div>
+                          <div class="col-lg-12">
+                            {% if data.SYS_FREQ is not None %}
+                              {{data.SYS_FREQ}}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">SYS Freq Opt:</div>
+                          <div class="col-lg-12">
+                            {% if data.SYS_FREQ_OPT is not None %}
+                              {{data.SYS_FREQ_OPT}}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">SYS Dates:</div>
+                          <div class="col-lg-12">
+                            {% if data.SYS_DATES is not None %}
+                              {{data.SYS_DATES}}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Min Amt:</div>
+                          <div class="col-lg-12">{{data.MIN_AMT}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Max Amt:</div>
+                          <div class="col-lg-12">{{data.MAX_AMT}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Multiple Amt:</div>
+                          <div class="col-lg-12">{{data.MULTIPLE_AMT}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Min Units:</div>
+                          <div class="col-lg-12">{{data.MIN_UNITS}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Multiple Units:</div>
+                          <div class="col-lg-12">{{data.MULTIPLE_UNITS}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Min Inst:</div>
+                          <div class="col-lg-12">{{data.MIN_INST}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Max Inst:</div>
+                          <div class="col-lg-12">{{data.MAX_INST}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">SYS Perpetual:</div>
+                          <div class="col-lg-12">
+                            {% if data.SYS_PERPETUAL is not None %}
+                              {{data.SYS_PERPETUAL}}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Min Cum Amt:</div>
+                          <div class="col-lg-12">{{data.MIN_CUM_AMT}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">Start Date:</div>
+                          <div class="col-lg-12">{{data.START_DATE|date:"d-m-Y"}}</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-lg-12 label">End Date:</div>
+                          <div class="col-lg-12">{{data.END_DATE|date:"d-m-Y"}}</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+
+</body>
+
+</html>

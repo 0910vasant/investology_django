@@ -1,0 +1,329 @@
+{% include 'header.html' %}
+    <body class="hold-transition light-skin sidebar-mini theme-primary">
+
+
+<style type="text/css">
+    .box-title {
+        z-index: auto;
+        font-size: 18px;
+        font-weight: 500;
+        color: #ed1a24;
+    }
+    .sorting, .sorting_asc, .sorting_desc {
+      background : none;
+    }
+
+    table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+      position: absolute;
+      bottom: 0.9em;
+      display: none;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+      position: absolute;
+      bottom: 0.9em;
+      display: none;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .nav-link-tab{
+      border-radius: 15px 15px 0px 0px !important;
+    }
+</style>
+
+	    <div class="wrapper">
+            {% include 'navbar.html' %}
+            {% include 'sidebar.html' %}
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                  <div class="container-full">
+                		<!-- Main content -->
+                    <section class="content">
+                      {% include 'live_index.html' %}
+                      <div class="row">
+                        {% comment %} <div class="col-xl-12 col-md-12 col-6">
+                          <h3 class="box-title">Dashboard</h3>
+                        </div> {% endcomment %}
+                        {% if request.session.USER_TYPE == "ep" %}
+                        <div class="col-xl-3 col-12">
+                          <div class="box box-body pt-0">
+                            <div class="d-flex align-items-center justify-content-between ">
+                              <div class="icon bg-primary-light rounded-circle mt-4">
+                                <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-dark mb-0 font-size-20 text-black" id="pending_amt">39.93 Lakh</h3>
+                                <p class="text-mute mb-0">Pending Amount</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                          <div class="box box-body pt-0">
+                            <div class="d-flex align-items-center justify-content-between ">
+                              <div class="icon bg-primary-light rounded-circle mt-4">
+                                <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-dark mb-0 font-size-20 text-black" id="customer_count">39.93 Lakh</h3>
+                                <p class="text-mute mb-0">Customer Count</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                          <div class="box box-body pt-0">
+                            <div class="d-flex align-items-center justify-content-between ">
+                              <div class="icon bg-primary-light rounded-circle mt-4">
+                                <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-dark mb-0 font-size-20 text-black" id="total_commission">39.93 Lakh</h3>
+                                <p class="text-mute mb-0">Total Commission</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                          <div class="box box-body pt-0">
+                            <div class="d-flex align-items-center justify-content-between ">
+                              <div class="icon bg-primary-light rounded-circle mt-4">
+                                <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-dark mb-0 font-size-20 text-black" id="total_business">39.93 Lakh</h3>
+                                <p class="text-mute mb-0">Total Business</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                          <div class="box box-body pt-0">
+                            <div class="d-flex align-items-center justify-content-between ">
+                              <div class="icon bg-primary-light rounded-circle mt-4">
+                                <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-dark mb-0 font-size-20 text-black" id="received_amount">39.93 Lakh</h3>
+                                <p class="text-mute mb-0">Received Amount</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {% else %}
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4">
+                                  <i class="text-primary mr-0 font-size-30 bx bx-book-open"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">39.93 Lakh</h3>
+                                  <p class="text-mute mb-0">Live SIP</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4">
+                                  <i class="text-primary mr-0 font-size-30 bx bxs-bar-chart-alt-2"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">788</h3>
+                                  <p class="text-mute mb-0">SIP Count</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4">
+                                  <i class="text-primary mr-0 font-size-30 bx bxs-book-reader"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">31</h3>
+                                  <p class="text-mute mb-0">New SIP</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4">
+                                  <i class="text-primary mr-0 font-size-30 bx bx-folder-minus"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">0.92 Lakh</h3>
+                                  <p class="text-mute mb-0">Live SWP</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4"> 
+                                  <i class="text-primary mr-0 font-size-30 bx bx-folder-plus"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">0 Lakh</h3>
+                                  <p class="text-mute mb-0">Live STP</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3 col-12">
+                            <div class="box box-body pt-0">
+                              <div class="d-flex align-items-center justify-content-between ">
+                                <div class="icon bg-primary-light rounded-circle mt-4">
+                                  <i class="text-primary mr-0 font-size-30 bx bx-briefcase-alt"></i>
+                                </div>
+                                <div>
+                                  <h3 class="text-dark mb-0 font-size-20 text-black">68.94 Lakh</h3>
+                                  <p class="text-mute mb-0">Latest Redeem</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                      {% if request.session.USER_TYPE != "ep" %}
+                      {% endif %}
+                        <div class="row">
+                          <div class="col-xl-4 col-12">
+                              <div class="box box-body-card">
+                                <div class="flexbox mt-2">
+                                  <span class=" font-size-40" style="color: #704fb1 !important;"><strong>7</strong></span>
+                                  {% comment %} <span class="fa fa-file-text font-size-40"></span> {% endcomment %}
+                                </div>
+                                {% comment %} <h6 class="text-uppercase"><strong>Failed Transaction Count</strong></h6> {% endcomment %}
+                                <h4 class=""><strong>Failed Transaction Count</strong></h4>
+                              </div>
+                          </div>
+                          <div class="col-xl-4 col-12">
+                              <div class="box box-body-card">
+                                <div class="flexbox mt-2">
+                                  <span class=" font-size-40" style="color: #d78b15 !important;"><strong>82.3 Cr.</strong></span>
+                                  {% comment %} <span class="fa fa-user font-size-40"></span> {% endcomment %}
+                                </div>
+                                <h4 class=""><strong>AUM(On 17-Aug-2022)</strong></h4>
+                              </div>
+                          </div>
+                          <div class="col-xl-4 col-12">
+                            <div class="box box-body-card">
+                              <div class="flexbox mt-2">
+                                <span class=" font-size-40" style="color: #ed1a24 !important;"><strong>{{data.cust_count}}</strong></span>
+                                {% comment %} <span class="fa fa-user font-size-40"></span> {% endcomment %}
+                              </div>
+                              <h4 class=""><strong>Total Clients</strong></h4>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- greetings and renewal alerts table -->
+                        <nav class="row">
+                          <div class="nav nav-tabs col-12 mt-4" id="nav-tab" role="tablist">
+                            <button class="nav-link nav-link-tab col-6 text-center active" id="nav-greeting-table-tab" data-toggle="tab" data-target="#nav-greeting-table" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Greetings</button>
+                            <button class="nav-link nav-link-tab col-6 text-center" id="nav-renewal-table-tab" data-toggle="tab" data-target="#nav-renewal-table" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Renewal Alerts</button>
+                          </div>
+                        </nav>
+                        
+                        <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="nav-greeting-table" role="tabpanel" aria-labelledby="nav-greeting-table">
+                            <table class="table table-hover" id="greetings_table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Sr.No</th>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Mobile No</th>
+                                  <th scope="col">Event Type</th>
+                                  <th scope="col">Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for i in data.greetings.bday %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.C_NAME}}</td>
+                                  <td>{{i.MOB_NO}}</td>
+                                  <td>Birthday</td>
+                                  <td>{{i.CUST_DOB}}</td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="tab-pane" id="nav-renewal-table" role="tabpanel" aria-labelledby="nav-renewal-table">
+                            <table class="table table-hover" style="width:100%!important;" id="renewal_alert_table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Sr.No</th>
+                                  <th scope="col">Customer Name</th>
+                                  <th scope="col">Mobile No</th>
+                                  <th scope="col">Insurance Type</th>
+                                  <th scope="col">Period</th>
+                                  <th scope="col">Renewal Date</th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                      
+                    </section>
+                    
+                    <!-- /.content -->
+                  </div>
+                </div>
+                 <!-- /.content-wrapper -->
+            {% include 'footer.html' %}
+
+             <!-- Control Sidebar -->
+            {% comment %} {% include 'control_sidebar.html' %} {% endcomment %}
+             <!-- /.control-sidebar -->
+
+             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+  
+        </div>
+        <!-- ./wrapper -->	 
+	
+        <!-- Vendor JS -->
+        {% include 'script.html' %}
+        <script src="/static/js/login/dashboard.js"></script>
+        <script>
+          $("#greetings_table").DataTable({
+            dom: 't',
+            ordering : false
+          })
+          var t
+
+          t = $('#renewal_alert_table').DataTable( {
+            dom: 't',
+            ordering : false,
+            //lengthChange: false,
+            ajax: '/load_insurance_alert',
+
+            columns: [
+                { data: null },
+                { data: 'CUSTOMER__C_NAME' },
+                { data: 'CUSTOMER__MOB_NO' },
+                { data: 'TYPE_INSURANCE__NAME' },
+                { data: 'INSURANCE_PERIOD' },
+                { data: 'RENEWAL_DATE' },
+            ],
+            } );
+            t.on( 'order.dt search.dt', function () {
+                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    // console.log(i,cell)
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
+        </script>
+    </body>
+</html>

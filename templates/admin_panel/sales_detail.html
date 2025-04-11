@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "admin_panel/header.html" %}
+<!-- <style>
+  #main{
+    min-height: 100vh;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+  }
+</style> -->
+<body>
+
+  <!-- ======= Header ======= -->
+  {% include "admin_panel/navbar.html" %}
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  {% include "admin_panel/sidebar.html" %}
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Sales Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin_dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Sales Details</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="card">
+        <div class="card-body">
+          <div class="profile-overview mt-3">
+              <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Send Response Format:</div>
+                        <div class="col-lg-12">{{data.redeem.SENDRESPONSEFORMAT}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Session Context:</div>
+                        <div class="col-lg-12">{{data.redeem.SESSIONCONTEXT}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Sendersubid:</div>
+                        <div class="col-lg-12">{{data.redeem.SENDERSUBID}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Log Tp:</div>
+                        <div class="col-lg-12">{{data.redeem.LOGTP}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Version No:</div>
+                        <div class="col-lg-12">{{data.redeem.VERSIONNO}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Txn Type:</div>
+                        <div class="col-lg-12">{{data.redeem.TXNTYPE}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Order Mode:</div>
+                        <div class="col-lg-12">{{data.redeem.ORDERMODE}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Tran Source:</div>
+                        <div class="col-lg-12">{{data.redeem.TRANSOURCE}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Action Type:</div>
+                        <div class="col-lg-12">{{data.redeem.ACTIONTYPE}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Folio Txn Flag:</div>
+                        <div class="col-lg-12">{{data.redeem.FOLIOTXNFLAG}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Txn Event:</div>
+                        <div class="col-lg-12">{{data.redeem.TXNEVENT}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Page For Role:</div>
+                        <div class="col-lg-12">{{data.redeem.PAGEFORROLE}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Can:</div>
+                        <div class="col-lg-12">{{data.redeem.CAN}}</div>
+                    </div>
+                </div>
+                {% comment %} <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Joint Holder Flag:</div>
+                        <div class="col-lg-12">{{data.redeem.}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Holder Detail:</div>
+                        <div class="col-lg-12">{{data.redeem.}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">Ext Group RefNo:</div>
+                        <div class="col-lg-12">{{data.redeem.}}</div>
+                    </div>
+                </div> {% endcomment %}
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 label">No Of Schemes:</div>
+                        <div class="col-lg-12">{{data.redeem.NOOFSCHEMES}}</div>
+                    </div>
+                </div>
+              </div>
+              {% for i in data.Redeem_schemes %}
+                <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Record No:</div>
+                                <div class="col-lg-12">{{i.RECORDNO}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Ext Unique RefId:</div>
+                                <div class="col-lg-12">{{i.EXTUNIQUEREFID}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Folio Acc No:</div>
+                                <div class="col-lg-12">{{i.FOLIOACCNO}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Folio Check Digit:</div>
+                                <div class="col-lg-12">{{i.FOLIOCHECKDIGIT}}</div>
+                            </div>
+                        </div>
+                        {% comment %} <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Lei No:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Hold Nat:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Tax Status:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Pri Pan Or Pekrn:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Sec Pan Or Pekrn:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Thr Pan Or Pekrn:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Gur Pan Or Pekrn:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div> {% endcomment %}
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Rta Amc Code:</div>
+                                <div class="col-lg-12">{{i.RTAAMCCODE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Rta Scheme Code:</div>
+                                <div class="col-lg-12">{{i.RTASCHEMECODE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Txn Volume Type:</div>
+                                <div class="col-lg-12">{{i.TXNVOLUMETYPE}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Txn Volume:</div>
+                                <div class="col-lg-12">{{i.TXNVOLUME}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Payout Flag:</div>
+                                <div class="col-lg-12">{{i.PAYOUTFLAG}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Inv Acc No:</div>
+                                <div class="col-lg-12">{{i.INVACCNO}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Micr No:</div>
+                                <div class="col-lg-12">{{i.MICRNO}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">IFSC Code:</div>
+                                <div class="col-lg-12">{{i.IFSCCODE}}</div>
+                            </div>
+                        </div>
+                        {% comment %} <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 label">Otp Auth Json Data:</div>
+                                <div class="col-lg-12">{{data.redeem.}}</div>
+                            </div>
+                        </div> {% endcomment %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+      </div>
+      
+  </section>
+
+  </main><!-- End #main -->
+  <!-- Modal -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <?php include 'footer.php';?> {% endcomment %}
+
+  {% include "admin_panel/script.html" %}
+</body>
+
+</html>
