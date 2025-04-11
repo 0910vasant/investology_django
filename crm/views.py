@@ -2421,6 +2421,7 @@ def update_insurance(request):
         logger.exception(f"{e}")
         return JsonResponse({"error":f"{e}"},status=500)
 
+@api_view(["POST"])
 def add_insurance_and_customer(request):
     
     try:
