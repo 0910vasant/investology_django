@@ -517,7 +517,7 @@ class Customer(models.Model):
         verbose_name_plural = 'Customer'
 
 class INSURANCE_PPT_YEAR(models.Model):
-    INSURANCE_ID = models.BigIntegerField(max_length=20,blank=True,null=True,verbose_name="insurance id")
+    INSURANCE_ID = models.BigIntegerField(blank=True,null=True,verbose_name="insurance id")
     YEAR = models.CharField(max_length=1,blank=True,null=True,verbose_name="ppt year")
     CREATED_DATE = models.DateField(auto_now_add=True,null=True)
     UPDATED_DATE = models.DateField(auto_now_add=True,null=True)
