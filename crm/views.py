@@ -2967,7 +2967,7 @@ def load_new_insurance(request):
         
         
         if customer_data:
-            print(i)
+            #print(i)
             i['CUSTOMER_DATA'] = customer_data[0]
             rm_ep_data = list(Relationship_Manager.objects.filter(LOGIN_id = customer_data[0]['RM_EP_id']).values('NAME','EMAIL'))
             i['EP_RM_DATA'] = rm_ep_data[0]
@@ -4435,6 +4435,7 @@ def load_policy_broker(request):
 # buy fd , pms 
 
 def buy_fd_page(request):
+    
     return render(request,"buy_fd_table.html")
 
 @api_view(['POST'])

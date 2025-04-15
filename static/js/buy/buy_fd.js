@@ -237,13 +237,24 @@ $(".b_percentage,.amt").keyup(function () {
 $(".buy_type").change(function (e) {
 	let buy_type = $(this).val();
 	let target = $(this).parents(".row").find("#roi");
-
-	if (buy_type == "pms" || buy_type == "aif") {
+	let end_date = $(this).parents(".row").find("#e_date");
+	let tenure = $(this).parents(".row").find("#tenure");
+	if (buy_type == "pms" || buy_type == "aif" || buy_type == "Unlisted shares" || buy_type == "Fractional property") {
 		$(target).prop("required", false);
 		$(target).parents(".col-md-12").hide();
+		$(end_date).parents(".col-md-6").hide();
+		
 	} else {
 		$(target).prop("required", true);
 		$(target).parents(".col-md-12").show();
+		$(end_date).parents(".col-md-6").show();
+		
+	}
+
+	if(buy_type == "Unlisted shares"){
+		$(tenure).parents(".col-md-6").hide();
+	}else{
+		$(tenure).parents(".col-md-6").show();
 	}
 });
 
@@ -251,4 +262,21 @@ $(".buy_type").change(function (e) {
 $(".modal").on("hide.bs.modal", function () {
 	$("input[name=roi]").prop("required", true);
 	$("input[name=roi]").parents(".col-md-12").show();
+});
+
+$("#mf_customer_button").on("click", function (){
+	$("#fd_add_customer").prop("hidden", false);
+	$("#customer").prop("disabled", true);
+	$("#customer").prop("required", false);
+});
+
+$("#tenure").on("change",function(){
+	start_date = $("#s_date").val();
+	tenure = $("#tenure").val();
+	const specificStartDate = new Date(start_date);
+	const endSpecificDate = new Date(specificStartDate);
+	if(specificStartDate){
+		endSpecificDate.setMonth(specificStartDate.getMonth() + parseInt(tenure));
+	}
+	$("#e_date").val(""+endSpecificDate.getFullYear()+"-"+String(endSpecificDate.getMonth() + 1).padStart(2, '0')+"-"+String(endSpecificDate.getDate() + 1).padStart(2, '0'));
 });

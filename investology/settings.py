@@ -16,10 +16,10 @@ import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR_DO = os.path("C:\Users\ADMIN\Documents\Cams NAV Report")
-print(BASE_DIR_DO)
-
+te = os.path
+print(te)
 environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +27,6 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ["SECRET_KEY"]
-
 # 'django-insecure-w_$$9t$4yva2t&e&rg2iccnxc$&vi7i56n#iyzaem#04^#xa+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -87,7 +86,6 @@ TEMPLATES = [
         },
     },
 ]
-
 # REST_FRAMEWORK = {
 #     'DEFAULT_RENDERER_CLASSES': [
 #         'rest_framework.renderers.JSONRenderer',

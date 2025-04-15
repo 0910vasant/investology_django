@@ -206,15 +206,19 @@ $("body").on("click", ".delete", function () {
 });
 
 
+
 $.ajax({
 	url: "load_mfm_data",
 	success: function (data) {
 		dropdown = [`<option value="" disabled selected>Please Select Scheme</option>`]
 		// console.log('data',data);
+		console.log(data);
+		loaded_mf_data = data
 		$.each(data.data, function (i, v) { 
 			// console.log('v',v);
 			// dropdown = `<option value="${v.id}">${v.SCHEME}</option>`
-			dropdown.push(`<option value="${v.SCHEME}">${v.SCHEME}</option>`);
+			dropdown.push(`<option value="${v.id}">${v.SCHEME}</option>`);
+			
 		});
 
 		// console.log('v',dropdown);
@@ -226,3 +230,96 @@ $.ajax({
 		toastr.error("something went wrong");
 	},
 });
+
+$("#amount_invested").on("change", function(){
+	scheme_value = $("#scheme_name").val()
+	console.log(scheme_value);
+	amount = parseFloat($("#amount_invested").val());
+	console.log(amount);
+	$.ajax({
+		url: `/load_edit_mfm/${scheme_value}`,
+		success: function (data) {
+			console.log(typeof(data[0]['NET_A_GST']));
+			ei_commision = (amount / 100) *  data[0]['E_C_P'];
+			net_gst = (ei_commision / 100) *  18.00;
+			pay_out = ei_commision - net_gst;
+			$("#ei_commision").val(ei_commision.toFixed(2));
+			$("#net_gst").val(net_gst.toFixed(2));
+			$("#pay_out").val(pay_out.toFixed(2));
+			console.log(typeof(pay_out))
+			if(amount < 10000000.00){
+				console.log('Red Diamond')
+				
+				$("#advisors_scheme").val('Red Diamond');
+				final_amount = (pay_out / 100) * 73;
+				console.log(final_amount);
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+			if((amount >= 10000000.00 && amount < 40000000.00)){
+				console.log('Blue diamond')
+				$("#advisors_scheme").val('Blue diamond');
+				final_amount = (pay_out / 100) * 76;
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+			if(amount >= 40000000.00 && amount < 70000000.00){
+				console.log('h')
+				$("#advisors_scheme").val('Pink Diamond');
+				final_amount = (pay_out / 100) * 78;
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+			if(amount >= 70000000.00 && amount < 120000000.00){
+				console.log('h')
+				$("#advisors_scheme").val('Emerald')
+				final_amount = (pay_out / 100) * 80;
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+			if(amount >= 120000000.00 && amount < 180000000.00){
+				console.log('h')
+				$("#advisors_scheme").val('Sapphire')
+				final_amount = (pay_out / 100) * 82;
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+			if(amount >= 180000000.00){
+				console.log('h')
+				$("#advisors_scheme").val('Red Ruby')
+				final_amount = (pay_out / 100) * 85;
+				$("#advisor_payout").val(final_amount.toFixed(2));
+			}
+		},
+		error: function (data) {
+			toastr.error("something went wrong");
+		},
+	});
+	
+});
+
+// $("#advisors_scheme").on("change", function(){
+// 	// amount = parseFloat($("#amount_invested").val());
+// 	// console.log(amount)
+// 	pay_out = parseFloat($("#pay_out").val());
+// 	if($("#advisors_scheme").val() == 'Red Diamond' && amount < 10000000.00){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 73.00
+// 		console.log(final_amount)
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// 	if($("#advisors_scheme").val() == 'Blue diamond' && (amount >= 10000000.00 && amount < 40000000.00)){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 76.00
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// 	if($("#advisors_scheme").val() == 'Pink Diamond' && (amount >= 40000000.00 && amount < 70000000.00)){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 78.00
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// 	if($("#advisors_scheme").val() == 'Emerald' && (amount >= 70000000.00 && amount < 120000000.00)){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 80.00
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// 	if($("#advisors_scheme").val() == 'Sapphire' && (amount >= 120000000.00 && amount < 180000000.00)){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 82.00
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// 	if($("#advisors_scheme").val() == 'Red Ruby' && amount > 180000000.00){
+// 		final_amount = (pay_out.toFixed(2) / 100) * 85.00
+// 		$("#advisor_payout").val(final_amount.toFixed(2));
+// 	}
+// });

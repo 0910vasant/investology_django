@@ -123,15 +123,21 @@
 					<!-- /.modal -->
 
 					<div class="modal fade" id="add_buy_fd_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						
 						<div class="modal-dialog">
-							<div class="modal-content">
+							<div class="modal-content" style="width: 700px;">
+								
 								<form id="add_buy_fd_form" action="" method="POST">
 									{% csrf_token %}
+									
 									<div class="modal-header">
 										<h4 class="modal-title" id="myModalLabel">Buy FD/Bond/Ncd/PMS/AIF</h4>
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 									</div>
 									<div class="modal-body">
+										<div class="text-right flex-grow">
+                                    		<button type="button" id="mf_customer_button" class="btn btn-dark">Add New Customer</button>
+                                		</div>
 										<div class="row">
 											<div class="col-md-12 col-lg-12">
 												<div class="form-group">
@@ -155,7 +161,7 @@
 										<div class="row">
 											<div class="col-md-12 col-lg-12">
 												<div class="form-group">
-													<label>Buy Type <small class="text-danger"> *</small></label>
+													<label>Product<small class="text-danger"> *</small></label>
 													<select class="form-control select2 buy_type" name="buy_type" id="buy_type" required>
 														<option value="" disabled selected>Please Select Buy Type</option>
 														<option value="fd">FD</option>
@@ -163,6 +169,9 @@
 														<option value="ncd">NCD</option>
 														<option value="pms">PMS</option>
 														<option value="aif">AIF</option>
+														<option value="Unlisted shares">Unlisted shares</option>
+														<option value="Fractional property">Fractional property</option>
+														<option value="MLD">MLD</option>
 													</select>
 												</div>
 											</div>
@@ -174,6 +183,51 @@
 													</select>
 												</div>
 											</div>
+											<div class="col-md-12 col-lg-12" id="fd_add_customer" hidden>
+												<div class="col-md-6 col-lg-6">
+													<div class="form-group">
+														<label>Proposer Name<small class="text-danger">*</small></label>
+														<input type="text" class="form-control" id="client_name" name="client_name" placeholder="Client Name" value="" required>
+													</div>
+												</div>
+												<div class="col-md-6 col-lg-6">
+													<div class="form-group">
+														<label>Date of Birth<small class="text-danger" style="width: 10px;">*</small></label>
+														<input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" value="" required>
+													</div>
+												</div>
+												
+												<div class="col-md-6 col-lg-6">
+													<div class="form-group">
+														<label>Mobile No.<small class="text-danger">*</small></label>
+														<input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile No." value="" required>
+													</div>
+												</div>
+												<div class="col-md-6 col-lg-6">
+													<div class="form-group">
+														<label>Email<small class="text-danger"></small></label>
+														<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="">
+													</div>
+												</div>
+												<div class="col-md-6 col-lg-6">
+													<div class="form-group">
+														<label>PAN<small class="text-danger">*</small></label>
+														<input type="text" class="form-control" id="pan" name="pan" placeholder="PAN" value="" required>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Customer Status<small class="text-danger"> *</small></label>
+													<select class="form-control select2 customer_status select2-hidden-accessible" name="customer_status" id="customer_status" required="" tabindex="-1" aria-hidden="true">
+														<option value="" disabled="" selected="">Please Select Customer Status</option>
+														<option value="Existing">Existing</option>
+														<option value="New">New</option>
+													</select>
+												</div>
+											</div>
+
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Start Date<small class="text-danger">*</small></label>
@@ -183,7 +237,19 @@
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>End Date<small class="text-danger">*</small></label>
-													<input type="date" class="form-control" id="e_date" name="e_date" required />
+													<input type="date" class="form-control" id="e_date" name="e_date" readonly required />
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Interest Payout<small class="text-danger"> *</small></label>
+													<select class="form-control select2 buy_type" name="interest_payout" id="interest_payout" required>
+														<option value="" disabled selected>Please Select Interest Payout</option>
+														<option value="Monthly">Monthly</option>
+														<option value="Quaterly">Quaterly</option>
+														<option value="Half Annually">Half Annually</option>
+														<option value="Annually">Annually</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-md-12 col-lg-12">
@@ -198,6 +264,8 @@
 													<input type="text" class="form-control" placeholder="Rate Of Interest" id="roi" name="roi" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" required />
 												</div>
 											</div>
+											
+											
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Tenure</label>
