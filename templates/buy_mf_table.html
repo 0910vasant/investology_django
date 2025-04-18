@@ -177,6 +177,16 @@
 													</select> 
 												</div>
 											</div>
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Option<small class="text-danger"> *</small></label>
+													<select class="form-control select2 buy_type" name="" id="" required>
+														<option value="" disabled selected>Please Select Interest Payout</option>
+														<option value="growth">Growth</option>
+														<option value="idcw">IDCW</option>
+													</select>
+												</div>
+											</div>
 											<div class="col-md-12 col-lg-12">
 												<div class="form-group">
 													<label>Scheme Name<small class="text-danger"> *</small></label>
@@ -221,8 +231,16 @@
 
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
-													<label>Advisors Scheme<small class="text-danger"> *</small></label>
-													<input type="text" class="form-control" id="advisors_scheme" name="advisors_scheme"/>
+													<label>Advisors Category<small class="text-danger"> *</small></label>
+													<select class="form-control select2" name="advisors_scheme" id="advisors_scheme" required>
+														<option value="" disabled selected>Please Select Mode</option>
+														<option value="reddimond">Red Diamond</option>
+														<option value="bluedimond">Blue diamond</option>
+														<option value="pinkdimond">Pink Diamond</option>
+														<option value="emerald">Emerald</option>
+														<option value="sapphire">Sapphire</option>
+														<option value="redruby">Red Ruby</option>
+													</select>
 												</div>
 											</div>
 
@@ -243,13 +261,13 @@
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Total Amount<small class="text-danger"> *</small></label>
-													<input type="text" class="form-control" placeholder="Pay out" id="pay_out" name="pay_out" required />
+													<input type="text" class="form-control" placeholder="Total Amount" id="total_amount" name="total_amount" required />
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
-													<label>Advisor Payout<small class="text-danger"> *</small></label>
+													<label>Advisor Yearly Payout<small class="text-danger"> *</small></label>
 													<input type="text" class="form-control" placeholder="Pay out" id="advisor_payout" name="advisor_payout" required />
 												</div>
 											</div>
@@ -340,15 +358,8 @@
 												<div class="form-group">
 													<label>Scheme Name<small class="text-danger"> *</small></label>
 													<select class="form-control select2 scheme_name" name="scheme_name" id="scheme_name" required>
-														{% comment %} <option value="" disabled selected>Please Select Customer Status</option> {% endcomment %}
-														{% comment %} <option value="" disabled selected>Please Select Customer Status</option>
-														<option value="Existing">Existing</option>
-														<option value="New">New</option> {% endcomment %}
+														/* <option value="" id = "fixed" readonly selected>Please Select</option> */
 													</select>
-													{% comment %} <input type="text" class="form-control" placeholder="Scheme Name" id="scheme_name" name="scheme_name" required /> {% endcomment %}
-													{% comment %} <select class="form-control select2 customer_status" name="scheme_name" id="scheme_name" required>
-														<option value="" disabled selected>Please Select Scheme</option>
-													</select>  {% endcomment %}
 												</div>
 											</div>
 											<div class="col-md-12 col-lg-12">
@@ -377,6 +388,40 @@
 													</select> 
 												</div>
 											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Advisors Scheme<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" id="advisors_scheme" name="advisors_scheme"/>
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>EI commision<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" placeholder="EI commision" id="ei_commision" name="ei_commision"  required />
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>NET GST<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" placeholder="NET GST" id="net_gst" name="net_gst" required />
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Total Amount<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" placeholder="Total Amount" id="total_amount" name="total_amount" required />
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6">
+												<div class="form-group">
+													<label>Advisor Payout<small class="text-danger"> *</small></label>
+													<input type="text" class="form-control" placeholder="Pay out" id="advisor_payout" name="advisor_payout" required />
+												</div>
 											{% comment %} <div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Commision Percentage</label>

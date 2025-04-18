@@ -38,6 +38,8 @@ urlpatterns = [
 
     # path('load_scheme', mf_master_page),
     path('mf_master', mf_master_page),
+    #path('bulk_upload_mf_master', bulk_upload_mf_master),
+    path('get_mf_master/<val>', get_mf_master),
     path('add_bulk_mf_excel', AddBulk_mfm_Excel.as_view()),
     path('add_mf_master_bulk', Add_mfm_Bulk),
     path('load_edit_mfm/<id>', load_edit_mfm),

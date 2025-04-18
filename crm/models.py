@@ -418,7 +418,12 @@ class MF_master(models.Model):
     # ]
     NET_A_GST = models.CharField(max_length=150,blank=True,null=True,verbose_name="Net After GST")
     EP_PAYOUT = models.CharField(max_length=500,blank=True,null=True,verbose_name="Easy Partner Payout")
-
+    RED_DIAMOND = models.CharField(max_length=500,blank=True,null=True,verbose_name="Red Diamond")
+    BLUE_DIAMOND = models.CharField(max_length=500,blank=True,null=True,verbose_name="Blue Diamond")
+    PINK_DIAMOND = models.CharField(max_length=500,blank=True,null=True,verbose_name="Pink Diamond")
+    EMERALD = models.CharField(max_length=500,blank=True,null=True,verbose_name="Emerald")
+    SAPPHIRE = models.CharField(max_length=500,blank=True,null=True,verbose_name="Sapphire")
+    RED_RUBY = models.CharField(max_length=500,blank=True,null=True,verbose_name="Red ruby")
     CREATED_BY = models.ForeignKey("crm.User",blank=True,null=True, on_delete=models.CASCADE,verbose_name="created_by", related_name='mfm_c_by')
     MODIFIED_BY = models.ForeignKey("crm.User",blank=True,null=True, on_delete=models.CASCADE,verbose_name="modified_by", related_name='mfm_m_by')
     C_DATE = models.DateField(auto_now_add=True,null=True)
@@ -852,7 +857,8 @@ class Buy_FD(models.Model):
     BROKERAGE_PERCENTAGE = models.CharField(max_length=500)
     BROKERAGE_AMOUNT = models.CharField(max_length=500)
     TABLE_NAME = models.CharField(max_length=50,default="buy_fd")
-
+    CUSTOMER_STATUS = models.CharField(max_length=500)
+    INTEREST_PAYOUT = models.CharField(max_length=500)
     IS_DELETED = models.BooleanField(default=False)
     CREATED_DATE = models.DateTimeField(auto_now_add=True,null=True)
     UPDATED_DATE = models.DateTimeField(auto_now=True)
@@ -939,6 +945,11 @@ class Buy_MF(models.Model):
     EP_PERCENT = models.CharField(max_length=500,blank=True,null=True,verbose_name="Easy Partner Commission Percentage")
     EP_AMT = models.CharField(max_length=500,blank=True,null=True,verbose_name="Easy Partner Commission Amount")
     TABLE_NAME = models.CharField(max_length=50,default="buy_mf")
+    ADVISER_SCHEME = models.CharField(max_length=50, blank=True,null=True,verbose_name="Easy Investology adviser scheme")
+    EI_COMMISION = models.CharField(max_length=50, blank=True,null=True,verbose_name="Easy Investology Commission")
+    NET_GST = models.CharField(max_length=50, blank=True,null=True,verbose_name="Easy Investology net gst")
+    TOTAL_AMOUNT = models.CharField(max_length=50, blank=True,null=True,verbose_name="Easy Investology total amount")
+    ADVISER_PAYOUT= models.CharField(max_length=50, blank=True,null=True,verbose_name="Easy Investology adviser payout")
 
     IS_DELETED = models.BooleanField(default=False)
     CREATED_DATE = models.DateTimeField(auto_now_add=True,null=True)

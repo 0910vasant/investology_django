@@ -122,6 +122,24 @@ $("body").on("click", ".edit_modal", function () {
 			$("#edit_buy_fd_form #customer").val(response[0].CUSTOMER_id).change();
 			$("#edit_buy_fd_form #s_date").val(response[0].START_DATE);
 			$("#edit_buy_fd_form #e_date").val(response[0].END_DATE);
+			$("#edit_buy_fd_form #interest_payout").val(response[0].INTEREST_PAYOUT).change();
+			console.log(response[0].BUY_TYPE);
+			if (response[0].BUY_TYPE == "pms" || response[0].BUY_TYPE == "aif" || response[0].BUY_TYPE == "Unlisted shares" || response[0].BUY_TYPE == "Fractional property") {
+				$("#edit_buy_fd_form #roi").prop("required", false);
+				$("#edit_buy_fd_form #roi").parents(".col-md-12").hide();
+				// $(end_date).parents(".col-md-6").hide();
+				
+			} else {
+				$("#edit_buy_fd_form #roi").prop("required", true);
+				$("#edit_buy_fd_form #roi").parents(".col-md-12").show();
+				// $(end_date).parents(".col-md-6").show();
+				
+			}
+			if(response[0].BUY_TYPE == "Unlisted shares" || response[0].BUY_TYPE == "pms" || response[0].BUY_TYPE == "aif"){
+				$("#edit_buy_fd_form #tenure").parents(".col-md-6").hide();
+			}else{
+				$("#edit_buy_fd_form #tenure").parents(".col-md-6").show();
+			}
 			$("#edit_buy_fd_form #comp_name").val(response[0].COMPANY_NAME);
 			$("#edit_buy_fd_form #tenure").val(response[0].TENURE);
 			$("#edit_buy_fd_form #roi").val(response[0].INTEREST_RATE);
@@ -239,19 +257,25 @@ $(".buy_type").change(function (e) {
 	let target = $(this).parents(".row").find("#roi");
 	let end_date = $(this).parents(".row").find("#e_date");
 	let tenure = $(this).parents(".row").find("#tenure");
-	if (buy_type == "pms" || buy_type == "aif" || buy_type == "Unlisted shares" || buy_type == "Fractional property") {
+	if (buy_type == "pms" || buy_type == "aif" || buy_type == "Unlisted shares") {
 		$(target).prop("required", false);
 		$(target).parents(".col-md-12").hide();
 		$(end_date).parents(".col-md-6").hide();
 		
 	} else {
-		$(target).prop("required", true);
-		$(target).parents(".col-md-12").show();
-		$(end_date).parents(".col-md-6").show();
+		if(buy_type == "Fractional property"){
+			$(target).prop("required", false);
+			$(target).parents(".col-md-12").hide();
+			$("#tenure").parents(".col-md-12").show();
+		}else{
+			$(target).prop("required", true);
+			$(target).parents(".col-md-12").show();
+			$(end_date).parents(".col-md-6").show();
+		}
 		
 	}
 
-	if(buy_type == "Unlisted shares"){
+	if(buy_type == "Unlisted shares" || buy_type == "pms" || buy_type == "aif"){
 		$(tenure).parents(".col-md-6").hide();
 	}else{
 		$(tenure).parents(".col-md-6").show();

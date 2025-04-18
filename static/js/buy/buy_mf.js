@@ -77,6 +77,7 @@ t.on("order.dt search.dt", function () {
 		});
 }).draw();
 
+
 // add form submit
 $("#add_buy_mf_form").submit(function (e) {
 	e.preventDefault();
@@ -113,10 +114,15 @@ $("body").on("click", ".edit_modal", function () {
 			$("#edit_buy_mf_form #customer").val(response[0].CUSTOMER_id).change();
 			$("#edit_buy_mf_form #customer_status").val(response[0].CUSTOMER_STATUS).change();
 			// $("#edit_buy_mf_form #scheme_name").val(response[0].SCHEME_NAME);
-			$("#edit_buy_mf_form #scheme_name").val(response[0].SCHEME_NAME).change();
+			$('#scheme_name').val('603').trigger('change');
+			// $("#edit_buy_mf_form #fixed").text('response[0].SCHEME_NAME');
 			$("#edit_buy_mf_form #amount_invested").val(response[0].AMOUNT_INVESTED);
 			$("#edit_buy_mf_form #mode").val(response[0].MODE).change();
-			$("#edit_buy_mf_form #buy_type").val(response[0].BUY_TYPE).change();
+			$("#edit_buy_mf_form #advisors_scheme").val(response[0].ADVISER_SCHEME).change();
+			$("#edit_buy_mf_form #ei_commision").val(response[0].EI_COMMISION).change();
+			$("#edit_buy_mf_form #net_gst").val(response[0].NET_GST).change();
+			$("#edit_buy_mf_form #total_amount").val(response[0].TOTAL_AMOUNT).change();
+			$("#edit_buy_mf_form #advisor_payout").val(response[0].ADVISER_PAYOUT).change();
 		},
 		// selectEl.val('sugar').change();
 		error: function (response) {
@@ -232,6 +238,87 @@ $.ajax({
 });
 
 $("#amount_invested").on("change", function(){
+	if($("#advisors_scheme").val() != null){
+		scheme_value = $("#scheme_name").val()
+		console.log(scheme_value);
+		amount = parseFloat($("#amount_invested").val());
+		console.log(amount);
+		$.ajax({
+			url: `/load_edit_mfm/${scheme_value}`,
+			success: function (data) {
+				// console.log(typeof(data[0]['NET_A_GST']));
+				ei_commision = (amount / 100) *  data[0]['E_C_P'];
+				net_gst = (ei_commision / 100) *  18.00;
+				pay_out = ei_commision - net_gst;
+				$("#ei_commision").val(ei_commision.toFixed(2));
+				$("#net_gst").val(net_gst.toFixed(2));
+				$("#total_amount").val(pay_out.toFixed(2));
+				// console.log(typeof(pay_out));
+				if($("#advisors_scheme").val() == 'reddimond'){
+					console.log('Red Diamond')
+					
+					// $("#advisors_scheme").val('Red Diamond');
+					final_amount = (pay_out / 100) * 73;
+					console.log(final_amount);
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+				if($("#advisors_scheme").val() == 'bluedimond'){
+					console.log('Blue diamond')
+					// $("#advisors_scheme").val('Blue diamond');
+					final_amount = (pay_out / 100) * 76;
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+				if($("#advisors_scheme").val() == 'pinkdimond'){
+					
+					$("#advisors_scheme").val('Pink Diamond');
+					final_amount = (pay_out / 100) * 78;
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+				if($("#advisors_scheme").val() == 'emerald'){
+					
+					$("#advisors_scheme").val('Emerald');
+					final_amount = (pay_out / 100) * 80;
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+				if($("#advisors_scheme").val() == 'sapphire'){
+					
+					$("#advisors_scheme").val('Sapphire');
+					final_amount = (pay_out / 100) * 82;
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+				if($("#advisors_scheme").val() == 'redruby'){
+					
+					$("#advisors_scheme").val('Red Ruby');
+					final_amount = (pay_out / 100) * 85;
+					$("#advisor_payout").val(final_amount.toFixed(2));
+				}
+			},
+			error: function (data) {
+				toastr.error("something went wrong");
+			},
+	});
+	}else{
+		scheme_value = $("#scheme_name").val();
+		amount = parseFloat($("#amount_invested").val());
+		$.ajax({
+			url: `/load_edit_mfm/${scheme_value}`,
+			success: function (data) {
+				// console.log(typeof(data[0]['NET_A_GST']));
+				ei_commision = (amount / 100) *  data[0]['E_C_P'];
+				net_gst = (ei_commision / 100) *  18.00;
+				pay_out = ei_commision - net_gst;
+				$("#ei_commision").val(ei_commision.toFixed(2));
+				$("#net_gst").val(net_gst.toFixed(2));
+				$("#total_amount").val(pay_out.toFixed(2));
+				
+			},
+			error: function (data) {
+				toastr.error("something went wrong");
+			},});
+	}
+})
+
+$("#advisors_scheme").on("change", function(){
 	scheme_value = $("#scheme_name").val()
 	console.log(scheme_value);
 	amount = parseFloat($("#amount_invested").val());
@@ -239,49 +326,49 @@ $("#amount_invested").on("change", function(){
 	$.ajax({
 		url: `/load_edit_mfm/${scheme_value}`,
 		success: function (data) {
-			console.log(typeof(data[0]['NET_A_GST']));
+			// console.log(typeof(data[0]['NET_A_GST']));
 			ei_commision = (amount / 100) *  data[0]['E_C_P'];
 			net_gst = (ei_commision / 100) *  18.00;
 			pay_out = ei_commision - net_gst;
 			$("#ei_commision").val(ei_commision.toFixed(2));
 			$("#net_gst").val(net_gst.toFixed(2));
-			$("#pay_out").val(pay_out.toFixed(2));
-			console.log(typeof(pay_out))
-			if(amount < 10000000.00){
+			$("#total_amount").val(pay_out.toFixed(2));
+			// console.log(typeof(pay_out));
+			if($("#advisors_scheme").val() == 'reddimond'){
 				console.log('Red Diamond')
 				
-				$("#advisors_scheme").val('Red Diamond');
+				// $("#advisors_scheme").val('Red Diamond');
 				final_amount = (pay_out / 100) * 73;
 				console.log(final_amount);
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}
-			if((amount >= 10000000.00 && amount < 40000000.00)){
+			if($("#advisors_scheme").val() == 'bluedimond'){
 				console.log('Blue diamond')
-				$("#advisors_scheme").val('Blue diamond');
+				// $("#advisors_scheme").val('Blue diamond');
 				final_amount = (pay_out / 100) * 76;
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}
-			if(amount >= 40000000.00 && amount < 70000000.00){
-				console.log('h')
+			if($("#advisors_scheme").val() == 'pinkdimond'){
+				
 				$("#advisors_scheme").val('Pink Diamond');
 				final_amount = (pay_out / 100) * 78;
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}
-			if(amount >= 70000000.00 && amount < 120000000.00){
-				console.log('h')
-				$("#advisors_scheme").val('Emerald')
+			if($("#advisors_scheme").val() == 'emerald'){
+				
+				$("#advisors_scheme").val('Emerald');
 				final_amount = (pay_out / 100) * 80;
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}
-			if(amount >= 120000000.00 && amount < 180000000.00){
-				console.log('h')
-				$("#advisors_scheme").val('Sapphire')
+			if($("#advisors_scheme").val() == 'sapphire'){
+				
+				$("#advisors_scheme").val('Sapphire');
 				final_amount = (pay_out / 100) * 82;
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}
-			if(amount >= 180000000.00){
-				console.log('h')
-				$("#advisors_scheme").val('Red Ruby')
+			if($("#advisors_scheme").val() == 'redruby'){
+				
+				$("#advisors_scheme").val('Red Ruby');
 				final_amount = (pay_out / 100) * 85;
 				$("#advisor_payout").val(final_amount.toFixed(2));
 			}

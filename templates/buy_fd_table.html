@@ -183,7 +183,7 @@
 													</select>
 												</div>
 											</div>
-											<div class="col-md-12 col-lg-12" id="fd_add_customer" hidden>
+											<div class="row" id="fd_add_customer" hidden>
 												<div class="col-md-6 col-lg-6">
 													<div class="form-group">
 														<label>Proposer Name<small class="text-danger">*</small></label>
@@ -216,7 +216,6 @@
 													</div>
 												</div>
 											</div>
-
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Customer Status<small class="text-danger"> *</small></label>
@@ -227,7 +226,6 @@
 													</select>
 												</div>
 											</div>
-
 											<div class="col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Start Date<small class="text-danger">*</small></label>
@@ -345,6 +343,9 @@
 														<option value="ncd">NCD</option>
 														<option value="pms">PMS</option>
 														<option value="aif">AIF</option>
+														<option value="Unlisted shares">Unlisted shares</option>
+														<option value="Fractional property">Fractional property</option>
+														<option value="MLD">MLD</option>
 													</select>
 												</div>
 											</div>
@@ -366,6 +367,18 @@
 												<div class="form-group">
 													<label>End Date<small class="text-danger">*</small></label>
 													<input type="date" class="form-control" id="e_date" name="e_date" required />
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label>Interest Payout<small class="text-danger"> *</small></label>
+													<select class="form-control select2 buy_type" name="interest_payout" id="interest_payout" required>
+														<option value="" disabled selected>Please Select Interest Payout</option>
+														<option value="Monthly">Monthly</option>
+														<option value="Quaterly">Quaterly</option>
+														<option value="Half Annually">Half Annually</option>
+														<option value="Annually">Annually</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-md-12 col-lg-12">

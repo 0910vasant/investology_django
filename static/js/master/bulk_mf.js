@@ -118,3 +118,9 @@ $("#edit_mfm_form").on("submit", function (e) {
 		},
 	});
 });
+
+$("#download_advisors_scheme").on("change", function(){
+  url = `http://127.0.0.1:8000/get_mf_master/${$("#download_advisors_scheme").val()}`;
+  $("#download_mf_excel").attr('href', url)
+  value=$("#download_mf_excel").attr('href')
+});

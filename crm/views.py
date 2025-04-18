@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 import logging
 logger = logging.getLogger()
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from crm.models import *
 from app.models import *
 from .serializers import *
@@ -15,6 +15,7 @@ from django.contrib.auth.hashers import check_password
 from django.utils import timezone
 from django.db.models import Q
 from django.db.models import Avg, Count, Min, Sum
+from django.http import FileResponse, Http404
 
 import json
 
@@ -1812,8 +1813,94 @@ def load_im_data(request):
     
     return JsonResponse({"data":data},safe=False)
 #------------------------------
+# def download_advisor_scheme(request):
+
 def mf_master_page(request):
     return render(request,"mf_master.html")
+
+def bulk_upload_mf_master(request):
+    try:
+
+        df1 = pd.read_excel("C:\\Users\\ADMIN\\Desktop\\changes.xlsx")
+        for index, row in df1.iterrows():
+            
+            print(row['Fund Name'], row['Brokerage %'], row['B*18%'], "{:.2f}".format(row['B-C']), "{:.2f}".format(row['Red Diamond']),"{:.2f}".format(row['Blue diamond']), "{:.2f}".format(row['Pink Diamond']), "{:.2f}".format(row['Emerald']), "{:.2f}".format(row['Sapphire']), "{:.2f}".format(row['Red Ruby']))
+            scheme_name = row['Fund Name']
+            e_c_p = "{:.2f}".format(float(row['Brokerage %']))
+            net_a_gst = "{:.2f}".format(float(row['B*18%'])) 
+            ep_payout = "{:.2f}".format(float(row['B-C'])) 
+            red_diamond = "{:.2f}".format(float(row['Red Diamond']))
+            blue_diamond = "{:.2f}".format(float(row['Blue diamond'])) 
+            pink_diamond = "{:.2f}".format(float(row['Pink Diamond']))
+            emerald = "{:.2f}".format(float(row['Emerald']))
+            sapphire = "{:.2f}".format(float(row['Sapphire']))
+            red_ruby = "{:.2f}".format(float(row['Red Ruby']))
+            add = MF_master.objects.create(SCHEME=scheme_name, E_C_P=e_c_p, NET_A_GST=net_a_gst, EP_PAYOUT=ep_payout, RED_DIAMOND=red_diamond, BLUE_DIAMOND=blue_diamond, PINK_DIAMOND=pink_diamond, EMERALD=emerald, SAPPHIRE=sapphire, RED_RUBY=red_ruby)
+            add.save()
+        return JsonResponse({"message":"Excel Add Successfully"},status=200)
+    except Exception as e:
+        logger.exception(e)
+        print(e)
+        messages.error(request,"Something went wrong")
+        return JsonResponse({"error":"Something went Wrong"},status=500)
+
+def get_mf_master(request, val):
+    try:
+        data = list(MF_master.objects.all().values())
+        #print(data)
+        # df1 = pd.read_excel("C:\\Users\\ADMIN\\Desktop\\changes.xlsx")
+        # for i in data:
+        #     print(i['SCHEME'])
+        print(val)
+        if val == 'all':
+            df = pd.DataFrame(data, columns=['SCHEME', 'E_C_P', 'NET_A_GST', 'EP_PAYOUT', 'RED_DIAMOND', 'BLUE_DIAMOND', 'PINK_DIAMOND', 'EMERALD', 'SAPPHIRE', 'RED_RUBY'])
+            # df.loc[0] = ['Advisors percentage', '', '', '', '73%', '76%', '78%', '80%', '82%', '85%']
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'RED_DIAMOND': '73%', 'BLUE_DIAMOND': '76%', 'PINK_DIAMOND': '78%', 'EMERALD': '80%', 'SAPPHIRE': '82%', 'RED_RUBY': '85%'}])
+            # df.loc[0] = ['Advisors percentage', '73%']
+            df = pd.concat([new_row_df, df], ignore_index=True)
+        elif val == 'reddiamond':
+            df = pd.DataFrame(data, columns=['SCHEME', 'RED_DIAMOND',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'RED_DIAMOND': '73%'}])
+            # df.loc[0] = ['Advisors percentage', '73%']
+            df = pd.concat([new_row_df, df], ignore_index=True)
+        elif val == 'bluediamond':
+            df = pd.DataFrame(data, columns=['SCHEME', 'BLUE_DIAMOND',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'BLUE_DIAMOND': '76%'}])
+            df = pd.concat([new_row_df, df], ignore_index=True)
+            # df.loc[0] = ['Advisors percentage', '76%']
+        elif val == 'pinkdiamond':
+            df = pd.DataFrame(data, columns=['SCHEME', 'PINK_DIAMOND',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'PINK_DIAMOND': '78%'}])
+            df = pd.concat([new_row_df, df], ignore_index=True)
+            # df.loc[0] = ['Advisors percentage', '78%']
+        elif val == 'emerald':
+            df = pd.DataFrame(data, columns=['SCHEME', 'EMERALD',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'EMERALD': '80%'}])
+            df = pd.concat([new_row_df, df], ignore_index=True)
+            # df.loc[0] = ['Advisors percentage', '80%']
+        elif val == 'sapphire':
+            df = pd.DataFrame(data, columns=['SCHEME', 'SAPPHIRE',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'SAPPHIRE': '82%'}])
+            df = pd.concat([new_row_df, df], ignore_index=True)
+            # df.loc[0] = ['Advisors percentage', '82%']
+        elif val == 'redruby':
+            df = pd.DataFrame(data, columns=['SCHEME', 'RED_RUBY',])
+            new_row_df = pd.DataFrame([{'SCHEME': 'Advisors percentage', 'RED_RUBY': '85%'}])
+            df = pd.concat([new_row_df, df], ignore_index=True)
+            # df.loc[0] = ['Advisors percentage', '85%']
+        # print(df)
+        response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename="download_mf.xlsx"'
+            # for j in i:
+            #     print(i.SCHEME)
+        df.to_excel(response, index=False, engine='openpyxl')
+        return response
+    except Exception as e:
+      print(e)
+      messages.error(request,"Something went wrong")
+      return JsonResponse({"error":"Something went Wrong"},status=500)
+
 
 class AddBulk_mfm_Excel(APIView):
   def post(self,request):
@@ -4453,6 +4540,7 @@ def add_buy_fd(request):
         amt = request.POST.get("amt")
         brokerage_percentage = request.POST.get("b_percentage")
         brokerage_amt = request.POST.get("b_amt")
+        interest_payout = request.POST.get("interest_payout")
 
         logger.info(f"""
             user = {user}
@@ -4846,6 +4934,11 @@ def add_buy_mf(request):
         amount_invested = request.data.get('amount_invested')
         mode = request.data.get('mode')
         buy_type = request.data.get('buy_type')
+        advisors_scheme = request.data.get('advisors_scheme')
+        ei_commision = request.data.get('ei_commision')
+        net_gst = request.data.get('net_gst')
+        total_amount = request.data.get('total_amount')
+        advisor_payout = request.data.get('advisor_payout')
 
         logger.info(f"""
             user_type = {user_type}
@@ -4869,6 +4962,11 @@ def add_buy_mf(request):
             AMOUNT_INVESTED = amount_invested,
             MODE = mode,
             BUY_TYPE = buy_type,
+            ADVISER_SCHEME = advisors_scheme,
+            EI_COMMISION = ei_commision,
+            NET_GST = net_gst,
+            TOTAL_AMOUNT = total_amount,
+            ADVISER_PAYOUT = advisor_payout
         )
         if MF_master.objects.filter(SCHEME = scheme_name).exists():
             if cust_obj.TYPE == "ep":
@@ -4904,6 +5002,11 @@ def edit_buy_mf(request,id):
         amount_invested = request.data.get('amount_invested')
         mode = request.data.get('mode')
         buy_type = request.data.get('buy_type')
+        advisors_scheme = request.data.get('advisors_scheme')
+        ei_commision = request.data.get('ei_commision')
+        net_gst = request.data.get('net_gst')
+        total_amount = request.data.get('total_amount')
+        advisor_payout = request.data.get('advisor_payout')
 
         logger.info(f"""
             id = {id}
@@ -4928,6 +5031,11 @@ def edit_buy_mf(request,id):
         a.AMOUNT_INVESTED = amount_invested
         a.MODE = mode
         a.BUY_TYPE = buy_type
+        a.ADVISER_SCHEME = advisors_scheme,
+        a.EI_COMMISION = ei_commision,
+        a.NET_GST = net_gst,
+        a.TOTAL_AMOUNT = total_amount,
+        a.ADVISER_PAYOUT = advisor_payout
         a.save()
 
 
